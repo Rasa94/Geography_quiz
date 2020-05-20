@@ -120,10 +120,20 @@ let checkforTerm = () => {
 }
 
 
-let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
+//let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
 // This is where the magic happens 
 
+inputForm.addEventListener('submit', e => {
+    e.preventDefault();
+    let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
+    obj.termCheck()           
+}) 
 
+
+
+
+
+/*
 inputForm.addEventListener('submit', e => {
     e.preventDefault();
         db.collection('pojmovi')  
@@ -132,15 +142,5 @@ inputForm.addEventListener('submit', e => {
                                 .catch(error => console.log(error))                        
                              
     }) 
-
+*/
                                     
-                         
- 
-// A failed attempt at checking for existing terms
- /*
- obj.termCheck()
-    .then(() => inputForm.reset()) 
-    .catch(error => {
-        console.error(error);
-    })     
-*/                            

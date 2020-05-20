@@ -53,13 +53,6 @@ export class AddTerm {
         return deliver; 
     }
 
-
-}  
-
-
-// A failed attempt at checking for existing terms 
-
-/*
     async termCheck() {
         this.database 
         .where('category', '==', this.category)
@@ -78,4 +71,11 @@ export class AddTerm {
             console.error(error);
         })
     }
-*/
+}  
+
+
+// A failed attempt at checking for existing terms 
+
+
+    
+ 
