@@ -53,6 +53,8 @@ export class AddTerm {
         return deliver; 
     }
 
+    // Another async function, this one checks if the term we added is a duplicate
+
     async termCheck() {
         this.database 
         .where('category', '==', this.category)
@@ -61,7 +63,6 @@ export class AddTerm {
         .then(snapshot => {
             if (snapshot.docs.length == 0) {
                 this.termAdder();
-                
             } else {
                 alert("The term exists allready, this is a duplicate"); 
             }
@@ -73,8 +74,6 @@ export class AddTerm {
     }
 }  
 
-
-// A failed attempt at checking for existing terms 
 
 
     

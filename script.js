@@ -33,8 +33,7 @@ close.addEventListener('click', () => {
     alert('Please entey your username and log in')
 }) 
 
-
-// Event listeners for categories buttons
+// Event listeners
 // This needs refactoring
 
 login.addEventListener('click', () => {
@@ -42,8 +41,7 @@ login.addEventListener('click', () => {
     localStorage.setItem('usernameLocal', username);
 })
 
-
-let category;
+// Event listeners for categories buttons
 
 drzava.addEventListener('click',  () => { 
     main.innerText = drzava.innerText; 
@@ -86,6 +84,8 @@ predmet.addEventListener('click', () => {
     let category  = predmet.innerText;
     localStorage.setItem('categoryLocal', category); 
 })   
+
+// Term clicker
 
 term.addEventListener('click', () => {
     let input = termInput.value;
