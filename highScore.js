@@ -6,12 +6,12 @@
 
     let sortingArr = arr => { 
         arr.sort();
-        var current = null;
-        var counter = 0; 
-        for (var i = 0; i < arr.length; i++) {  
+        let current = null;
+        let counter = 0; 
+        for (let i = 0; i < arr.length; i++) {  
             if (arr[i] != current) {
                 if (counter > 0) {
-                    document.write(current + ' comes --> ' + counter + ' times<br>');
+                    document.write(current + ' -->' + counter + ' times<br>');
                 }
                 current = arr[i];
                 counter = 1;
@@ -20,7 +20,7 @@
             }
         }
         if (counter > 0) {
-            document.write(current + ' comes --> ' + counter + ' times');
+            document.write(current + '--> ' + counter + ' times');
         } 
     }  
 
