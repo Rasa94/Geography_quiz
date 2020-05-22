@@ -1,80 +1,91 @@
 export class AddTerm {
     constructor(u, c, t) {
-        this.username = u;
-        this.category = c;
-        this.term = t;
-        this.firstLetter; 
+        this.korisnik = u;
+        this.kategorija = c;
+        this.pojam = t;
+        this.pocetnoSlovo; 
         this.database = db.collection('pojmovi');  
     } 
     
     // Setters and getters
 
-    set username(u) {
-        this._username = u;
+    set korisnik(u) {
+        this._korisnik = u;
     }
 
-    set category(c) {
-        this._category = c;
+    set kategorija(c) {
+        this._kategorija = c;
     }
 
-    set term(t) {
-        this._term = t;
+    set pojam(t) {
+        this._pojam = t;
     }
 
-    get username() {
-        return this._username;
+    get korisnik() {
+        return this._korisnik;
     }
 
-    get category() {
-        return this._category;
+    get kategorija() {
+        return this._kategorija;
     }
 
-    get term() {
-        return this._term;
+    get pojam() {
+        return this._pojam;
     }
 
 
     // A async function that creates the document object when called
     
-
     async termAdder() {
         let today = new Date();
-        let first = this.term[0];   
+        let first = this.pojam[0];   
         // Document creation 
         let termDocument = {
-            username: this.username,
-            category: this.category,
-            term: this.term,
-            firstLetter: first,        
-            time: firebase.firestore.Timestamp.fromDate(today)  
+            korisnik: this.korisnik,
+            kategorija: this.kategorija,
+            pojam: this.pojam,
+            pocetnoSlovo: first,        
+            vreme: firebase.firestore.Timestamp.fromDate(today)  
         }
 
         let deliver = await this.database.add(termDocument); 
         return deliver; 
     }
 
+
     // Another async function, this one checks if the term we added is a duplicate
 
     async termCheck() {
         this.database 
-        .where('category', '==', this.category)
-        .where('term', "==", this.term)
-        .get()
-        .then(snapshot => {
-            if (snapshot.docs.length == 0) {
-                this.termAdder();
-            } else {
-                alert("The term exists allready, this is a duplicate"); 
-            }
-            
-        })
-        .catch(error => {
-            console.error(error);
-        })
+                    .where('kategorija', '==', this.kategorija)
+                    .where('pojam', "==", this.pojam)
+                    .get()
+                    .then(snapshot => {
+                        if (snapshot.docs.length == 0) {
+                            this.termAdder();
+                        } else {
+                            alert("The term exists allready, this is a duplicate"); 
+                        }
+                        
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    })
     }
-}  
+} 
 
 
 
-    
- 
+
+
+
+
+/*
+    observer = () => { 
+        this.database
+        .onSnapshot(      );
+    }  
+
+*/ 
+
+

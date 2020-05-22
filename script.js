@@ -4,101 +4,60 @@ import {AddTerm} from "./add.js"
 
 // Dom elements 
 
-    // Menu
-let main = document.getElementById('dropdownMenuLink');
     // Categories
-let drzava = document.getElementById('drz');
-let grad = document.getElementById('gr');
-let reka = document.getElementById('re');
-let planina = document.getElementById('pl');
-let zivotinja = document.getElementById('zi');
-let biljka = document.getElementById('blj');
-let predmet = document.getElementById('pre');
+let formBtn = document.getElementById('formSubmit');
+let select = document.getElementById('select'); 
     // Login
+let no = document.getElementById('nono');  
 let loginInput = document.getElementById('loginInput');
 let login = document.getElementById('login');
     // Form 
 let term = document.getElementById('term'); 
 let termInput = document.getElementById('termInput'); 
-let inputForm = document.getElementById('formNewDocument');  
-let close = document.getElementById('close');  
-let no = document.getElementById('nono');
+let inputForm = document.getElementById('formNewDocument');    
 
 
-if(!localStorage.usernameLocal) {
-    no.click();  
+// Log in popup
+
+let checkcheck = () => {
+    if(localStorage.usernameLocal == '') { 
+        no.click();    
+    } 
 }
+checkcheck() 
 
-close.addEventListener('click', () => {
-    alert('Please entey your username and log in')
-}) 
 
 // Event listeners
-// This needs refactoring
+
+    // log in listener
 
 login.addEventListener('click', () => {
     let username = loginInput.value;
     localStorage.setItem('usernameLocal', username);
 })
 
-// Event listeners for categories buttons
+    // Event listeners for categories buttons
 
-drzava.addEventListener('click',  () => { 
-    main.innerText = drzava.innerText; 
-    let category = drzava.innerText; 
+formBtn.addEventListener('click', e => {
+    let category = select.value;  
     localStorage.setItem('categoryLocal', category);
-}) 
- 
-grad.addEventListener('click',  () => {
-    main.innerText = grad.innerText;   
-    let category  = grad.innerText;
-    localStorage.setItem('categoryLocal', category);
-}) 
+})
 
-reka.addEventListener('click', () => {
-    main.innerText = reka.innerText;   
-    let category = reka.innerText;
-    localStorage.setItem('categoryLocal', category);
-}) 
-
-planina.addEventListener('click',  () => {
-    main.innerText = planina.innerText;   
-    let category  = planina.innerText;
-    localStorage.setItem('categoryLocal', category);
-}) 
-
-zivotinja.addEventListener('click',  () => {
-    main.innerText = zivotinja.innerText;   
-    let category  = zivotinja.innerText;
-    localStorage.setItem('categoryLocal', category); 
-})   
-
-biljka.addEventListener('click', () => {
-    main.innerText = biljka.innerText;   
-    let category  = biljka.innerText; 
-    localStorage.setItem('categoryLocal', category); 
-})   
-
-predmet.addEventListener('click', () => {
-    main.innerText = predmet.innerText;   
-    let category  = predmet.innerText;
-    localStorage.setItem('categoryLocal', category); 
-})   
-
-// Term clicker
+    // Term clicker
 
 term.addEventListener('click', () => {
     let input = termInput.value;
     let validated = input.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-    localStorage.setItem('termLocal', validated); 
-    console.log(validated);     
+    localStorage.setItem('termLocal', validated);      
 })
+
 
 // Uppercase conversion
 
 let capitalFirst = val => {
     return val.charAt(0).toUpperCase() + val.slice(1);
-  }
+}
+
 
 // When all values are chosen and stored in local storage they go through a check and into the object constructor
 
@@ -107,40 +66,28 @@ let checkUsername = () => {
     return username;
 }
  
-
 let checkForCategory = () => {
     let categoryLocal = localStorage.categoryLocal; 
     return categoryLocal;  
 } 
   
-
 let checkforTerm = () => {
     let termLocal = capitalFirst(localStorage.termLocal);
     return termLocal;   
 }
 
 
-//let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
-// This is where the magic happens 
+// The object is checked if it is a duplicate and, if not, added 
 
 inputForm.addEventListener('submit', e => {
     e.preventDefault();
     let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
-    obj.termCheck()           
+    obj.termCheck();        
+    checkcheck()       
 }) 
 
 
 
+ 
 
-
-/*
-inputForm.addEventListener('submit', e => {
-    e.preventDefault();
-        db.collection('pojmovi')  
-                            obj.termAdder() 
-                                .then(() => inputForm.reset()) 
-                                .catch(error => console.log(error))                        
-                             
-    }) 
-*/
                                     
