@@ -1,5 +1,5 @@
 // Class import 
-
+import {highScore} from "./highScore.js"
 import {AddTerm} from "./add.js" 
 
 // Dom elements 
@@ -16,6 +16,9 @@ let term = document.getElementById('term');
 let termInput = document.getElementById('termInput'); 
 let inputForm = document.getElementById('formNewDocument');    
 
+let vid = document.getElementById('video');
+
+let hs = document.getElementById('hs'); 
 
 // Log in popup
 
@@ -38,8 +41,39 @@ login.addEventListener('click', () => {
 
     // Event listeners for categories buttons
 
-formBtn.addEventListener('click', e => {
-    let category = select.value;  
+formBtn.addEventListener('click', e => { 
+    e.preventDefault(); 
+    let category = select.value; 
+    console.log(category)  
+    if(category === 'Drzava') {  
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/country.mp4' type='video/mp4'> 
+          </video>`; 
+    } else if(category === 'Grad') {
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/city.mp4' type='video/mp4'>
+          </video>`;
+    } else if(category === 'Reka') {
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/river.mp4' type='video/mp4'>
+          </video>` ;
+    } else if(category === 'Planina') {
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/mountains.mp4' type='video/mp4'> 
+          </video>`; 
+    } else if(category === 'Zivotinja') { 
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/animal.mp4' type='video/mp4'>
+          </video>`
+    }  else if(category === 'Biljka') { 
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/plants.mp4' type='video/mp4'>
+          </video>`
+    } else if(category === 'Predmet') {
+        vid.innerHTML = `<video id="bgvid" autoplay loop muted>
+            <source id="srcv" src='./background/object.mp4' type='video/mp4'> 
+          </video>`
+    } 
     localStorage.setItem('categoryLocal', category);
 })
 
@@ -77,17 +111,27 @@ let checkforTerm = () => {
 }
 
 
+
 // The object is checked if it is a duplicate and, if not, added 
 
 inputForm.addEventListener('submit', e => {
     e.preventDefault();
     let obj = new AddTerm(checkUsername(), checkForCategory(), checkforTerm());  
-    obj.termCheck();        
-    checkcheck()       
+    if (localStorage.usernameLocal == null ||  localStorage.categoryLocal == null || localStorage.termLocal == '') {
+        alert('Unesite sve podatke!!!')
+    } else { 
+        obj.termCheck();   
+        localStorage.setItem('categoryLocal', ''); 
+        localStorage.setItem('termLocal', '');         
+  
+    }
+           
+     
 }) 
-
+ 
 
 
  
 
                                     
+ hs.addEventListener("click", highScore); 

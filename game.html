@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="/css/style.css">   
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Igra</title>
+</head>
+<body>
+    
+ <!-- Video background -->
+ <div class="video-background">
+    <div class="video-wrap" id="video">
+      
+        <video id="bgvid" autoplay loop muted>
+          <source id="srcv" src='./background/background.mp4' type='video/mp4'>
+        </video> 
+      
+    </div>
+  </div>  
+
+  <!-- Navigation bar -->
+  
+  <div class="row">    
+    <div class="col-6">
+      <h1 class="navbar-brand navbar-expand{-sm|-md|-lg|-xl}" id="banner">Zanimljiva geografija!</h1>  
+    </div>
+    <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
+      <ul class="navbar nav nl-auto">
+        <li class="nav-item float-right">  
+          <button type="button" class="btn btn-primary nav-link "><a href="./game.html">Igra</a></button>   
+        </li>
+        <li class="nav-item float-right">  
+          <button type="button" class="btn btn-primary nav-link "><a href="./index.html">Home</a></button>   
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono">Log in</button> 
+        </li>
+        <li class="nav-item"> 
+          <button class="btn btn-primary" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">High score</button> 
+        </li>
+      </ul>  
+    </div>   
+  </div>      
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <!-- Firebase setup -->
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyC_wRf7Gro65yX8dHUMgOxeKUU-zKx0DCI",
+        authDomain: "zgeografija-953f7.firebaseapp.com",
+        databaseURL: "https://zgeografija-953f7.firebaseio.com",
+        projectId: "zgeografija-953f7",
+        storageBucket: "zgeografija-953f7.appspot.com",
+        messagingSenderId: "607800648564",
+        appId: "1:607800648564:web:71dda07b550cc4563b0221"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      let db = firebase.firestore();  
+    </script>
+    
+    <script src="script.js" type="module"></script>  
+</body>
+</html>
