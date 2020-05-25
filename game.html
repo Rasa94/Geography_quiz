@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="/css/style.css">   
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script defer src="./node_modules/swup/dist/swup.min.js"></script>
+    <!--<script defer src="./node_modules/swup/dist/swup.min.js"></script>-->
     <title>Igra</title>
 </head>
 <body id="game">
@@ -23,6 +23,7 @@
     </div>
   </div>  
 
+
   <!-- Navigation bar -->
   
   <div class="row">    
@@ -31,11 +32,12 @@
     </div>
     <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
       <ul class="navbar nav nl-auto">
-        <li class="nav-item float-right">  
-          <button type="button" class="btn btn-primary nav-link "><a href="/game.html">Igra</a></button>   
-        </li>
+        
         <li class="nav-item float-right">  
           <button type="button" class="btn btn-primary nav-link "><a href="/index.html">Home</a></button>   
+        </li> 
+        <li class="nav-item float-right">   
+          <button type="button" class="btn btn-primary nav-link "><a href="/game.html">Igra</a></button>   
         </li> 
         <li class="nav-item">
           <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono2">Log in</button> 
@@ -46,6 +48,17 @@
       </ul>  
     </div>   
   </div>      
+
+  
+  <!-- Letter card -->
+
+  <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card-header">Header</div>
+    <div class="card-body">
+      <h5 class="card-title" id="showLetter"></h5> 
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+  </div> 
 
 <!-- Form fields -->
 
@@ -142,6 +155,8 @@
       </div>  
   </main>
 
+  
+
   <!-- Log in Modal -->
 
   <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -222,7 +237,9 @@
       let db = firebase.firestore();  
     </script>
     
-    <script src="script.js" type="module"></script>  
     <script src="gameEnvironment.js" type="module"></script> 
+    <script src="./node_modules/swup/dist/swup.min.js"></script>
+    <script src="script.js" type="module"></script>  
+ 
 </body>
-</html>
+</html> 

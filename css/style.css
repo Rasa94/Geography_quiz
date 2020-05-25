@@ -44,7 +44,7 @@ p {
 }
 
 .main2 { 
-    margin-top: 360px !important;    
+    margin-top: 290px !important;    
     /*height: 100vh;   */
  }   
 
@@ -101,24 +101,11 @@ label {
 }
     
 html.is-animating .transition-fade {
-    opacity: 1;
+    opacity: 1; 
     transform: translateX(100%);
 }
     
 html.is-leaving .transition-fade {
     opacity: 0;
     transform: translateX(0);
-    }
-    
-.transition-swipe {
-    transition: 500ms;
-    transform: translateY(0);
-    } 
-    
-html.is-animating .transition-swipe {
-    transform: translateY(100px);
-    }
-
-    .yes {
-        display: none !important;  
     }

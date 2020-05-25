@@ -6,36 +6,30 @@ let zivotinja = document.getElementById('zivotinja');
 let biljka = document.getElementById('biljka');
 let predmet = document.getElementById('predmet');
 
-
-// Random letter generator
-
-export let rlg = () => {
-    let letters = ['A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'LJ', 'M', 'N', 'NJ', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'DŽ', 'Š'];
-    let random = letters[Math.floor(Math.random()*letters.length)];
-    console.log(random);
-    return random;
-}
-
 // Random number generator
 
-export let rng = () => {
+let rng = () => {
     let random = Math.floor(Math.random() * 100) + 1; 
     return random;
-}
+} 
 
-// Prepares the object and inserts all the terms that match the random letter
+export let theBigFunction = (randomLetter) => {
 
-export let prepareAnswer = (randomLetter) => {
+    
+
+    // Prepares the object and inserts all the terms that match the random letter
+
+    
     const answer = {
-        drzava: [],
+        drzava: [], 
         grad: [],
         reka: [],
         planina: [],
         zivotinja: [],
         biljka: [],
-        predmet: []
+        predmet: [] 
     } 
-
+ 
     let l = randomLetter;
 
     db.collection('pojmovi') 
@@ -67,63 +61,64 @@ export let prepareAnswer = (randomLetter) => {
                         break;
             }
         })  
+    
     })
-
+    console.log(answer);
     return answer;
 }
 
 // This function formulates the answer based on the object that we get from the prepareAnswer function and renders it
 
 export let formulateAnswer = (obj) => {
-    let random = rng();
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[0][Math.floor(Math.random()*obj.length)];
-        drzava.innerText = odgovor;     
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[1][Math.floor(Math.random()*obj.length)];
-        grad.innerText = odgovor;       
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-        odgovor      
-    } else {
-        let odgovor = obj[2][Math.floor(Math.random()*obj.length)];
-        reka.innerText = odgovor;       
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[3][Math.floor(Math.random()*obj.length)];
-        planina.innerText = odgovor;  
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[4][Math.floor(Math.random()*obj.length)];
-        zivotinja.innerText = odgovor;     
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[5][Math.floor(Math.random()*obj.length)];
-        biljka.innerText = odgovor;    
-    }
-    if(random <= 20){
-        let odgovor = 'Ne znam';
-         odgovor;    
-    } else {
-        let odgovor = obj[6][Math.floor(Math.random()*obj.length)];
-        predmet.innerText = odgovor;      
-    }  
-}
-
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            drzava.innerText = `${odgovor}`;    
+        } else {
+            let odgovor = obj.drzava[Math.floor(Math.random()*obj.drzava.length)]; 
+            console.log(odgovor); 
+            drzava.innerText = `${odgovor}`;     
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            grad.innerText = odgovor    
+        } else {
+            let odgovor = obj.grad[Math.floor(Math.random()*obj.grad.length)];
+            grad.innerText = odgovor;       
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            reka.innerText = odgovor      
+        } else {
+            let odgovor = obj.reka[Math.floor(Math.random()*obj.reka.length)];
+            reka.innerText = odgovor;       
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            planina.innerText = odgovor;    
+        } else {
+            let odgovor = obj.planina[Math.floor(Math.random()*obj.planina.length)];
+            planina.innerText = odgovor;  
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            zivotinja.innerText = odgovor;    
+        } else {
+            let odgovor = obj.zivotinja[Math.floor(Math.random()*obj.zivotinja.length)];
+            zivotinja.innerText = odgovor;     
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            biljka.innerText = odgovor;    
+        } else {
+            let odgovor = obj.biljka[Math.floor(Math.random()*obj.biljka.length)];
+            biljka.innerText = odgovor;    
+        }
+        if(rng() <= 20){
+            let odgovor = 'Ne znam';
+            predmet.innerText = odgovor;    
+        } else {
+            let odgovor = obj.predmet[Math.floor(Math.random()*obj.predmet.length)];
+            predmet.innerText = odgovor;      
+        }   
+    } 
+  

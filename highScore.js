@@ -13,7 +13,7 @@ let sortingArr = arr => {
     for (let i = 0; i < arr.length; i++) {  
         if (arr[i] != current) {
             if (counter > 0) {
-                sorted.push(`<p>${counter} termina je uneo korisnik ${current} <br> </p>`); 
+                sorted.push(counter + `termina je uneo korisnik ${current}`); 
             }
             current = arr[i];
             counter = 1;
@@ -22,11 +22,11 @@ let sortingArr = arr => {
         }
     }
     if (counter > 0) {
-        sorted.push(`<p>${counter} termina je uneo korisnik ${current} <br> </p>`);    
+        sorted.push(counter + `termina je uneo korisnik ${current}`);    
     } 
     console.log(sorted.sort().reverse());   
     sorted.forEach(el => {
-        renderField.innerHTML += el;   
+        renderField.innerText += el;    
     });  
 }    
  

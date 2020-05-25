@@ -1,16 +1,28 @@
 // Game engine import
-import {rng} from "./gameEngine.js" 
-import {rlg} from "./gameEngine.js" 
-import {prepareAnswer} from "./gameEngine.js"
+import {theBigFunction} from "./gameEngine.js"
 import {formulateAnswer} from "./gameEngine.js"  
 
 // DOM elements
 
 let answerBtn = document.getElementById('answersSubmit'); 
+let letterBox = document.getElementById('showLetter');
 
 // Game start
     
+    // Random letter generator
+
+    let rlg = () => {
+        let letters = ['A', 'B', 'V', 'G', 'D', 'Đ', 'E', 'Ž', 'Z', 'I', 'J', 'K', 'L', 'LJ', 'M', 'N', 'NJ', 'O', 'P', 'R', 'S', 'T', 'Ć', 'U', 'F', 'H', 'C', 'Č', 'DŽ', 'Š'];
+        let random = letters[Math.floor(Math.random()*letters.length)];
+        console.log(random);
+        return random;
+    }
+    let random = rlg();
     // Display the chosen letter
+    
+    letterBox.innerHTML = random; 
+    
+     
 
     // Timer 
     // Not added to the html yet
@@ -32,11 +44,11 @@ let answerBtn = document.getElementById('answersSubmit');
 // Computer oponent answer seeking
  
 answerBtn.addEventListener('click', e => {
-    let lett = rlg();
+    let lett = "D";  
     e.preventDefault(); 
-    let arrayObj = prepareAnswer(lett);
-    formulateAnswer(arrayObj); 
-
+    let object = theBigFunction(lett);
+    console.log(object); 
+    formulateAnswer(object); 
 })
 
 // Game ends

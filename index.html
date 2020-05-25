@@ -8,9 +8,6 @@
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="/css/style.css">   
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <script defer src="./node_modules/swup/dist/swup.min.js"></script>
-
-
     <title>Zanimljiva geografija!</title>
   </head>
 
@@ -21,8 +18,8 @@
     <div class="video-background">
       <div class="video-wrap" id="video">
         
-          <video id="bgvid" autoplay loop muted>
-            <source id="srcv" src='./background/background.mp4' type='video/mp4'>
+          <video id="bgvid" autoplay loop muted id="srcv"> 
+            <source src='./background/background.mp4' type='video/mp4'>
           </video> 
         
       </div>
@@ -37,11 +34,12 @@
       <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
         <ul class="navbar nav nl-auto">
           <li class="nav-item float-right">  
+            <button type="button" class="btn btn-primary nav-link "><a href="./index.html">Home</a></button>   
+          </li> 
+          <li class="nav-item float-right">  
             <button type="button" class="btn btn-primary nav-link "><a href="./game.html">Igra</a></button>   
           </li>
-          <li class="nav-item float-right">  
-            <button type="button" class="btn btn-primary nav-link "><a href="./index.html">Home</a></button>   
-          </li>
+
           <li class="nav-item">
             <button type="button" class="btn btn-primary float-right nono" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono1">Log in</button> 
           </li>
@@ -84,7 +82,7 @@
           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
               <form> 
-                <select class="custom-select form-control" id="select"> 
+                <select class="custom-select form-control" id="select">  
                   <option selected>Kategorija</option>
                   <option value="Država" id="drz">Država</option>
                   <option value="Grad" id="gr">Grad</option>
@@ -130,11 +128,7 @@
           </div>
           <div class="modal-body">
             <ol id="modalHs">
-              <li id="one"></li>
-              <li id="two"></li>
-              <li id="three"></li>
-              <li id="four"></li>
-              <li id="five"></li>
+              
             </ol>
           </div>
           <div class="modal-footer">
@@ -176,7 +170,9 @@
       let db = firebase.firestore();  
     </script>
     
-    <script src="script.js" type="module"></script> 
-    <script src="gameEnvironment.js" type="module"></script>   
+    <script src="gameEnvironment.js" type="module"></script> 
+    <script src="./node_modules/swup/dist/swup.min.js"></script>   
+    <script src="script.js" type="module"></script>  
+
   </body>
 </html>   
