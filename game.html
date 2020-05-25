@@ -7,16 +7,17 @@
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="/css/style.css">   
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script defer src="./node_modules/swup/dist/swup.min.js"></script>
     <title>Igra</title>
 </head>
-<body>
+<body id="game">
     
  <!-- Video background -->
  <div class="video-background">
     <div class="video-wrap" id="video">
       
         <video id="bgvid" autoplay loop muted>
-          <source id="srcv" src='./background/background.mp4' type='video/mp4'>
+          <source id="srcv" src='./background/background.mp4' type='video/mp4'> 
         </video> 
       
     </div>
@@ -31,13 +32,13 @@
     <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
       <ul class="navbar nav nl-auto">
         <li class="nav-item float-right">  
-          <button type="button" class="btn btn-primary nav-link "><a href="./game.html">Igra</a></button>   
+          <button type="button" class="btn btn-primary nav-link "><a href="/game.html">Igra</a></button>   
         </li>
         <li class="nav-item float-right">  
-          <button type="button" class="btn btn-primary nav-link "><a href="./index.html">Home</a></button>   
-        </li>
+          <button type="button" class="btn btn-primary nav-link "><a href="/index.html">Home</a></button>   
+        </li> 
         <li class="nav-item">
-          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono">Log in</button> 
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono2">Log in</button> 
         </li>
         <li class="nav-item"> 
           <button class="btn btn-primary" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">High score</button> 
@@ -45,6 +46,149 @@
       </ul>  
     </div>   
   </div>      
+
+<!-- Form fields -->
+
+  <main id="swup" class="transition-fade main2">
+    <div class="mb-2 d-flex   p-2 bd-highlight justify-content-center" >       
+      <div class="" >
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" >
+          <div class="p-4 d-flex flex-column position-static">
+            <form class="container"> 
+              <div class="row">
+                <div class="col6 win">
+                  
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
+                      <input type="text" name="" id="" class="custom2">  
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
+                      <input type="text" name="" id="" class="custom2"> 
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
+                      <input type="text" name="" id="" class="custom2"> 
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
+                      <input type="text" name="" id="" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
+                      <input type="text" name="" id="" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
+                      <input type="text" name="" id="" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row"> 
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
+                      <input type="text" name="" id="" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                  <button type="submit" class="btn btn-outline-light custom" id="answersSubmit"></button> 
+                  <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
+                </div>
+                <div class="col6 win">
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="drzava"></p>  
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="grad"></p>
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="reka"></p>
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="planina"></p>
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="zivotinja"></p>
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="biljka"></p>
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                  </div>
+                  <div class="row"> 
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
+                    <p class="no-gutters border rounded overflow-hidden custom2" id="predmet"></p> 
+                    <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br> 
+                  </div>
+                <button type="submit" class="btn btn-outline-light" id="answersSubmit"></button> 
+                <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
+                </div>
+              </div>   
+            </form> 
+          </div> 
+        </div>  
+      </div>  
+  </main>
+
+  <!-- Log in Modal -->
+
+  <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Log in</h5> 
+        </div>
+        <div class="modal-body">
+          <div class="d-flex align-content-center flex-wrap">   
+            <label for="">Your username</label>   
+            <input type="text" name="" id="loginInput">
+            <input type="button" value="Log-in" id="login" class="btn btn-secondary bg-warning" data-dismiss="modal"> 
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <!-- High score Modal -->
+
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ol id="modalHs">
+            <li id="one"></li>
+            <li id="two"></li>
+            <li id="three"></li>
+            <li id="four"></li>
+            <li id="five"></li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+
 
     
     <!-- Optional JavaScript -->
@@ -79,5 +223,6 @@
     </script>
     
     <script src="script.js" type="module"></script>  
+    <script src="gameEnvironment.js" type="module"></script> 
 </body>
 </html>

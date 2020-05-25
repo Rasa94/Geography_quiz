@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS --> 
     <link rel="stylesheet" href="/css/style.css">   
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    
+    <script defer src="./node_modules/swup/dist/swup.min.js"></script>
+
 
     <title>Zanimljiva geografija!</title>
   </head>
@@ -42,7 +43,7 @@
             <button type="button" class="btn btn-primary nav-link "><a href="./index.html">Home</a></button>   
           </li>
           <li class="nav-item">
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono">Log in</button> 
+            <button type="button" class="btn btn-primary float-right nono" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono1">Log in</button> 
           </li>
           <li class="nav-item"> 
             <button class="btn btn-primary" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">High score</button> 
@@ -77,7 +78,7 @@
 
     <!-- Category menu -->
 
-    <main>
+    <main id="swup" class="transition-fade">
       <div class="row mb-2 d-flex   p-2 bd-highlight justify-content-center">       
         <div class="col-md-4">
           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -85,11 +86,11 @@
               <form> 
                 <select class="custom-select form-control" id="select"> 
                   <option selected>Kategorija</option>
-                  <option value="Drzava" id="drz">Drzava</option>
+                  <option value="Država" id="drz">Država</option>
                   <option value="Grad" id="gr">Grad</option>
                   <option value="Reka" id="re">Reka</option>    
                   <option value="Planina" id="pl">Planina</option>    
-                  <option value="Zivotinja" id="zi">Zivotinja</option>    
+                  <option value="Životinja" id="zi">Životinja</option>    
                   <option value="Biljka" id="blj">Biljka</option>    
                   <option value="Predmet" id="pre">Predmet</option>    
                 </select> 
@@ -175,6 +176,7 @@
       let db = firebase.firestore();  
     </script>
     
-    <script src="script.js" type="module"></script>  
+    <script src="script.js" type="module"></script> 
+    <script src="gameEnvironment.js" type="module"></script>   
   </body>
 </html>   

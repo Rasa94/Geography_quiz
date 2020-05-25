@@ -1,9 +1,11 @@
+
+
 // Class import 
 import {highScore} from "./highScore.js"
 import {AddTerm} from "./add.js" 
 
 // Dom elements 
-
+const swup = new Swup();  
     // Categories
 let formBtn = document.getElementById('formSubmit');
 let select = document.getElementById('select'); 
@@ -22,12 +24,7 @@ let hs = document.getElementById('hs');
 
 // Log in popup
 
-let checkcheck = () => {
-    if(localStorage.usernameLocal == '') { 
-        no.click();    
-    } 
-}
-checkcheck() 
+
 
 
 // Event listeners
