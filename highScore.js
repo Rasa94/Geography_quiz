@@ -2,18 +2,16 @@
 
 let renderField = document.getElementById('modalHs'); 
 
-
 // This is the basic algorithm for sorting duplicates
 
 let sortingArr = arr => {  
-    arr.sort();
-    let sorted = []
+    let sorted = []; 
     let current = null;
-    let counter = 0; 
+    let counter = 0;
     for (let i = 0; i < arr.length; i++) {  
         if (arr[i] != current) {
             if (counter > 0) {
-                sorted.push(counter + `termina je uneo korisnik ${current}`); 
+                sorted.push([[`termina je uneo korisnik ${current}`], [Number(counter)]]);   
             }
             current = arr[i];
             counter = 1;
@@ -22,7 +20,7 @@ let sortingArr = arr => {
         }
     }
     if (counter > 0) {
-        sorted.push(counter + `termina je uneo korisnik ${current}`);    
+        sorted.push([[`termina je uneo korisnik ${current}`], [Number(counter)]]);       
     } 
     console.log(sorted.sort().reverse());   
     sorted.forEach(el => {
@@ -45,6 +43,12 @@ export let highScore = () => {
         renderField.innerHTML = '';     
         sortingArr(arr); 
         })
+     
+    let s = arr.sort((a,b) => { 
+        return b[1] - a[1];
+    } )
+    
+    console.log(s); 
 } 
 
 

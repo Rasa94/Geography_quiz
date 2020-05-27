@@ -1,8 +1,8 @@
 // Game engine import
-import {theBigFunction} from "./gameEngine.js"
+import {answerCollection} from "./gameEngine.js"
 import {formulateAnswer} from "./gameEngine.js"  
-//import {kviz} from "./gameEngine.js"   
-
+import {compareAnswers} from "./gameEngine.js"  
+ 
 
 // DOM elements for user inputs
 
@@ -24,15 +24,7 @@ let plZivotinjaRes = document.getElementById('playerResultZi');
 let plBiljkaRes = document.getElementById('playerResultBi');
 let plPredmetRes = document.getElementById('playerResultPr');
 
-// Dom computer results
 
-let compDrzavaRes = document.getElementById('computerResultDr');
-let compGradRes = document.getElementById('computerResultGr');
-let compRekaRes = document.getElementById('computerResultRe');
-let compPlaninaRes = document.getElementById('computerResultPl');
-let compZivotinjaRes = document.getElementById('computerResultZi');
-let compBiljkaRes = document.getElementById('computerResultBi');
-let compPredmetRes = document.getElementById('computerResultPr'); 
 
 // DOM elements
 
@@ -43,6 +35,7 @@ let resultModal = document.getElementById('resultModal');
 //
 
 let answerBtn = document.getElementById('answersSubmit'); 
+
 // Random letter generator
 
 let rlg = () => {
@@ -68,50 +61,56 @@ let countdownTimer = () => {
 
         if (counter == 0) {
             clearInterval(timer);
-            gameTimer.innerHTML = '0'
+            gameTimer.innerHTML = '0';
+            resultModal.click(); 
         }
     }, 1000);
 }
 
 
 // Game start
-    
+let random;     
 startGame.addEventListener('click', e => {
         e.preventDefault();
-        let random = rlg();
+        random = rlg();
         letterBox.innerHTML = random;
         countdownTimer();  
         console.log('started')
+        
     }) 
     
 
-
-/*
-
+answerBtn.addEventListener('click', (e, r) => { 
     
- */
-    answerBtn.addEventListener('click', e => { 
-        e.preventDefault(); 
-        let playerAnswer = [
-            [plDrzava.value], 
-            [plGrad.value],
-            [plReka.value],
-            [plPlanina.value],
-            [plZivotinja.value],
-            [plBiljka.value],
-            [plPredmet.value] 
-         ]
-        plDrzavaRes.innerText = playerAnswer[0];
-        plGradRes.innerText = playerAnswer[1];
-        plRekaRes.innerText = playerAnswer[2];
-        plPlaninaRes.innerText = playerAnswer[3];
-        plZivotinjaRes.innerText = playerAnswer[4];
-        plBiljkaRes.innerText = playerAnswer[5];
-        plPredmetRes.innerText = playerAnswer[6];
-        console.log(playerAnswer);  
-        resultModal.click(); 
-    })
-     
+    e.preventDefault(); 
+    let random = r;
+    plDrzavaRes.innerText = plDrzava.value;
+    plGradRes.innerText = plGrad.value;
+    plRekaRes.innerText = plReka.value;
+    plPlaninaRes.innerText = plPlanina.value;
+    plZivotinjaRes.innerText = plZivotinja.value;
+    plBiljkaRes.innerText = plBiljka.value;
+    plPredmetRes.innerText = plPredmet.value;  
+    let playerAnswers = [];
+    playerAnswers.push(plDrzava.value);
+    playerAnswers.push(plGrad.value);
+    playerAnswers.push(plReka.value); 
+    playerAnswers.push(plPlanina.value);
+    playerAnswers.push(plZivotinja.value);
+    playerAnswers.push(plBiljka.value);
+    playerAnswers.push(plPredmet.value);   
+    console.log(playerAnswers); 
+    let collection = answerCollection("B");
+    let computerAnswers =formulateAnswer(collection); 
+    let allInOne = [].concat.apply([], collection);  
+    console.log(allInOne);   
+    compareAnswers(allInOne, computerAnswers[1], playerAnswers[1]); 
+
+
+    //countdownTimer.clearInterval();
+    resultModal.click(); 
+})
+    
 
 
 

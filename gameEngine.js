@@ -1,13 +1,14 @@
 
-// DOM elements used to render the answers
+// Dom computer results
 
-let drzava = document.getElementById('drzava');
-let grad = document.getElementById('grad');
-let reka = document.getElementById('reka');
-let planina = document.getElementById('planina');
-let zivotinja = document.getElementById('zivotinja');
-let biljka = document.getElementById('biljka');
-let predmet = document.getElementById('predmet');
+let compDrzavaRes = document.getElementById('computerResultDr');
+let compGradRes = document.getElementById('computerResultGr');
+let compRekaRes = document.getElementById('computerResultRe');
+let compPlaninaRes = document.getElementById('computerResultPl');
+let compZivotinjaRes = document.getElementById('computerResultZi');
+let compBiljkaRes = document.getElementById('computerResultBi');
+let compPredmetRes = document.getElementById('computerResultPr'); 
+
 
 // Random number generator
 
@@ -17,22 +18,11 @@ let rng = () => {
 } 
 
 
-const answer = {
-    drzava: [], 
-    grad: [],
-    reka: [],
-    planina: [],
-    zivotinja: [],
-    biljka: [],
-    predmet: [] 
-} 
-
-
-
-export let theBigFunction = (randomLetter) => {
+let answer = [[], [], [], [], [], [], []];  
+export let answerCollection = (randomLetter) => {
 
     // Prepares the object and inserts all the terms that match the random letter
- 
+    
     let l = randomLetter;
     db.collection('pojmovi') 
         .where('pocetnoSlovo', '==', l)
@@ -41,93 +31,148 @@ export let theBigFunction = (randomLetter) => {
             snapshot.docs.forEach(doc=>{   
                 switch(doc.data().kategorija){ 
                     case "Država":
-                        answer.drzava.push(doc.data().pojam);
+                        answer[0].push(doc.data().pojam);
                         break;
                     case "Grad":
-                        answer.grad.push(doc.data().pojam)
+                        answer[1].push(doc.data().pojam)
                         break;
                     case "Reka":
-                        answer.reka.push(doc.data().pojam)
+                        answer[2].push(doc.data().pojam)
                         break;
                     case "Planina":
-                        answer.planina.push(doc.data().pojam)
+                        answer[3].push(doc.data().pojam)
                         break;
                     case "Životinja":
-                        answer.zivotinja.push(doc.data().pojam)
+                        answer[4].push(doc.data().pojam)
                         break;
                     case "Biljka":
-                        answer.biljka.push(doc.data().pojam)
+                        answer[5].push(doc.data().pojam)
                         break;
                     case "Predmet":
-                        answer.predmet.push(doc.data().pojam)
-                        break;      
+                        answer[6].push(doc.data().pojam)
+                        break;       
             }     
         }) 
     })
-
     console.log(answer);
     return answer;
-
-
 }
   
 
 // This function formulates the answer based on the object that we get from the prepareAnswer function and renders it
 
+let computerFormulatedAnswers = [];
+
 export let formulateAnswer = (obj) => {
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        drzava.innerText = `${odgovor}`;    
+        let printAnswer = 'Ne znam';
+        compDrzavaRes.innerText = printAnswer;    
     } else { 
-        let odgovor = obj.drzava[Math.floor(Math.random()*obj.drzava.length)];        
-        console.log(odgovor); 
-        drzava.innerText = odgovor;         
+        let printAnswer = obj[0][Math.floor(Math.random()*obj[0].length)]; 
+        computerFormulatedAnswers.push(printAnswer);       
+        compDrzavaRes.innerText = printAnswer;         
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        grad.innerText = odgovor    
+        let printAnswer = 'Ne znam';
+        compGradRes.innerText = printAnswer    
     } else {
-        let odgovor = obj.grad[Math.floor(Math.random()*obj.grad.length)];   
-        grad.innerText = odgovor;       
+        let printAnswer = obj[1][Math.floor(Math.random()*obj[1].length)];
+        computerFormulatedAnswers.push(printAnswer);   
+        compGradRes.innerText = printAnswer;       
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        reka.innerText = odgovor      
+        let printAnswer = 'Ne znam';
+        compRekaRes.innerText = printAnswer      
     } else {
-        let odgovor = obj.reka[Math.floor(Math.random()*obj.reka.length)];
-        reka.innerText = odgovor;       
+        let printAnswer = obj[2][Math.floor(Math.random()*obj[2].length)];
+        computerFormulatedAnswers.push(printAnswer);
+        compRekaRes.innerText = printAnswer;       
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        planina.innerText = odgovor;    
+        let printAnswer = 'Ne znam';
+        compPlaninaRes.innerText = printAnswer;    
     } else {
-        let odgovor = obj.planina[Math.floor(Math.random()*obj.planina.length)];
-        planina.innerText = odgovor;  
+        let printAnswer = obj[3][Math.floor(Math.random()*obj[3].length)];
+        computerFormulatedAnswers.push(printAnswer);
+        compPlaninaRes.innerText = printAnswer;  
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        zivotinja.innerText = odgovor;    
+        let printAnswer = 'Ne znam';
+        compZivotinjaRes.innerText = printAnswer;    
     } else {
-        let odgovor = obj.zivotinja[Math.floor(Math.random()*obj.zivotinja.length)];
-        zivotinja.innerText = odgovor;     
+        let printAnswer = obj[4][Math.floor(Math.random()*obj[4].length)];
+        computerFormulatedAnswers.push(printAnswer);
+        compZivotinjaRes.innerText = printAnswer;     
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        biljka.innerText = odgovor;    
+        let printAnswer = 'Ne znam';
+        compBiljkaRes.innerText = printAnswer;    
     } else {
-        let odgovor = obj.biljka[Math.floor(Math.random()*obj.biljka.length)];
-        biljka.innerText = odgovor;    
+        let printAnswer = obj[5][Math.floor(Math.random()*obj[5].length)];
+        computerFormulatedAnswers.push(printAnswer);
+        compBiljkaRes.innerText = printAnswer;    
     }
     if(rng() <= 20){
-        let odgovor = 'Ne znam';
-        predmet.innerText = odgovor;    
+        let printAnswer = 'Ne znam';
+        compPredmetRes.innerText = printAnswer;    
     } else {
-        let odgovor = obj.predmet[Math.floor(Math.random()*obj.predmet.length)];
-        predmet.innerText = odgovor;      
+        let printAnswer = obj[6][Math.floor(Math.random()*obj[6].length)]; 
+        computerFormulatedAnswers.push(printAnswer);
+        compPredmetRes.innerText = printAnswer;       
     }   
 
-    // Return obj
+    return computerFormulatedAnswers
 } 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+let playerFinal;
+let computerFinal; 
+
+export let compareAnswers = (allAnswers, computer, player) => {   
+    if(allAnswers.includes(computer) && allAnswers.includes(player)){
+        if(computer === player ){
+            playerFinal += 5;
+            computerFinal += 5;
+            return;
+        }
+        else {
+            playerFinal += 10;
+            computerFinal += 10;
+            return;
+        }
+    }
+    if(allAnswers.includes(computer)){
+        playerFinal += 0;
+        computerFinal += 15;
+        return;
+    }
+    if (allAnswers.includes(player)){;
+        playerFinal += 15;
+        computerFinal += 0;
+        return;
+    }
+    else {
+        playerFinal += 0;
+        computerFinal += 0;
+    }
+    console.log(playerFinal);
+    console.log(computerFinal); 
+}
+
+*/
