@@ -12,7 +12,7 @@ let select = document.getElementById('select');
 //let no = document.getElementById('nono');  
 let loginInput = document.getElementById('loginInput');
 let login = document.getElementById('login');
-let log = document.getElementById('nono1');
+let logInButton = document.getElementById('logInButton');
     // Form 
 let term = document.getElementById('term'); 
 let termInput = document.getElementById('termInput'); 
@@ -27,7 +27,7 @@ let hs = document.getElementById('hs');
 // Log in popup
 if(!localStorage.usernameLocal){
     console.log("empty")
-    log.click();  
+    logInButton.click();  
 }
 
 

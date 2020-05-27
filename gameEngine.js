@@ -54,7 +54,7 @@ export let answerCollection = (randomLetter) => {
             }     
         }) 
     })
-    console.log(answer);
+    //console.log(answer);
     return answer;
 }
   
@@ -139,7 +139,7 @@ export let formulateAnswer = (obj) => {
 
 
 
-/*
+
 
 let playerFinal;
 let computerFinal; 
@@ -175,4 +175,3 @@ export let compareAnswers = (allAnswers, computer, player) => {
     console.log(computerFinal); 
 }
 
-*/

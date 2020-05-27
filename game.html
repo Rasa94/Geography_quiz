@@ -13,6 +13,7 @@
 <body id="game">
     
  <!-- Video background -->
+
  <div class="video-background">
     <div class="video-wrap" id="video">
       
@@ -22,7 +23,6 @@
       
     </div>
   </div>  
-
 
   <!-- Navigation bar -->
   
@@ -40,7 +40,7 @@
           <button type="button" class="btn btn-primary nav-link "><a href="/game.html">Igra</a></button>   
         </li> 
         <li class="nav-item">
-          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" class="nav-link" id="nono2">Log in</button> 
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#logInModal" class="nav-link" id="">Log in</button> 
         </li>
         <li class="nav-item"> 
           <button class="btn btn-primary" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">High score</button> 
@@ -50,85 +50,11 @@
   </div>      
 
   
-<
-
-<!-- Form fields -->
-
-  <main id="swup" class="transition-fade main2">
-    <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
-      <div class="" > 
-        <button type="submit" class="btn btn-outline-light " id="startGame" > Zapocni igru </button>
-        <div class="row">
-          <!-- Letter card -->
-    
-          <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 10rem;"> 
-            <p id="letterSize">  </p> 
-          </div> 
-           <!-- Letter card -->
-    
-           <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 18rem;">  
-            <p id="timer"> 90 </p> 
-          </div> 
-        </div> 
-        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" >
-          <div class="p-4 d-flex flex-column position-static">
-            <form class="container" autocomplete="off">  
-              <div class="row">
-                <div class="col8 win"> 
-                  
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
-                      <input type="text" name="" id="playerInputDr" class="custom2">  
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
-                      <input type="text" name="" id="playerInputGr" class="custom2"> 
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
-                      <input type="text" name="" id="playerInputRe" class="custom2"> 
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
-                      <input type="text" name="" id="playerInputPl" class="custom2">
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
-                      <input type="text" name="" id="playerInputZi" class="custom2">
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
-                      <input type="text" name="" id="playerInputBi" class="custom2">
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                    <div class="row"> 
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
-                      <input type="text" name="" id="playerInputPr" class="custom2">
-                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
-                    </div>
-                  <button type="submit" class="btn btn-outline-light " id="answersSubmit" > Unesi odgovore </button>  
-                  <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
-                </div>
-                
-              </div>   
-            </form> 
-          </div> 
-        </div>  
-      </div>  
-  </main>
-
-  
-
   <!-- Log in Modal -->
 
-  <div class="modal fade" id="exampleModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="logInModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm"> 
-      <div class="modal-content">
+      <div class="modal-content"> 
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">Log in</h5> 
         </div>
@@ -170,17 +96,17 @@
     </div>
   </div> 
 
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary invisible" data-toggle="modal" data-target="#exampleModalCenter" id="resultModal"> 
+  <!-- Game room button  -->
+  <button type="button" class="btn btn-primary invisible" data-toggle="modal" data-target="#gameRoomModalCenter" id="resultModal"> 
     Launch demo modal 
   </button>
 
-  <!-- Modal -->
-  <div class="modal fade modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- Game room Modal -->
+  <div class="modal fade modal-lg" id="gameRoomModalCenter" tabindex="-1" role="dialog" aria-labelledby="gameRoomModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered mb-2 d-flex modal-lg" role="document">
       <div class="modal-content"> 
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Rezultati:</h5>
+          <h5 class="modal-title" id="gameRoomModalLongTitle">Rezultati:</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -275,6 +201,78 @@
       </div>
     </div>
   </div>
+
+  <!-- Form fields -->
+
+  <main id="swup" class="transition-fade main2">
+    <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
+      <div class="" > 
+        <button type="submit" class="btn btn-outline-light " id="startGame" > Zapocni igru </button>
+        <div class="row">
+          <!-- Letter card -->
+    
+          <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 10rem;"> 
+            <p id="letterSize">  </p> 
+          </div> 
+           <!-- Letter card -->
+    
+           <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 18rem;">  
+            <p id="timer"> 90 </p> 
+          </div> 
+        </div> 
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" >
+          <div class="p-4 d-flex flex-column position-static">
+            <form class="container" autocomplete="off">  
+              <div class="row">
+                <div class="col8 win"> 
+                  
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
+                      <input type="text" name="" id="playerInputDr" class="custom2">  
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
+                      <input type="text" name="" id="playerInputGr" class="custom2"> 
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
+                      <input type="text" name="" id="playerInputRe" class="custom2"> 
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
+                      <input type="text" name="" id="playerInputPl" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
+                      <input type="text" name="" id="playerInputZi" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
+                      <input type="text" name="" id="playerInputBi" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                    <div class="row"> 
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
+                      <input type="text" name="" id="playerInputPr" class="custom2">
+                      <p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>
+                    </div>
+                  <button type="submit" class="btn btn-outline-light " id="answersSubmit" > Unesi odgovore </button>  
+                  <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
+                </div>
+              </div>   
+            </form> 
+          </div> 
+        </div>  
+      </div>  
+  </main>
+
+  
+
 
 
     
