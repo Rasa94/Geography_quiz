@@ -43,8 +43,18 @@ p {
     color: white !important;  
 }
 
+.modal-lg {
+    max-width: 80% !important;
+} 
+
+#answersSubmit{
+    margin-left: 62px !important;  
+    
+    width: 180px !important;  
+}
+
 .main2 { 
-    margin-top: 290px !important;    
+    margin-top: 90px !important;         
     /*height: 100vh;   */
  }   
 
@@ -60,7 +70,19 @@ p {
     margin: 2px 5px !important;  
 }
 
+.letterC {
+    color: black !important; 
+}
 
+#letterSize {
+    text-align: center; 
+    font-size: 6rem !important;  
+}
+
+#timer{
+    text-align: center; 
+    font-size: 6rem !important;   
+}
 
 .bd-placeholder-img {
     font-size: 1.125rem;

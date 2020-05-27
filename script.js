@@ -1,4 +1,3 @@
-const swup = new Swup();  
 
 // Class import 
 import {highScore} from "./highScore.js"
@@ -136,7 +135,7 @@ if(inputForm){
     }) 
 }
                                     
- hs.addEventListener("click", highScore); 
+hs.addEventListener("click", highScore); 
 
 
 
