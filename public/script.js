@@ -1,7 +1,7 @@
 
 // Class import 
-import {highScore} from "./highScore.js" // ./highScore.js
-import {AddTerm} from "./add.js" // ./add.js 
+import {highScore} from "./highScore.js" 
+import {AddTerm} from "./add.js" 
 
 // Dom elements  
   
@@ -9,7 +9,6 @@ import {AddTerm} from "./add.js" // ./add.js
 let formBtn = document.getElementById('formSubmit');
 let select = document.getElementById('select'); 
     // Login
-//let no = document.getElementById('nono');  
 let loginInput = document.getElementById('loginInput');
 let login = document.getElementById('login');
 let logInButton = document.getElementById('logInButton');
@@ -19,23 +18,16 @@ let termInput = document.getElementById('termInput');
 let inputForm = document.getElementById('formNewDocument');    
 
 let vid = document.getElementById('video');
-
-let hs = document.getElementById('hs'); 
-
+let highScoreCall = document.getElementById('hs'); 
 let ind = document.getElementById('index'); 
  
 
 // Log in popup
+
 if(!localStorage.usernameLocal){
     console.log("empty")
     logInButton.click();  
 }
-
-
-ind.addEventListener('click', e => {
-    e.preventDefault()
-    
-})
 
 // log in listener
 
@@ -51,45 +43,54 @@ login.addEventListener('click', e => {
 formBtn.addEventListener('click', e => { 
     e.preventDefault(); 
     let category = select.value;  
-    console.log(category)  
     if(category === 'Država') {  
         vid.innerHTML = `<video id="bgvid" autoplay poster="./background/countryPlaceholder.jpg" loop muted>
                             <source id="srcv" src='./background/country.mp4' type='video/mp4'>  
-                            </video>`;  
-        localStorage.setItem('categoryLocal', 'Država'); 
-        
-    } else if(category === 'Grad') {
+                        </video>`;  
+        localStorage.setItem('categoryLocal', 'Država');  
+    } 
+    else if(category === 'Grad') 
+    {
         vid.innerHTML = `<video id="bgvid" autoplay poster="./background/cityPlaceholder.jpg" loop muted>
                             <source id="srcv" src='./background/city.mp4' type='video/mp4'>
-                            </video>`;
+                        </video>`;
         localStorage.setItem('categoryLocal', 'Grad'); 
-    } else if(category === 'Reka') {
+    } 
+    else if(category === 'Reka') 
+    {
         vid.innerHTML = `<video id="bgvid" autoplay poster="./background/riverPlaceholder.jpg" loop muted>
                             <source id="srcv" src='./background/river.mp4' type='video/mp4'>
-                            </video>` ;
+                        </video>` ;
         localStorage.setItem('categoryLocal', 'Reka'); 
-    } else if(category === 'Planina') {
+    } 
+    else if(category === 'Planina') 
+    {
         vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/mountainPlaceholder.jpg" muted>
                             <source id="srcv" src='./background/mountains.mp4' type='video/mp4'> 
-                            </video>`; 
+                        </video>`; 
         localStorage.setItem('categoryLocal', 'Planina'); 
-    } else if(category === 'Životinja') { 
+    } 
+    else if(category === 'Životinja') 
+    { 
         vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/animalPlaceholder.jpg" muted>
                             <source id="srcv" src='./background/animal.mp4' type='video/mp4'>
-                            </video>`
+                        </video>`
         localStorage.setItem('categoryLocal', 'Životinja'); 
-    }  else if(category === 'Biljka') { 
+    } 
+     else if(category === 'Biljka') 
+    { 
         vid.innerHTML = `<video id="bgvid" autoplay poster="./background/plantPlaceholder.jpg" loop muted>
                             <source id="srcv" src='./background/plants.mp4' type='video/mp4'>
-                            </video>`
+                        </video>`
         localStorage.setItem('categoryLocal', 'Biljka'); 
-    } else if(category === 'Predmet') {
+    } 
+    else if(category === 'Predmet') 
+    {
         vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/objectPlaceholder.jpg" muted>
                             <source id="srcv" src='./background/object.mp4' type='video/mp4'> 
-                            </video>`
+                        </video>`
         localStorage.setItem('categoryLocal', 'Predmet');  
     } 
-    
 })
 
 
@@ -116,18 +117,20 @@ inputForm.addEventListener('submit', e => {
     let categoryLocal = localStorage.categoryLocal;
     let termLocal = capitalFirst(localStorage.termLocal);
     let obj = new AddTerm(username, categoryLocal, termLocal);   
-    if (localStorage.usernameLocal == null ||  localStorage.categoryLocal == null || localStorage.termLocal == '') {
+
+    if (localStorage.usernameLocal == null ||  localStorage.categoryLocal == null || localStorage.termLocal == '') 
+    {
         alert('Unesite sve podatke!!!')
-    } else { 
+    } 
+    else 
+    { 
         obj.termCheck();   
         localStorage.setItem('categoryLocal', ''); 
         localStorage.setItem('termLocal', '');         
     } 
-    
 })  
-
-                                    
-hs.addEventListener("click", highScore); 
+                              
+highScoreCall.addEventListener("click", highScore); 
 
 
 

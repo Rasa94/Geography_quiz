@@ -1,39 +1,40 @@
-// Game engine import
-import {answerCollection} from "./gameEngine.js"
-import {formulateAnswer} from "./gameEngine.js"  
-import {compareAnswers} from "./gameEngine.js"   
- 
-
-// DOM elements for user inputs
-
-let plDrzava = document.getElementById('playerInputDr');
-let plGrad = document.getElementById('playerInputGr');
-let plReka = document.getElementById('playerInputRe');
-let plPlanina = document.getElementById('playerInputPl');
-let plZivotinja = document.getElementById('playerInputZi');
-let plBiljka = document.getElementById('playerInputBi');
-let plPredmet = document.getElementById('playerInputPr');
-
-// Dom player results
-
-let plDrzavaRes = document.getElementById('playerResultDr');
-let plGradRes = document.getElementById('playerResultGr');
-let plRekaRes = document.getElementById('playerResultRe');
-let plPlaninaRes = document.getElementById('playerResultPl');
-let plZivotinjaRes = document.getElementById('playerResultZi');
-let plBiljkaRes = document.getElementById('playerResultBi');
-let plPredmetRes = document.getElementById('playerResultPr');
-
-
 
 // DOM elements
+
+let playerInputElements = [
+    document.getElementById('playerInputDr'),
+    document.getElementById('playerInputGr'),
+    document.getElementById('playerInputRe'),
+    document.getElementById('playerInputPl'),
+    document.getElementById('playerInputZi'),
+    document.getElementById('playerInputBi'),
+    document.getElementById('playerInputPr')
+];
+
+let playerResultElements = [
+    document.getElementById('playerResultDr'),
+    document.getElementById('playerResultGr'),
+    document.getElementById('playerResultRe'),
+    document.getElementById('playerResultPl'),
+    document.getElementById('playerResultZi'),
+    document.getElementById('playerResultBi'),
+    document.getElementById('playerResultPr')
+];
+
+let computerResultElements = [
+    document.getElementById('computerResultDr'),
+    document.getElementById('computerResultGr'),
+    document.getElementById('computerResultRe'),
+    document.getElementById('computerResultPl'),
+    document.getElementById('computerResultZi'),
+    document.getElementById('computerResultBi'),
+    document.getElementById('computerResultPr')
+];
 
 let letterBox = document.getElementById('letterSize');
 let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
 let resultModal = document.getElementById('resultModal'); 
-//
-
 let answerBtn = document.getElementById('answersSubmit'); 
 
 // Random letter generator
@@ -67,115 +68,97 @@ let countdownTimer = () => {
     }, 1000);
 }
 
-
 // Game start
+
 let random;     
 startGame.addEventListener('click', e => {
         e.preventDefault();
         random = rlg();
         letterBox.innerHTML = random;
         countdownTimer();  
-        console.log('started')
-        
-    }) 
-    
-
-answerBtn.addEventListener('click', (e, r) => { 
-    
-    e.preventDefault(); 
-    let random = r;
-    plDrzavaRes.innerText = plDrzava.value;
-    plGradRes.innerText = plGrad.value;
-    plRekaRes.innerText = plReka.value;
-    plPlaninaRes.innerText = plPlanina.value;
-    plZivotinjaRes.innerText = plZivotinja.value;
-    plBiljkaRes.innerText = plBiljka.value;
-    plPredmetRes.innerText = plPredmet.value;  
-    let playerAnswers = [];
-    playerAnswers.push(plDrzava.value);
-    playerAnswers.push(plGrad.value);
-    playerAnswers.push(plReka.value); 
-    playerAnswers.push(plPlanina.value);
-    playerAnswers.push(plZivotinja.value);
-    playerAnswers.push(plBiljka.value);
-    playerAnswers.push(plPredmet.value);   
-
-    
-
-
-    console.log(playerAnswers); 
-    let collection = answerCollection("B");
-    console.log(collection) 
-    let computerAnswers =formulateAnswer(collection); 
-    let allInOne = [].concat.apply([], collection);  
-    console.log(allInOne);   
-    compareAnswers(allInOne, computerAnswers[1], playerAnswers[1]); 
-
-
-    //countdownTimer.clearInterval();
-    resultModal.click(); 
+        console.log('started') 
 })
-    
 
+let getPlayerAnswer = (index) => {
+    playerResultElements[index].innerText = playerInputElements[index].value;
+    return playerInputElements[index].value;
+}
 
+let rng = () => {
+    let random = Math.floor(Math.random() * 100) + 1; 
+    return random;
+}  
 
+let playerScore = 0;
+let computerScore = 0; 
 
-
-
-
-
-
-
-
-
-// Game ends
-// Results 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-let lett = "B";   
-    let object = theBigFunction(lett);
-    console.log(object); 
-    formulateAnswer(object); 
-
-*/ 
-
-/*
-
-    let glavniNiz = []
-    let kategorije = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet']
-    
-    
-    let kviz = (kategorija) => {
-        db.collection('pojmovi') 
-            .where('pocetnoSlovo', '==', "B") 
-            .where('kategorija', '==', kategorija)
-            .get()
-            .then(snapshot => {
-                snapshot.docs.forEach(doc => {
-                    glavniNiz.push(doc.data().pojam);
-                })
-            })    
+export let compareAnswers = (allAnswers, computer, player) => {
+    if(allAnswers.includes(computer) && allAnswers.includes(player)) {
+        if(computer === player ) {
+            playerScore += 5;
+            computerScore += 5;
+        }
+        else {
+            playerScore += 10;
+            computerScore += 10;
+        }
+    }
+    else if(allAnswers.includes(computer)) {
+        computerScore += 15;
+    }
+    else if (allAnswers.includes(player)) {
+        playerScore += 15;
     }
 
-    kategorije.forEach(kategorija => {
-        kviz(kategorija) 
-    }) 
+    console.log(playerScore);
+    console.log(computerScore);
+} 
 
-    console.log(glavniNiz);
-    
-*/
+
+let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet'];
+let answers = [[], [], [], [], [], [], []];
+let maxIndex = 6;
+
+answerBtn.addEventListener('click', (e) => { 
+    e.preventDefault(); 
+
+    playerScore = 0;
+    computerScore = 0;
+
+    let answerCollection = async (category, index, randomLetter) => {
+        let snapshot = await db.collection('pojmovi')
+            .where('pocetnoSlovo', '==', randomLetter)
+            .where('kategorija', '==', category)
+            .get();
+
+        snapshot.docs.forEach(doc => {
+            answers[index].push(doc.data().pojam)
+        });
+
+        let computerAnswer = '';
+
+        if(rng() > 20) {
+            computerAnswer = answers[index][Math.floor(Math.random() * answers[index].length)];
+            computerResultElements[index].innerText = computerAnswer;
+        }
+        else
+        {
+            computerResultElements[index].innerText = 'Ne znam';
+        }
+
+        let playerAnswer = getPlayerAnswer(index);
+        compareAnswers(answers[index], computerAnswer, playerAnswer);
+
+        if (index == maxIndex) {
+            console.log(`Final computer score: ${computerScore}`);
+            console.log(`Final player score: ${playerScore}`);
+        }
+    }
+
+    categories.forEach((category, index) => {
+        answerCollection(category, index, "B");
+    });
+
+    //countdownTimer.clearInterval(timer);
+    resultModal.click(); 
+})

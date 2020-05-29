@@ -3,9 +3,23 @@ html, body {
     overflow-x: hidden;
 } 
 
+    /* Buttons */
+
 #game {
     background-color: black !important;  
 }
+
+a { 
+    color: white !important; 
+}
+
+#answersSubmit{
+    margin-left: 62px !important;  
+    
+    width: 180px !important;  
+}
+
+    /* Video background */
 
 #video {
     position: absolute;
@@ -16,6 +30,8 @@ html, body {
     overflow: hidden !important;  
 }
 
+    /* Navigation */
+
 #banner {
     margin-left: 50px;
 }
@@ -24,9 +40,6 @@ html, body {
     position: relative; 
 }
 
-a { 
-    color: white !important; 
-}
 
 .navbar-brand {
     color: white !important;    
@@ -34,11 +47,24 @@ a {
  
 }
 
+.nav-item {
+    margin-right: 5px;
+} 
+
+
+    /* Main body and modals */
+
 main { 
     margin-top: 580px;    
     /*height: 100vh;   */
 }   
  
+.main2 { 
+    margin-top: 10px !important;       
+    margin-bottom: 0px !important;      
+    /*height: 100vh;   */
+}  
+
 p {
     color: white !important;  
 }
@@ -47,18 +73,12 @@ p {
     max-width: 80% !important;
 } 
 
-#answersSubmit{
-    margin-left: 62px !important;  
-    
-    width: 180px !important;  
+.win {
+    margin: 40px;
 }
 
-.main2 { 
-    margin-top: 10px !important;       
-    margin-bottom: 0px !important;      
-    /*height: 100vh;   */
- }   
-
+    /* Inputs */
+ 
 .custom {
     width: 60px !important;  
     margin: 2px 5px !important;  
@@ -70,6 +90,12 @@ p {
     height: 40px !important;    
     margin: 2px 5px !important;  
 }
+
+label {
+    color: white; 
+}
+
+    /* Letters */
 
 .letterC {
     color: black !important; 
@@ -94,27 +120,7 @@ p {
     user-select: none;
   }
 
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-} 
-
-.nav-item {
-    margin-right: 5px;
-} 
-
-label {
-    color: white; 
-}
-
-.win {
-    margin: 40px;
-}
-
-
-
-
+    /* Swup*/
 
 .transition-fade {
     opacity: 1;
@@ -132,3 +138,11 @@ html.is-leaving .transition-fade {
     opacity: 0;
     transform: translateX(0);
     }
+
+
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+} 

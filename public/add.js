@@ -33,7 +33,6 @@ export class AddTerm {
         return this._pojam;
     }
 
-
     // A async function that creates the document object when called
     
     async termAdder() {
@@ -52,30 +51,27 @@ export class AddTerm {
         return deliver; 
     }
 
-
     // Another async function, this one checks if the term we added is a duplicate
 
     async termCheck() {
         this.database 
-                    .where('kategorija', '==', this.kategorija)
-                    .where('pojam', '==', this.pojam)
-                    .get()
-                    .then(snapshot => {
-                        if (snapshot.docs.length == 0) {
-                            this.termAdder();
-                        } else {
-                            console.log('Term exists')
-                            alert("The term exists allready, this is a duplicate"); 
-                        }
-                        
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    })
-    }
-
-     
+                .where('kategorija', '==', this.kategorija)
+                .where('pojam', '==', this.pojam)
+                .get()
+                .then(snapshot => {
+                    if (snapshot.docs.length == 0) {
+                        this.termAdder();
+                        console.log('donedone')
+                    } else {
+                        console.log('Term exists')
+                        alert("The term exists allready, this is a duplicate"); 
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+    }    
 } 
     
- 
+  
 

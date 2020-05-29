@@ -11,7 +11,7 @@ let sortingArr = arr => {
     for (let i = 0; i < arr.length; i++) {  
         if (arr[i] != current) {
             if (counter > 0) {
-                sorted.push([[`termina je uneo korisnik ${current}`], [Number(counter)]]);   
+                sorted.push([[Number(counter)], [`${current}`]]);   /*[`${current}`]*/ 
             }
             current = arr[i];
             counter = 1;
@@ -20,12 +20,8 @@ let sortingArr = arr => {
         }
     }
     if (counter > 0) {
-        sorted.push([[`termina je uneo korisnik ${current}`], [Number(counter)]]);       
+        sorted.push([[Number(counter)], [`${current}`]]);       
     } 
-    console.log(sorted.sort().reverse());   
-    sorted.forEach(el => {
-        renderField.innerText += el;    
-    });  
 }    
  
 
@@ -44,11 +40,19 @@ export let highScore = () => {
         sortingArr(arr); 
         })
      
-    let s = arr.sort((a,b) => { 
-        return b[1] - a[1];
-    } )
+    arr.sort(sortFunction);
+
+    function sortFunction(a, b) {
+        if (a[0] === b[0]) {
+            return 0;
+        }
+        else {
+            return (a[0] < b[0]) ? -1 : 1;
+        }
+    } 
     
-    console.log(s); 
+    
+    console.log(arr); 
 } 
 
 
