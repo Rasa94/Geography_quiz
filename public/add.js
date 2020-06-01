@@ -62,7 +62,9 @@ export class AddTerm {
                     if (snapshot.docs.length == 0) {
                         this.termAdder();
                         console.log('donedone')
-                    } else {
+                    } 
+                    else 
+                    {
                         console.log('Term exists')
                         alert("The term exists allready, this is a duplicate"); 
                     }

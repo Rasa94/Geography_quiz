@@ -37,62 +37,6 @@ login.addEventListener('click', e => {
     localStorage.setItem('usernameLocal', username);
 }); 
 
-// Event listener for categories buttons
-// Also the background is changed depending of the category the user chooses
-
-formBtn.addEventListener('click', e => { 
-    e.preventDefault(); 
-    let category = select.value;  
-    if(category === 'Država') {  
-        vid.innerHTML = `<video id="bgvid" autoplay poster="./background/countryPlaceholder.jpg" loop muted>
-                            <source id="srcv" src='./background/country.mp4' type='video/mp4'>  
-                        </video>`;  
-        localStorage.setItem('categoryLocal', 'Država');  
-    } 
-    else if(category === 'Grad') 
-    {
-        vid.innerHTML = `<video id="bgvid" autoplay poster="./background/cityPlaceholder.jpg" loop muted>
-                            <source id="srcv" src='./background/city.mp4' type='video/mp4'>
-                        </video>`;
-        localStorage.setItem('categoryLocal', 'Grad'); 
-    } 
-    else if(category === 'Reka') 
-    {
-        vid.innerHTML = `<video id="bgvid" autoplay poster="./background/riverPlaceholder.jpg" loop muted>
-                            <source id="srcv" src='./background/river.mp4' type='video/mp4'>
-                        </video>` ;
-        localStorage.setItem('categoryLocal', 'Reka'); 
-    } 
-    else if(category === 'Planina') 
-    {
-        vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/mountainPlaceholder.jpg" muted>
-                            <source id="srcv" src='./background/mountains.mp4' type='video/mp4'> 
-                        </video>`; 
-        localStorage.setItem('categoryLocal', 'Planina'); 
-    } 
-    else if(category === 'Životinja') 
-    { 
-        vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/animalPlaceholder.jpg" muted>
-                            <source id="srcv" src='./background/animal.mp4' type='video/mp4'>
-                        </video>`
-        localStorage.setItem('categoryLocal', 'Životinja'); 
-    } 
-     else if(category === 'Biljka') 
-    { 
-        vid.innerHTML = `<video id="bgvid" autoplay poster="./background/plantPlaceholder.jpg" loop muted>
-                            <source id="srcv" src='./background/plants.mp4' type='video/mp4'>
-                        </video>`
-        localStorage.setItem('categoryLocal', 'Biljka'); 
-    } 
-    else if(category === 'Predmet') 
-    {
-        vid.innerHTML = `<video id="bgvid" autoplay loop poster="./background/objectPlaceholder.jpg" muted>
-                            <source id="srcv" src='./background/object.mp4' type='video/mp4'> 
-                        </video>`
-        localStorage.setItem('categoryLocal', 'Predmet');  
-    } 
-})
-
 
 // Term validator
 
@@ -132,5 +76,75 @@ inputForm.addEventListener('submit', e => {
                               
 highScoreCall.addEventListener("click", highScore); 
 
+
+// Event listener for categories buttons
+// Also the background is changed depending of the category the user chooses
+
+formBtn.addEventListener('click', e => { 
+    e.preventDefault(); 
+    let category = select.value;  
+    if(category === 'Država') {  
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/countryPlaceholder.jpg')"> 
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/country.mp4' type='video/mp4'>  
+                            </video>  
+                        </div>`;
+        localStorage.setItem('categoryLocal', 'Država');  
+    } 
+    else if(category === 'Grad') 
+    {
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/cityPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/city.mp4' type='video/mp4'>
+                            </video>
+                        </div>    `;
+        localStorage.setItem('categoryLocal', 'Grad'); 
+    } 
+    else if(category === 'Reka') 
+    {
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/riverPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/river.mp4' type='video/mp4'>
+                            </video>
+                        </div>` ;
+        localStorage.setItem('categoryLocal', 'Reka'); 
+    } 
+    else if(category === 'Planina') 
+    {
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/mountainPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/mountains.mp4' type='video/mp4'> 
+                            </video>
+                        </div>`; 
+        localStorage.setItem('categoryLocal', 'Planina'); 
+    } 
+    else if(category === 'Životinja') 
+    { 
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/animalPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/animal.mp4' type='video/mp4'>
+                            </video>
+                        </div>`
+        localStorage.setItem('categoryLocal', 'Životinja'); 
+    } 
+     else if(category === 'Biljka') 
+    { 
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/plantPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/plants.mp4' type='video/mp4'>
+                            </video>
+                        </div`
+        localStorage.setItem('categoryLocal', 'Biljka'); 
+    } 
+    else if(category === 'Predmet') 
+    {
+        vid.innerHTML = `<div class="video-wrap" id="video" style="background: black url('./background/objectPlaceholder.jpg')">
+                            <video id="bgvid" autoplay loop muted>
+                                <source id="srcv" src='./background/object.mp4' type='video/mp4'> 
+                            </video>
+                         </div>   `;
+        localStorage.setItem('categoryLocal', 'Predmet');  
+    } 
+})
 
 

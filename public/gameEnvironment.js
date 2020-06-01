@@ -31,11 +31,34 @@ let computerResultElements = [
     document.getElementById('computerResultPr')
 ];
 
+let playerResultRender = [
+    document.getElementById('plResFieldDr'),
+    document.getElementById('plResFieldGr'),
+    document.getElementById('plResFieldRe'),
+    document.getElementById('plResFieldPl'),
+    document.getElementById('plResFieldZi'),
+    document.getElementById('plResFieldBi'),
+    document.getElementById('plResFieldPr')
+]
+
+let computerResultRender = [
+    document.getElementById('coResFieldDr'),
+    document.getElementById('coResFieldGr'),
+    document.getElementById('coResFieldRe'),
+    document.getElementById('coResFieldPl'),
+    document.getElementById('coResFieldZi'),
+    document.getElementById('coResFieldBi'),
+    document.getElementById('coResFieldPr')
+]
+
 let letterBox = document.getElementById('letterSize');
 let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
 let resultModal = document.getElementById('resultModal'); 
 let answerBtn = document.getElementById('answersSubmit'); 
+let scoreRenderPl = document.getElementById('scoreRenderPl');
+let scoreRenderComp = document.getElementById('scoreRenderComp'); 
+let declareWinner = document.getElementById('gameRoomModalLongTitle');
 
 // Random letter generator
 
@@ -53,9 +76,10 @@ let rlg = () => {
  
 // Timer 
 
+let timer;
 let countdownTimer = () => {
     let current = 1;
-    let timer = setInterval(() => {
+    timer = setInterval(() => {
         let counter = 90 - current;
         current += 1;
         gameTimer.innerHTML = counter
@@ -73,6 +97,9 @@ let countdownTimer = () => {
 let random;     
 startGame.addEventListener('click', e => {
         e.preventDefault();
+        playerInputElements.forEach(el => {
+            el.disabled = false;  
+        });
         random = rlg();
         letterBox.innerHTML = random;
         countdownTimer();  
@@ -89,27 +116,35 @@ let rng = () => {
     return random;
 }  
 
-let playerScore = 0;
-let computerScore = 0; 
+let playerScore;
+let computerScore; 
 
-export let compareAnswers = (allAnswers, computer, player) => {
+export let compareAnswers = (allAnswers, computer, player, computerRender, playerRender) => {
     if(allAnswers.includes(computer) && allAnswers.includes(player)) {
         if(computer === player ) {
             playerScore += 5;
+            playerRender.innerText = '5';
             computerScore += 5;
+            computerRender.innerText = '5';
         }
-        else {
+        else 
+        {
             playerScore += 10;
+            playerRender.innerText = '10';
             computerScore += 10;
+            computerRender.innerText = '10';
         }
     }
-    else if(allAnswers.includes(computer)) {
+    else if(allAnswers.includes(computer)) 
+    {
         computerScore += 15;
+        computerRender.innerText = '15';
     }
-    else if (allAnswers.includes(player)) {
+    else if (allAnswers.includes(player)) 
+    {
         playerScore += 15;
-    }
-
+        playerRender.innerText = '15'; 
+    } 
     console.log(playerScore);
     console.log(computerScore);
 } 
@@ -121,7 +156,7 @@ let maxIndex = 6;
 
 answerBtn.addEventListener('click', (e) => { 
     e.preventDefault(); 
-
+    clearInterval(timer);   
     playerScore = 0;
     computerScore = 0;
 
@@ -146,19 +181,34 @@ answerBtn.addEventListener('click', (e) => {
             computerResultElements[index].innerText = 'Ne znam';
         }
 
-        let playerAnswer = getPlayerAnswer(index);
-        compareAnswers(answers[index], computerAnswer, playerAnswer);
+        let playerAnswer = getPlayerAnswer(index); 
+        compareAnswers(answers[index], computerAnswer, playerAnswer, computerResultRender[index], playerResultRender[index]);
+        console.log(playerAnswer);
+        console.log(computerAnswer);
 
         if (index == maxIndex) {
-            console.log(`Final computer score: ${computerScore}`);
-            console.log(`Final player score: ${playerScore}`);
-        }
+            console.log(answers);
+            scoreRenderPl.innerHTML = `Player score: ${playerScore}`;
+            scoreRenderComp.innerHTML = `Computer score: ${computerScore}`;
+            if (computerScore > playerScore) 
+            {
+                declareWinner.innerText = `Kompjuter je pobednik!!!`
+            } 
+            else if (computerScore < playerScore)
+            {
+                let nick = localStorage.getItem('usernameLocal')
+                declareWinner.innerText = `Korisnik ${nick} je pobednik!!!!`
+            }
+            else 
+            {
+                declareWinner.innerText = `Izjednaceno je!!!!`
+            }
+        } 
     }
 
     categories.forEach((category, index) => {
         answerCollection(category, index, "B");
     });
 
-    //countdownTimer.clearInterval(timer);
     resultModal.click(); 
 })

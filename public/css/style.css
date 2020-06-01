@@ -3,6 +3,15 @@ html, body {
     overflow-x: hidden;
 } 
 
+.mainWindows{
+    height: 140px !important; 
+}
+
+.allButtons{ 
+    margin-top: 5px; 
+    height: 40px; 
+}
+
     /* Buttons */
 
 #game {
@@ -27,9 +36,19 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
+    padding: 0;
     overflow: hidden !important;  
 }
 
+#bgvid {
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
     /* Navigation */
 
 #banner {
@@ -105,6 +124,8 @@ label {
     text-align: center; 
     font-size: 6rem !important;  
 }
+
+
 
 #timer{
     text-align: center; 
