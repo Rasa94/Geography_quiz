@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Bootstrap CSS --> 
+    <link rel="stylesheet" href="./css/style.css">   <!--style.css--> 
+    <link rel="stylesheet" href="./css/bootstrap.min.css">  <!--bootstrap.min.css-->   
+    <!--<script defer src="./node_modules/swup/dist/swup.min.js"></script>-->
+    <title>Igra</title>
+</head>
+<body id="game"> 
+    
+ <!-- Video background -->
+
+ <div class="video-background">
+    <div class="video-wrap" id="video" style="background: black url('./background/backgroundPlaceholder.jpg')">
+        <video id="bgvid" autoplay loop muted>
+          <source id="srcv" src='./background/background.mp4' type='video/mp4'> 
+        </video> 
+    </div>
+  </div>  
+
+  <!-- Navigation bar -->
+  
+  
+  <div class="row">    
+    <div class="col-6">
+      <h1 class="navbar-brand navbar-expand{-sm|-md|-lg|-xl}" id="banner">Zanimljiva geografija!</h1>  
+    </div>
+    <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
+      <ul class="navbar nav nl-auto">
+        <li class="nav-item float-right">  
+          <a type="button"  class="btn btn-primary nav-link allButtons" href="index.html">Početna strana</a>   
+        </li> 
+        <li class="nav-item float-right">  
+          <button type="button" class="btn btn-primary nav-link allButtons"><a href="singleplayer.html">Igra protiv računara</a></button>   
+        </li>
+        <li class="nav-item float-right">   
+          <button type="button" class="btn btn-primary nav-link allButtons"><a href="multiplayer.html">Igra protiv drugog igrača</a></button>   
+        </li> 
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary float-right allButtons" data-toggle="modal" data-target="#logInModal" class="nav-link" id="logInButton">Prijavite se</button> 
+        </li>
+        <li class="nav-item"> 
+          <button class="btn btn-primary allButtons" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</button> 
+        </li>
+      </ul>   
+    </div>   
+  </div>    
+
+  
+  <!-- Log in Modal -->
+
+  <div class="modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="logInModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm"> 
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Log in</h5> 
+        </div>
+        <div class="modal-body">
+          <div class="d-flex align-content-center flex-wrap">   
+            <label for="">Your username</label>   
+            <input type="text" name="" id="loginInput">
+            <input type="button" value="Log-in" id="login" class="btn btn-secondary bg-warning allButtons" data-dismiss="modal"> 
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+
+  <!-- High score Modal -->
+
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <ol id="modalHs">
+            <li id="one"></li>
+            <li id="two"></li>
+            <li id="three"></li>
+            <li id="four"></li>
+            <li id="five"></li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Game room button  -->
+  <button type="button" class="btn btn-primary invisible allButtons" data-toggle="modal" data-target="#gameRoomModalCenter" id="resultModal"> 
+    Launch demo modal 
+  </button>
+
+  <!-- Game room Modal -->
+  <div class="modal fade modal-lg" id="gameRoomModalCenter" tabindex="-1" role="dialog" aria-labelledby="gameRoomModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mb-2 d-flex modal-lg" role="document">
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <h5 class="modal-title" id="gameRoomModalLongTitle"></h5>
+          <button type="button" class="close allButtons" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body "> 
+          <div class="p-4 d-flex flex-column position-static">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Kategorije</th>
+                  <th scope="col">Odgovor igraca</th>
+                  <th scope="col">Poeni igraca</th>
+                  <th scope="col">Poeni kompjutera</th>
+                  <th scope="col">Odgovor kompjutera</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Drzava</th>
+                  <td id="playerResultDr" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldDr"></td>
+                  <td id="coResFieldDr"></td>
+                  <td id="computerResultDr" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Grad</th>
+                  <td id="playerResultGr" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldGr"></td>
+                  <td id="coResFieldGr"></td>
+                  <td name="" id="computerResultGr" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Reka</th>
+                  <td id="playerResultRe" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldRe"></td>
+                  <td id="coResFieldRe"></td>
+                  <td id="computerResultRe" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Planina</th>
+                  <td id="playerResultPl" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldPl"></td>
+                  <td id="coResFieldPl"></td>
+                  <td id="computerResultPl" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Zivotinja</th>
+                  <td id="playerResultZi" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldZi"></td>
+                  <td id="coResFieldZi"></td>
+                  <td id="computerResultZi" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Biljka</th>
+                  <td id="playerResultBi" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldBi"></td>
+                  <td id="coResFieldBi"></td>
+                  <td id="computerResultBi" class="custom2 letterC">OdgovorKomp</td>
+                </tr>
+                <tr>
+                  <th scope="row">Predmet</th>
+                  <td id="playerResultPr" class="custom2 letterC">odgP</td>
+                  <td id="plResFieldPr"></td>
+                  <td id="coResFieldPr"></td>
+                  <td id="computerResultPr" class="custom2 letterC">OdgovorKomp</td> 
+                </tr>
+                <tr>
+                  <th id="scoreRenderPl" scope="row" colspan="3">Ukupno igrac</th>
+                  <th id="scoreRenderComp" scope="row" colspan="3">Ukupno komp</th>
+                </tr>
+              </tbody>
+            </table> 
+            </div> 
+          </div>
+        <div class="modal-footer"> 
+          <h1 class="float-left"></h1> 
+          <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form fields -->
+
+  <main id="swup" class="transition-fade main2">
+    <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
+      <div class="" > 
+        <button type="submit" class="btn btn-outline-light " id="startGame" > Zapocni igru </button>
+        <div class="row">
+          <!-- Letter card -->
+    
+          <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 10rem;"> 
+            <p id="letterSize">  </p> 
+          </div> 
+           <!-- Letter card -->
+    
+           <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 18rem;">  
+            <p id="timer"> 90 </p> 
+          </div> 
+        </div> 
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" >
+          <div class="p-4 d-flex flex-column position-static">
+            <form class="container" autocomplete="off">  
+              <div class="row">
+                <div class="col8 win"> 
+                  
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
+                      <input type="text" disabled="true" id="playerInputDr" class="custom2">  
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>--> 
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
+                      <input type="text" disabled="true" id="playerInputGr" class="custom2"> 
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
+                      <input type="text" disabled="true" id="playerInputRe" class="custom2"> 
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
+                      <input type="text" disabled="true" id="playerInputPl" class="custom2">
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
+                      <input type="text" disabled="true" id="playerInputZi" class="custom2">
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
+                    </div>
+                    <div class="row">
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
+                      <input type="text" disabled="true" id="playerInputBi" class="custom2">
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
+                    </div>
+                    <div class="row"> 
+                      <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
+                      <input type="text" disabled="true" id="playerInputPr" class="custom2">
+                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br> -->
+                    </div>
+                  <button type="submit" class="btn btn-outline-light " id="answersSubmit" > Unesi odgovore </button>  
+                  <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
+                </div>
+              </div>    
+            </form> 
+          </div> 
+        </div>  
+      </div>  
+  </main>
+
+  
+
+
+
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <!-- Firebase setup -->
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyC_wRf7Gro65yX8dHUMgOxeKUU-zKx0DCI",
+        authDomain: "zgeografija-953f7.firebaseapp.com",
+        databaseURL: "https://zgeografija-953f7.firebaseio.com",
+        projectId: "zgeografija-953f7",
+        storageBucket: "zgeografija-953f7.appspot.com",
+        messagingSenderId: "607800648564",
+        appId: "1:607800648564:web:71dda07b550cc4563b0221"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      let db = firebase.firestore();  
+    </script>
+    
+    <script src="gameEnvironment.js" type="module"></script> 
+    <script src="node_modules/swup/dist/swup.min.js"></script>
+    <script src="menuAnimation.js"></script> 
+  </body>
+</html> 
+
+
+

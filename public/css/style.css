@@ -167,3 +167,81 @@ html.is-leaving .transition-fade {
         font-size: 3.5rem;
     }
 } 
+
+
+
+/* chat */
+
+#rps-wrapper {
+    position: relative;
+    margin-top: 68px;
+    margin-right: 50px;
+    height: 350px;
+    width: 250px; 
+}
+
+#events {
+    position: absolute;
+    top: 20px;
+    left: 20px; 
+    background-color: white; 
+    opacity: 0.9; 
+    height: 250px;
+    width: 220px;
+    border-radius: 5%;
+    overflow-y: scroll; 
+    
+
+}
+
+.button-wrapper {
+    position: absolute;
+    bottom: 20px;
+    left: 20px; 
+
+}  
+
+#chat {
+    width: 150px !important; 
+    height: 40px;
+}
+
+li {
+    font-size: 1.5rem;
+}
+
+#say {
+    
+}
+
+#rock, #paper, #scissors {
+    width: 90px;
+    height: 30px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+}
+
+/* Spinner */
+
+#backdrop{
+
+
+}
+
+#spinnerBack {
+    position: absolute; 
+    background-color: white;
+    z-index: 10000 !important;
+    top: 50%; 
+    right: 50%;
+    width: 200px;
+    height: 100px; 
+}
+
+#spinner{
+    position: absolute;
+    top: 20%; 
+    right: 30%;     
+    z-index: 100000 !important;
+
+}

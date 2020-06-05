@@ -69,8 +69,8 @@ inputForm.addEventListener('submit', e => {
     else 
     { 
         obj.termCheck();   
-        localStorage.setItem('categoryLocal', ''); 
-        localStorage.setItem('termLocal', '');         
+        localStorage.setItem('termLocal', '');    
+        termInput = '';      
     } 
 })  
                               

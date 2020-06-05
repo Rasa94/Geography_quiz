@@ -30,22 +30,24 @@
     </div>
     <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
       <ul class="navbar nav nl-auto">
-        
         <li class="nav-item float-right">  
-          <button type="button" class="btn btn-primary nav-link allButtons"><a href="index.html">Home</a></button>    
+          <a type="button"  class="btn btn-primary nav-link allButtons" href="index.html">Početna strana</a>   
         </li> 
+        <li class="nav-item float-right">  
+          <button type="button" class="btn btn-primary nav-link allButtons"><a href="singleplayer.html">Igra protiv računara</a></button>   
+        </li>
         <li class="nav-item float-right">   
-          <button type="button" class="btn btn-primary nav-link allButtons"><a href="game.html">Igra</a></button>    
+          <button type="button" class="btn btn-primary nav-link allButtons"><a href="multiplayer.html">Igra protiv drugog igrača</a></button>   
         </li> 
         <li class="nav-item">
-          <button type="button" class="btn btn-primary float-right allButtons" data-toggle="modal" data-target="#logInModal" class="nav-link" id="">Log in</button> 
+          <button type="button" class="btn btn-primary float-right allButtons" data-toggle="modal" data-target="#logInModal" class="nav-link" id="logInButton">Prijavite se</button> 
         </li>
         <li class="nav-item"> 
-          <button class="btn btn-primary allButtons" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">High score</button> 
+          <button class="btn btn-primary allButtons" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</button> 
         </li>
-      </ul>  
-    </div>    
-  </div>      
+      </ul>   
+    </div>   
+  </div>    
 
   
   <!-- Log in Modal -->
@@ -111,166 +113,49 @@
         </div>
         <div class="modal-body "> 
           <div class="p-4 d-flex flex-column position-static">
-
             <table class="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Kategorije</th>
                   <th scope="col">Odgovor igraca</th>
-                  <th scope="col">Poeni igraca</th>
-                  <th scope="col">Poeni kompjutera</th>
-                  <th scope="col">Odgovor kompjutera</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">Drzava</th>
                   <td id="playerResultDr" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldDr"></td>
-                  <td id="coResFieldDr"></td>
-                  <td id="computerResultDr" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Grad</th>
                   <td id="playerResultGr" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldGr"></td>
-                  <td id="coResFieldGr"></td>
-                  <td name="" id="computerResultGr" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Reka</th>
                   <td id="playerResultRe" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldRe"></td>
-                  <td id="coResFieldRe"></td>
-                  <td id="computerResultRe" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Planina</th>
                   <td id="playerResultPl" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldPl"></td>
-                  <td id="coResFieldPl"></td>
-                  <td id="computerResultPl" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Zivotinja</th>
                   <td id="playerResultZi" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldZi"></td>
-                  <td id="coResFieldZi"></td>
-                  <td id="computerResultZi" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Biljka</th>
                   <td id="playerResultBi" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldBi"></td>
-                  <td id="coResFieldBi"></td>
-                  <td id="computerResultBi" class="custom2 letterC">OdgovorKomp</td>
                 </tr>
                 <tr>
                   <th scope="row">Predmet</th>
                   <td id="playerResultPr" class="custom2 letterC">odgP</td>
-                  <td id="plResFieldPr"></td>
-                  <td id="coResFieldPr"></td>
-                  <td id="computerResultPr" class="custom2 letterC">OdgovorKomp</td> 
                 </tr>
                 <tr>
-                  <th id="scoreRenderPl" scope="row" colspan="3">Ukupno igrac</th>
-                  <th id="scoreRenderComp" scope="row" colspan="3">Ukupno komp</th>
+                  
                 </tr>
               </tbody>
             </table> 
-
-
-
-
-
-
-
-          <!--  
-          <form class="container" autocomplete="off">  
-            <div class="row">
-              <div class=" col4 win "> 
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC" >Drzava</label>
-                    <p type="text"   > Odgovor </p> 
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Grad</label>
-                    <p type="text" name="" >Odgovor </p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Reka</label>
-                    <p type="text" name="" > Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Planina</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Zivotinja</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Biljka</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row"> 
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Predmet</label> 
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br> 
-                  </div>
-                </div>
-
-                <div class="col4 win">   
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC" >Drzava</label>
-                    <p type="text" name=""  > Odgovor </p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Grad</label>
-                    <p type="text" >Odgovor </p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Reka</label>
-                    <p type="text" name="" > Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Planina</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Zivotinja</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Biljka</label>
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br>
-                  </div>
-                  <div class="row"> 
-                    <label for="" class="no-gutters border rounded overflow-hidden custom letterC">Predmet</label> 
-                    <p type="text" name="" >Odgovor</p>
-                    <p class="no-gutters border rounded overflow-hidden custom letterC" >10</p> <br> 
-                  </div>
-                </div>
-              </div>   
-            </form>  
-          -->  
-
-
-
-            </div> 
-          </div>
+          </div> 
+        </div>
         <div class="modal-footer"> 
           <h1 class="float-left"></h1> 
           <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Close</button>
@@ -284,7 +169,6 @@
   <main id="swup" class="transition-fade main2">
     <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
       <div class="" > 
-        <button type="submit" class="btn btn-outline-light " id="startGame" > Zapocni igru </button>
         <div class="row">
           <!-- Letter card -->
     
@@ -344,10 +228,23 @@
               </div>    
             </form> 
           </div> 
+          <div id="rps-wrapper" class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
+            <ul id="events"></ul>
+      
+            <div class="button-wrapper">
+                <form id="chat-form">
+                    <input id="chat" class="no-gutters border rounded overflow-hidden custom"> 
+                    <button id="say" class="btn btn-outline-light ">Say</button>
+                </form>
+            </div>
+          </div>
+
+
         </div>  
       </div>  
   </main>
 
+  
   
 
 
@@ -383,12 +280,9 @@
       firebase.initializeApp(firebaseConfig);
       let db = firebase.firestore();  
     </script>
-    
-    <script src="gameEnvironment.js" type="module"></script> 
-    <script src="node_modules/swup/dist/swup.min.js"></script>
-    <script src="menuAnimation.js"></script> 
+     
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="./multiGameEnvironment.js" type="module"></script> 
   </body>
 </html> 
-
-
 
