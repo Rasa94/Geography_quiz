@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="./css/bootstrap.min.css">  <!--bootstrap.min.css-->   
     <title>Zanimljiva geografija!</title>
   </head>
-  <body>    
+  <body id="indexBody">    
 
     <!-- Video background -->
 
+
+    <!-- 
     <div class="video-background">
       <div class="video-wrap" id="video" style="background: black url('./background/backgroundPlaceholder.jpg')"> 
         <video id="bgvid" autoplay loop muted id="srcv"> 
@@ -21,7 +23,7 @@
         </video> 
       </div>
     </div>  
-
+    -->
     <!-- Log in Modal -->
 
     <div class="modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="logInModalLabel" aria-hidden="true">
@@ -43,54 +45,62 @@
        
     <!-- High score Modal -->
 
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg"> 
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <ol id="modalHs">
-              
-            </ol>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
+    
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
+        </div>
+        <div class="modal-body hofModal">
+          <ol id="modalHs ">
+            <li id="one"></li>
+            <li id="two"></li>
+            <li id="three"></li>
+            <li id="four"></li>
+            <li id="five"></li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
+  </div> 
 
     <!-- Navigation bar -->
     
-    <div class="row">    
+    <nav class="row navbar navbar-expand">    
       <div class="col-6">
         <h1 class="navbar-brand navbar-expand{-sm|-md|-lg|-xl}" id="banner">Zanimljiva geografija!</h1>  
       </div>
-      <div class="col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap">  
-        <ul class="navbar nav nl-auto">
-          <li class="nav-item float-right">  
-            <a type="button"  class="btn btn-primary nav-link allButtons" href="index.html">Početna strana</a>   
-          </li> 
-          <li class="nav-item float-right">  
-            <button type="button" class="btn btn-primary nav-link allButtons"><a href="singleplayer.html">Igra protiv računara</a></button>   
-          </li>
-          <li class="nav-item float-right">   
-            <button type="button" class="btn btn-primary nav-link allButtons"><a href="multiplayer.html">Igra protiv drugog igrača</a></button>   
-          </li> 
+      <div class="collapse navbar-collapse col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap" id="navbarToggler">  
+        <ul class="navbar-nav  mt-2 mt-lg-0 ">
           <li class="nav-item">
-            <button type="button" class="btn btn-primary float-right allButtons" data-toggle="modal" data-target="#logInModal" class="nav-link" id="logInButton">Prijavite se</button> 
+            <a class="btn  nav-link allButtons float-right" href='index.html'>Početna strana</a>
           </li>
-          <li class="nav-item"> 
-            <button class="btn btn-primary allButtons" id="hs" type="button"  data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</button> 
+          <li class="nav-item">
+            <a class="btn nav-link allButtons float-right">Pravila</a>
           </li>
-        </ul>   
+          <li class="nav-item">
+            <a class="btn nav-link allButtons float-right" href='singleplayer.html'>Igra protiv računara</a>   
+          </li>
+          <li class="nav-item">
+            <a class="btn nav-link allButtons float-right" href='multiplayer.html'>Igra protiv drugog igrača</a>   
+          </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons float-right" data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+          </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons float-right" id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
+          </li>
+        </ul>
       </div>   
-    </div>    
-
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>    
+  
     <!-- Category menu -->
 
     <main id="swup" class="transition-fade">
@@ -131,7 +141,14 @@
         </div>
       </div>
     </main> 
- 
+    
+    <footer class="mastfoot mt-auto" id="footer">
+      <div class="inner">
+        <p style="color: white;">Radivoje Jovanović   IT bootcamp <a href="https://www.linkedin.com/in/radivoje-jovanovi%C4%87-4771731a4/"><img src="./icons/in.png" class="icons"></a> <a href="https://github.com/Rasa94"><img src="./icons/gh.png" class="icons"></a>
+      </div>
+    </footer>         
+      
+      
            
  
     <!-- Optional JavaScript -->
@@ -168,7 +185,7 @@
     
     
     <script src="script.js" type="module"></script>  
-    <script src="node_modules/swup/dist/swup.min.js"></script>   <!--  ./node_modules/swup/dist/swup.min.js  -->
+    <script src="node_modules/swup/dist/swup.min.js"></script>   
     <script src="menuAnimation.js"></script>
   </body>
 </html>    

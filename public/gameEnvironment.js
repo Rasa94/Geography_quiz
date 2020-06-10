@@ -1,3 +1,4 @@
+import {highScore} from "./highScore.js" 
 
 // DOM elements
 
@@ -58,7 +59,9 @@ let resultModal = document.getElementById('resultModal');
 let answerBtn = document.getElementById('answersSubmit'); 
 let scoreRenderPl = document.getElementById('scoreRenderPl');
 let scoreRenderComp = document.getElementById('scoreRenderComp'); 
-let declareWinner = document.getElementById('gameRoomModalLongTitle');
+let declareWinner = document.getElementById('winner');
+let highScoreCall = document.getElementById('hs'); 
+
 
 // Random letter generator
 
@@ -212,3 +215,5 @@ answerBtn.addEventListener('click', (e) => {
 
     resultModal.click(); 
 })
+
+highScoreCall.addEventListener("click", highScore); 

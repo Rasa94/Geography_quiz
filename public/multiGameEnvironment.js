@@ -1,3 +1,5 @@
+import {highScore} from "./highScore.js" 
+
 let playerInputElements = [
     document.getElementById('playerInputDr'),
     document.getElementById('playerInputGr'),
@@ -18,16 +20,51 @@ let playerOuputElements = [
     document.getElementById('playerResultPr')
 ];
 
+let playerResultRender = [
+    document.getElementById('plResFieldDr'),
+    document.getElementById('plResFieldGr'),
+    document.getElementById('plResFieldRe'),
+    document.getElementById('plResFieldPl'),
+    document.getElementById('plResFieldZi'),
+    document.getElementById('plResFieldBi'),
+    document.getElementById('plResFieldPr')
+]
+
+let computerResultRender = [
+    document.getElementById('coResFieldDr'),
+    document.getElementById('coResFieldGr'),
+    document.getElementById('coResFieldRe'),
+    document.getElementById('coResFieldPl'),
+    document.getElementById('coResFieldZi'),
+    document.getElementById('coResFieldBi'),
+    document.getElementById('coResFieldPr')
+]
+
+let computerOutputRender = [
+    document.getElementById('computerResultDr'),
+    document.getElementById('computerResultGr'),
+    document.getElementById('computerResultRe'),
+    document.getElementById('computerResultPl'),
+    document.getElementById('computerResultZi'),
+    document.getElementById('computerResultBi'),
+    document.getElementById('computerResultPr')
+]
+
 let letterBox = document.getElementById('letterSize');
 let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
 let answerBtn = document.getElementById('answersSubmit'); 
 let back = document.getElementById('swup');
+let highScoreCall = document.getElementById('hs'); 
+let declareWinner = document.getElementById('winner');
+let player1 = document.getElementById('pl1');
+let player2 = document.getElementById('pl2');
+let nick = localStorage.getItem('usernameLocal')
 
 
 // Random letter 
 
-let randomLetter =(letter) => {
+let randomLetter = (letter) => {
     letterBox.innerText = letter;  
 }
 
@@ -35,6 +72,7 @@ let randomLetter =(letter) => {
 
 let timer;
 let start = () => {
+    $('#searching').modal('hide');
     playerInputElements.forEach(el => {
         el.disabled = false;  
     });
@@ -55,7 +93,6 @@ let start = () => {
 let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet'];
 let checked = []
 
-
 answerBtn.addEventListener('click', (e) => { 
     e.preventDefault(); 
     clearInterval(timer);   
@@ -72,18 +109,17 @@ answerBtn.addEventListener('click', (e) => {
         
             if (snapshot.size == 1) {
                 checked.push(answer)
-                playerOuputElements[index].innerText = answer;
             } 
             else if (answer == '')
             {
                 checked.push('/')
-                playerOuputElements[index].innerText = 'Nema odgovora';
+                //playerOuputElements[index].innerText = 'Nema odgovora';
 
             } 
             else
             {
                 checked.push('/') 
-                playerOuputElements[index].innerText = 'Pojam nije u bazi'; 
+                //playerOuputElements[index].innerText = 'Pojam nije u bazi'; 
             }
     }
 
@@ -92,26 +128,65 @@ answerBtn.addEventListener('click', (e) => {
         answerCollection(category, index, playerAnswer[index]); 
     });
 
-/*
-    let checkeckeck = async(arr) => {
-        let chchc = await arr;
-        sock.emit('answers', chchc); 
-    }
-*/
-
     console.log(checked); 
     let interval = setInterval(() => {
         if (checked != 0) {
             sock.emit('answers', checked); 
+            sock.emit('username', nick);
             clearInterval(interval) 
         }
     }, 500)  
 
     resultModal.click(); 
+    renderName1(nick);
     playerAnswer = []; 
 });
 
+const renderResults1 = async (arrMe) => {
+    let arr1 = await arrMe;
+    playerResultRender.forEach((el,index) => {
+        el.innerText = arr1[index]; 
+    })
+}
 
+const renderResults2 = async (arrMe) => {
+    let arr = await arrMe
+    computerResultRender.forEach((el,index) => {
+        el.innerText = arr[index]; 
+    })
+}
+
+const renderAnswer1 = (answer) => {
+    playerOuputElements.forEach((el,index) => {
+        el.innerText = answer[index];
+    });
+}
+
+const renderAnswer2 = (answer) => {
+    computerOutputRender.forEach((el,index) => {
+        el.innerText = answer[index];
+    });
+}
+
+const renderName1 =  (name) => {
+    player1.innerText = `${name}`; 
+}
+
+/*const renderName2 = async (name) => {
+    let n = await name
+    player2.innerText = `Odgovori igraca ${n}`;
+}
+*/
+const renderWinner = async (winner) => {
+    let win = await winner;
+    if (win = 'draw') 
+    {
+        declareWinner.innerText = `Izjednačeno je!`; 
+    }
+    else {
+        declareWinner.innerText = `Pobednik je ${win}`; 
+    }
+}
 
 const writeEvent = (text) => {
     // Ul element
@@ -133,27 +208,27 @@ const onFormSubmitted = (e) => {
     sock.emit('message', text);
 }
 
-/*
+
 let loading = () => {
-    back.innerHTML += ` 
-    <div id="backdrop" class="backdrop">
-        <div class="text-center" id="spinnerBack">
-            <div class="spinner-border"  style="width: 3rem; height: 3rem;" id="spinner" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-    </div>`
+    console.log('waiting')
+    $('#searching').modal('show');
 }
-*/
+
 
 writeEvent('Dobrodošli :D')  
-let nick = localStorage.getItem('usernameLocal')
 
 const sock = io();
 sock.on('message', writeEvent); 
 sock.on('start', start); 
 sock.on('letter', randomLetter); 
-sock.emit('user', nick)
-//sock.on('wait', loading);   
+sock.on('wait', loading);   
+sock.on('render1', renderResults1);
+sock.on('render2', renderResults2);
+sock.on('winner', renderWinner); 
+sock.on('answer1', renderAnswer1);
+sock.on('answer2', renderAnswer2);
+
+//sock.on('un', renderName2)
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmitted);
+highScoreCall.addEventListener("click", highScore); 

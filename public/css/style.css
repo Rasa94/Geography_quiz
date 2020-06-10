@@ -1,7 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin:0;
+}
+
 html, body {
     max-width: 100%;
+    max-height: 100%;
     overflow-x: hidden;
 } 
+
+#indexBody {
+    background-image: url('../backgrounds/World.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center center;
+    overflow: hidden;
+}
+
+#singleplayerBody {
+    background-image: url('../backgrounds/arcade.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center center;
+    overflow: hidden;
+}
+
+#multiplayerBody {
+    background-image: url('../backgrounds/Gaming.gif');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: contain;
+    background-position: center center;
+    overflow: hidden;
+}
+
+.hofModal {
+    width: 30rem !important;
+    height: 25rem !important;
+    background-image: url('../backgrounds/Notebook.gif');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-size: 25rem 20rem;
+}
 
 .mainWindows{
     height: 140px !important; 
@@ -10,6 +53,8 @@ html, body {
 .allButtons{ 
     margin-top: 5px; 
     height: 40px; 
+    background-color: #90caf9 !important;
+    color: #263138 !important;
 }
 
     /* Buttons */
@@ -22,10 +67,24 @@ a {
     color: white !important; 
 }
 
+#startGame {
+    margin-top: 0px; 
+    margin-left: 78px !important;  
+    width: 180px !important; 
+    height: 40px; 
+    background-color: #90caf9 !important;
+    color: #263138 !important;
+}
+
 #answersSubmit{
     margin-left: 62px !important;  
-    
     width: 180px !important;  
+    background-color: #90caf9 !important;
+    color: #263138 !important;
+}
+
+.dropdown-item{
+    background-color: #90caf9 !important; 
 }
 
     /* Video background */
@@ -53,6 +112,7 @@ a {
 
 #banner {
     margin-left: 50px;
+    color: #263138 !important;
 }
 
 #nav {
@@ -96,6 +156,25 @@ p {
     margin: 40px;
 }
 
+#letterWrapper {
+    margin-bottom: 0 !important;
+    border-radius: 30% !important;
+    background-color: #90caf9 !important;
+    opacity: 0.8;
+}
+
+#timerWrapper {
+    margin-bottom: 0 !important;
+    border-radius: 30% !important;
+    background-color: #90caf9 !important;
+    opacity: 0.8;
+}
+
+#noMargins {
+    margin-bottom: 0 !important;
+    
+}
+
     /* Inputs */
  
 .custom {
@@ -125,10 +204,8 @@ label {
     font-size: 6rem !important;  
 }
 
-
-
 #timer{
-    text-align: center; 
+    text-align: center;
     font-size: 6rem !important;   
 }
 
@@ -139,7 +216,7 @@ label {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+}
 
     /* Swup*/
 
@@ -161,12 +238,6 @@ html.is-leaving .transition-fade {
     }
 
 
-
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-    }
-} 
 
 
 
@@ -190,15 +261,12 @@ html.is-leaving .transition-fade {
     width: 220px;
     border-radius: 5%;
     overflow-y: scroll; 
-    
-
 }
 
 .button-wrapper {
     position: absolute;
     bottom: 20px;
     left: 20px; 
-
 }  
 
 #chat {
@@ -225,7 +293,6 @@ li {
 
 #backdrop{
 
-
 }
 
 #spinnerBack {
@@ -245,3 +312,61 @@ li {
     z-index: 100000 !important;
 
 }
+
+/* Footer */
+
+#footer {
+    background-color: #90caf9;
+    text-align: center !important; 
+    position: fixed;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    margin: 0 !important;
+    padding-bottom: 0;
+} 
+
+#footer p {
+    color: #263138 !important;
+    font-weight: bold;
+}
+
+.icons {
+    height: 25px !important;
+    width: 25px !important;
+    margin-left: 5px;
+}
+
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}   
+
+@media (max-width: 768px) {
+    .allButtons {
+        width: 190px !important; 
+    }
+    .navbar-toggler {
+        position: relative;
+
+    }
+    .modal {
+        padding: 0 !important; /* override inline padding-right added from js*/
+    }
+    .modal .modal-dialog {
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    }
+    .modal .modal-content {
+    height: 100% !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    }
+    .modal .modal-body {
+    overflow-y: auto !important;
+    }
+}   

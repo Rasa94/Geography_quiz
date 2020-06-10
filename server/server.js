@@ -2,7 +2,7 @@ const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
 
-const RpsGame = require('./multiplayerGameLogic');     
+const GeoGame = require('./multiplayerGameLogic');     
  
 const app = express();
 
@@ -17,7 +17,7 @@ const io = socketio(server);
 
 let waitingPlayer = null;
 
-let rlg = () => {
+const rlg = () => {
     let letters = ['A', 'B', 'V', 'G', 'D', 
                    'Đ', 'E', 'Ž', 'Z', 'I', 
                    'J', 'K', 'L', 'LJ', 'M', 
@@ -33,14 +33,13 @@ io.on('connection', (sock) => {
     if (waitingPlayer) 
     {
         let random = rlg()
-        new RpsGame(waitingPlayer, sock);  
+        new GeoGame(waitingPlayer, sock);  
         [sock, waitingPlayer].forEach(s => {
             s.emit('message', 'Igra je počela!')
             s.emit('start', 'Odbrojavanje')
             s.emit('letter', random) ;
         });
         waitingPlayer = null;
-        
     } 
     else 
     {
@@ -53,7 +52,6 @@ io.on('connection', (sock) => {
         io.emit('message', text); 
     });
 });
-
 
 server.on('error', (err) => {
     console.error('Server error:', err);

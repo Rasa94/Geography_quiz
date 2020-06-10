@@ -1,3 +1,12 @@
+let hs = [
+    document.getElementById('one'),
+    document.getElementById('two'),
+    document.getElementById('three'),
+    document.getElementById('four'),
+    document.getElementById('five')
+]
+
+
 // A work in progress
 
 let renderField = document.getElementById('modalHs'); 
@@ -11,7 +20,7 @@ let sortingArr = arr => {
     for (let i = 0; i < arr.length; i++) {  
         if (arr[i] != current) {
             if (counter > 0) {
-                sorted.push([[Number(counter)], [`${current}`]]);   /*[`${current}`]*/ 
+                sorted.push([[`${current}`], [Number(counter)]]);   /*[`${current}`]*/ 
             }
             current = arr[i];
             counter = 1;
@@ -20,39 +29,32 @@ let sortingArr = arr => {
         }
     }
     if (counter > 0) {
-        sorted.push([[Number(counter)], [`${current}`]]);       
+        sorted.push([[`${current}`], [Number(counter)]]);       
     } 
+    return sorted;
 }    
  
 
 
-export let highScore = () => {
+export let highScore = async() => {
     let arr = [];
-    let pojmovi = db.collection('pojmovi'); 
-    pojmovi
+    let snapshot = await db.collection('pojmovi')
         .orderBy('korisnik', 'desc')
-        .get()
-        .then((snapshot) => {
-            snapshot.forEach(el => {
-                arr.push(el.data().korisnik);
-            });
-        renderField.innerHTML = '';     
-        sortingArr(arr); 
-        })
-     
-    arr.sort(sortFunction);
+        .get();
+        
+        snapshot.forEach(el => {
+            arr.push(el.data().korisnik);
+        });
 
-    function sortFunction(a, b) {
-        if (a[0] === b[0]) {
-            return 0;
-        }
-        else {
-            return (a[0] < b[0]) ? -1 : 1;
-        }
-    } 
+        let e = sortingArr(arr);
+        e.sort((a,b) => a[1] - b[1]).reverse();
+        let best = e.slice(0, 5);
+        console.log(best);
+        for(let i = 0; i < 6; i++)
+        best.forEach((el, i) => {
+            hs[i].innerText = `${el[0]} je uneo ${el[1]} pojmova`
+        });
     
-    
-    console.log(arr); 
 } 
 
 
