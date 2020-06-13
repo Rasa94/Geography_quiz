@@ -11,46 +11,44 @@ let select = document.getElementById('select');
     // Login
 let loginInput = document.getElementById('loginInput');
 let login = document.getElementById('login');
-let logInButton = document.getElementById('logInButton');
     // Form 
 let term = document.getElementById('term'); 
 let termInput = document.getElementById('termInput'); 
 let inputForm = document.getElementById('formNewDocument');    
 
-let vid = document.getElementById('video');
 let highScoreCall = document.getElementById('hs'); 
-let ind = document.getElementById('index'); 
 
-let pop = document.getElementById('logPopupButton')
  
-$('#logInModal').modal('hide')
-
 
 // Log in popup
 
-if(!localStorage.usernameLocal){
-    console.log("empty")
-    logInButton.click();  
+$('#logInModal').modal('hide')
+
+let popup = () => {
     $('#logInModal').modal('show');
 }
 
+if(!localStorage.usernameLocal && loginInput.value == ''){
+    console.log("empty")
+    $('#logInModal').modal('show');
+}
 
+let popUp;
 
 // log in listener
 
-login.addEventListener('click', e => {
+login.addEventListener('click', e => { 
     e.preventDefault() 
     let username = loginInput.value;
     localStorage.setItem('usernameLocal', username);
     console.log(localStorage.usernameLocal);
-    if(!localStorage.usernameLocal) {
-        $('#logInModal').modal('show'); 
+    if(!localStorage.usernameLocal || loginInput.value == '') { 
+        popUp = setTimeout(popup, 1000);
+        
+    } else if (localStorage.usernameLocal) { 
+        clearTimeout(popUp)
     }
-    
 }); 
-
-
-
 
 // Term validator
 
@@ -76,20 +74,19 @@ inputForm.addEventListener('submit', e => {
     let termLocal = capitalFirst(localStorage.termLocal);
     let obj = new AddTerm(username, categoryLocal, termLocal);   
 
-    if (localStorage.usernameLocal == null ||  localStorage.categoryLocal == null || localStorage.termLocal == '') 
+    if (localStorage.categoryLocal == null || localStorage.termLocal == '') 
     {
-        alert('Unesite sve podatke!!!')
+        $('#insufficientDataModal').modal('show');
     } 
     else 
     { 
         obj.termCheck();   
         localStorage.setItem('termLocal', '');    
-        termInput = '';      
+             
     } 
 })  
                               
 highScoreCall.addEventListener("click", highScore); 
-
 
 // Event listener for categories buttons
 // Also the background is changed depending of the category the user chooses
@@ -125,4 +122,25 @@ formBtn.addEventListener('click', e => {
     {
         localStorage.setItem('categoryLocal', 'Predmet');  
     } 
+})
+
+
+
+let lele = ""
+
+
+
+let aa = lele.split(" ");
+
+console.log(aa)
+
+
+
+let mgc = document.getElementById('magic') ;
+
+mgc.addEventListener('click', () => {
+    aa.forEach(element => {
+        let obj = new AddTerm('Marko', 'Reka', element);   
+        obj.termCheck();
+    });
 })

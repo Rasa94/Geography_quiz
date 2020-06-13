@@ -62,11 +62,13 @@ export class AddTerm {
                     if (snapshot.docs.length == 0) {
                         this.termAdder();
                         console.log('donedone')
+                        $('#newDocModal').modal('show')
+
                     } 
                     else 
                     {
                         console.log('Term exists')
-                        alert("The term exists allready, this is a duplicate"); 
+                        $('#docExistsModal').modal('show')
                     }
                 })
                 .catch(error => {

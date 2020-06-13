@@ -51,7 +51,6 @@ let computerOutputRender = [
 ]
 
 let letterBox = document.getElementById('letterSize');
-let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
 let answerBtn = document.getElementById('answersSubmit'); 
 let back = document.getElementById('swup');
@@ -60,7 +59,8 @@ let declareWinner = document.getElementById('winner');
 let player1 = document.getElementById('pl1');
 let player2 = document.getElementById('pl2');
 let nick = localStorage.getItem('usernameLocal')
-
+let scorePl1 = document.getElementById('scoreRenderPl1');
+let scorePl2 = document.getElementById('scoreRenderPl2');
 
 // Random letter 
 
@@ -72,7 +72,7 @@ let randomLetter = (letter) => {
 
 let timer;
 let start = () => {
-    $('#searching').modal('hide');
+    $('#searchingModal').modal('hide');
     playerInputElements.forEach(el => {
         el.disabled = false;  
     });
@@ -121,6 +121,7 @@ answerBtn.addEventListener('click', (e) => {
                 checked.push('/') 
                 //playerOuputElements[index].innerText = 'Pojam nije u bazi'; 
             }
+        clearInterval(timer);
     }
 
 
@@ -172,14 +173,14 @@ const renderName1 =  (name) => {
     player1.innerText = `${name}`; 
 }
 
-/*const renderName2 = async (name) => {
-    let n = await name
-    player2.innerText = `Odgovori igraca ${n}`;
+const renderName2 = async (name) => {
+    //let n = await name
+    player2.innerText = `${name}`;
 }
-*/
+
 const renderWinner = async (winner) => {
     let win = await winner;
-    if (win = 'draw') 
+    if (win == 'draw') 
     {
         declareWinner.innerText = `Izjednačeno je!`; 
     }
@@ -211,7 +212,7 @@ const onFormSubmitted = (e) => {
 
 let loading = () => {
     console.log('waiting')
-    $('#searching').modal('show');
+    $('#searchingModal').modal('show');
 }
 
 
@@ -228,7 +229,7 @@ sock.on('winner', renderWinner);
 sock.on('answer1', renderAnswer1);
 sock.on('answer2', renderAnswer2);
 
-//sock.on('un', renderName2)
+sock.on('against', renderName2)
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmitted);
 highScoreCall.addEventListener("click", highScore); 

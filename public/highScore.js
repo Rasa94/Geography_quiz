@@ -52,7 +52,7 @@ export let highScore = async() => {
         console.log(best);
         for(let i = 0; i < 6; i++)
         best.forEach((el, i) => {
-            hs[i].innerText = `${el[0]} je uneo ${el[1]} pojmova`
+            hs[i].innerText = `${el[0]} -- ${el[1]}`
         });
     
 } 

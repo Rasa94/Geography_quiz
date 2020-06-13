@@ -25,36 +25,38 @@
   <!-- Navigation bar -->
   
   
-  <nav class="row navbar navbar-expand">    
-    <div class="col-6">
-      <h1 class="navbar-brand navbar-expand{-sm|-md|-lg|-xl}" id="banner">Zanimljiva geografija!</h1>  
-    </div>
-    <div class="collapse navbar-collapse col-6 d-flex p-2 bd-highlight justify-content-end flex-wrap:wrap" id="navbarToggler">  
-      <ul class="navbar-nav  mt-2 mt-lg-0 ">
-        <li class="nav-item">
-          <a class="btn  nav-link allButtons float-right" href='index.html'>Početna strana</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn nav-link allButtons float-right">Pravila</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn nav-link allButtons float-right" href='singleplayer.html'>Igra protiv računara</a>   
-        </li>
-        <li class="nav-item">
-          <a class="btn nav-link allButtons float-right" href='multiplayer.html'>Igra protiv drugog igrača</a>   
-        </li>
-        <li class="nav-item ">
-          <a class="btn nav-link allButtons float-right" data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
-        </li>
-        <li class="nav-item ">
-          <a class="btn nav-link allButtons float-right" id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
-        </li>
-      </ul>
-    </div>   
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <nav class="navbar navbar-expand-lg">
+    <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
     </button>
-  </nav>    
+    
+    <div class="collapse navbar-collapse " id="navbarToggler">
+      <div class="btn-group ">
+        <ul class="navbar-nav ">
+          <li class="nav-item">
+            <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn nav-link allButtons ">Pravila</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn nav-link allButtons " href='singleplayer.html'>Igra protiv računara</a>   
+          </li>
+          <li class="nav-item">
+            <a class="btn nav-link allButtons " href='multiplayer.html'>Igra protiv drugog igrača</a>   
+          </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+          </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+  </nav>
 
   
   <!-- Log in Modal -->
@@ -77,18 +79,15 @@
   </div>
 
   <!-- High score Modal -->
-
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg"> 
+  
+  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
-        <div class="modal-body">
-          <ol id="modalHs">
+        <div class="modal-body hofModal">
+          <ol id="modalHs ">
             <li id="one"></li>
             <li id="two"></li>
             <li id="three"></li>
@@ -126,56 +125,56 @@
               <tbody>
                 <tr>
                   <!-- <th scope="row">Drzava</th> -->
-                  <td id="playerResultDr">odgP</td>
+                  <td id="playerResultDr"></td>
                   <td id="plResFieldDr"></td>
                   <td id="coResFieldDr"></td>
-                  <td id="computerResultDr" >OdgovorKomp</td>
+                  <td id="computerResultDr" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Grad</th> -->
-                  <td id="playerResultGr" >odgP</td>
+                  <td id="playerResultGr" ></td>
                   <td id="plResFieldGr"></td>
                   <td id="coResFieldGr"></td>
-                  <td name="" id="computerResultGr" >OdgovorKomp</td>
+                  <td name="" id="computerResultGr" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Reka</th> -->
-                  <td id="playerResultRe" >odgP</td>
+                  <td id="playerResultRe" ></td>
                   <td id="plResFieldRe"></td>
                   <td id="coResFieldRe"></td>
-                  <td id="computerResultRe" >OdgovorKomp</td>
+                  <td id="computerResultRe" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Planina</th> -->
-                  <td id="playerResultPl" >odgP</td>
+                  <td id="playerResultPl" ></td>
                   <td id="plResFieldPl"></td>
                   <td id="coResFieldPl"></td>
-                  <td id="computerResultPl" >OdgovorKomp</td>
+                  <td id="computerResultPl" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Zivotinja</th> -->
-                  <td id="playerResultZi">odgP</td>
+                  <td id="playerResultZi"></td>
                   <td id="plResFieldZi"></td>
                   <td id="coResFieldZi"></td>
-                  <td id="computerResultZi" >OdgovorKomp</td>
+                  <td id="computerResultZi" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Biljka</th> -->
-                  <td id="playerResultBi" >odgP</td>
+                  <td id="playerResultBi" ></td>
                   <td id="plResFieldBi"></td>
                   <td id="coResFieldBi"></td>
-                  <td id="computerResultBi" >OdgovorKomp</td>
+                  <td id="computerResultBi" ></td>
                 </tr>
                 <tr>
                   <!-- <th scope="row">Predmet</th> -->
-                  <td id="playerResultPr" >odgP</td>
+                  <td id="playerResultPr" ></td>
                   <td id="plResFieldPr"></td>
                   <td id="coResFieldPr"></td>
-                  <td id="computerResultPr" >OdgovorKomp</td> 
+                  <td id="computerResultPr" ></td> 
                 </tr>
                 <tr class="table-info">
-                  <th id="scoreRenderPl" scope="row" colspan="2">Ukupno igrac</th>
-                  <th id="scoreRenderComp" scope="row" colspan="2">Ukupno komp</th>
+                  <th id="scoreRenderPl" scope="row" colspan="2"></th>
+                  <th id="scoreRenderComp" scope="row" colspan="2"></th>
                 </tr>
             </tbody>
             <tfoot>

@@ -214,6 +214,7 @@ answerBtn.addEventListener('click', (e) => {
     });
 
     resultModal.click(); 
+    console.log(answers);
 })
 
 highScoreCall.addEventListener("click", highScore); 

@@ -17,11 +17,15 @@ class GeoGame {
             player.on('username', (name) => {
                 this._setNames(idx, name) 
             })
+            
             /*player.emit( `un2`, this._usernames[idx])*/
         })
     }
 
-    
+    _sendOpponent(index, op) {
+        this._players[index].emit('against', op)
+        console.log(op)
+    }
 
     _sendToPlayer(playerIndex, msg) { 
         this._players[playerIndex].emit('message', msg);
@@ -146,16 +150,19 @@ class GeoGame {
         {
             winner = secondPlayer;
         }
-        else if ((p1Score === p2Score))
+        else if (p1Score === p2Score)
         {
             winner = 'draw';
         }
 
+        this._sendOpponent(0, this._usernames[1])
+        this._sendOpponent(1, this._usernames[0])
         this._sendResults1(winner, res1Arr, res2Arr);
         this._sendAnswers(player1Answer, player2Answer);
         
-        // console.log(p1Score);
-        // console.log(p2Score);
+         console.log(p1Score);
+         console.log(p2Score);
+         console.log(winner);
         // console.log(player1Answer);
         // console.log(player2Answer);
     }
