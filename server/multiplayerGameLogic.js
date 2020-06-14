@@ -5,9 +5,8 @@ class GeoGame {
         this._players = [p1, p2];
         this._turns = [null, null];
         this._usernames = [null, null];
-
-        this._sendToPlayers('Igra je pocela!');
         
+
         this._players.forEach((player, idx) => {
             player.on('answers', (turn) => {
                 this._onInput(idx, turn) 
@@ -17,14 +16,23 @@ class GeoGame {
             player.on('username', (name) => {
                 this._setNames(idx, name) 
             })
-            
-            /*player.emit( `un2`, this._usernames[idx])*/
+
         })
     }
 
-    _sendOpponent(index, op) {
-        this._players[index].emit('against', op)
-        console.log(op)
+
+    _sendOpponent(op1, op2) {
+        this._players.forEach((player) => {
+            player.emit('me', op1);
+            player.emit('against', op2);
+        });
+    }
+
+    _scores(score1, score2) {
+        this._players.forEach((player) => {
+            player.emit('score1', score1);
+            player.emit('score2', score2);
+        }); 
     }
 
     _sendToPlayer(playerIndex, msg) { 
@@ -54,30 +62,48 @@ class GeoGame {
         });
     }
 
+    _openModal() {
+        this._players.forEach((player) => {
+            player.emit('open', 'done');
+        });
+    }
+
     _onInput(playerIndex, turn) {
         this._turns[playerIndex] = turn;
         this._checkGameOver()
     }
 
+
+
     _setNames(playerIndex, name) {
         this._usernames[playerIndex] = name;
-        console.log(name); 
+        //console.log(name); 
     }
 
     _checkGameOver() {
         const turns = this._turns;
 
+       
+        
         if(turns[0] && turns[1]) {
+            
+
             this._sendToPlayers('Game over!!!');
             this._getGameResult();
             this._turns = [null, null]; 
             this._sendToPlayers('Sledeća runda!!!');
+            this._openModal(); 
         }
     }
 
     
 
     _getGameResult() {
+        
+        this._sendOpponent(this._usernames[0], this._usernames[1]);
+        
+
+
         const turns = this._turns;
         const players = this._usernames;
         const player1Answer = [];
@@ -96,7 +122,9 @@ class GeoGame {
         secondTurn.forEach(odg => {
             player2Answer.push(odg)
         });
-    
+
+        
+
         let p1Score = 0;
         let p2Score = 0; 
         let res1Arr = [];
@@ -155,16 +183,14 @@ class GeoGame {
             winner = 'draw';
         }
 
-        this._sendOpponent(0, this._usernames[1])
-        this._sendOpponent(1, this._usernames[0])
         this._sendResults1(winner, res1Arr, res2Arr);
         this._sendAnswers(player1Answer, player2Answer);
+        this._scores(p1Score, p2Score);
+        
+
         
          console.log(p1Score);
          console.log(p2Score);
-         console.log(winner);
-        // console.log(player1Answer);
-        // console.log(player2Answer);
     }
 }
 

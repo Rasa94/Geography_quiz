@@ -61,9 +61,9 @@ let scoreRenderPl = document.getElementById('scoreRenderPl');
 let scoreRenderComp = document.getElementById('scoreRenderComp'); 
 let declareWinner = document.getElementById('winner');
 let highScoreCall = document.getElementById('hs'); 
+let newGame = document.getElementById('newGame');
 
-
-// Random letter generator
+    // Random letter generator
 
 let rlg = () => {
     let letters = ['A', 'B', 'V', 'G', 'D', 
@@ -77,7 +77,7 @@ let rlg = () => {
     return random;
 }
  
-// Timer 
+    // Timer 
 
 let timer;
 let countdownTimer = () => {
@@ -95,7 +95,7 @@ let countdownTimer = () => {
     }, 1000);
 }
 
-// Game start
+    // Game start
 
 let random;     
 startGame.addEventListener('click', e => {
@@ -175,7 +175,8 @@ answerBtn.addEventListener('click', (e) => {
 
         let computerAnswer = '';
 
-        if(rng() > 20) {
+        if(rng() > 20) 
+        {
             computerAnswer = answers[index][Math.floor(Math.random() * answers[index].length)];
             computerResultElements[index].innerText = computerAnswer;
         }
@@ -189,7 +190,8 @@ answerBtn.addEventListener('click', (e) => {
         console.log(playerAnswer);
         console.log(computerAnswer);
 
-        if (index == maxIndex) {
+        if (index == maxIndex) 
+        {
             console.log(answers);
             scoreRenderPl.innerHTML = `Player score: ${playerScore}`;
             scoreRenderComp.innerHTML = `Computer score: ${computerScore}`;
@@ -215,6 +217,11 @@ answerBtn.addEventListener('click', (e) => {
 
     resultModal.click(); 
     console.log(answers);
+})
+
+newGame.addEventListener('click', (e) => {
+    e.preventDefault();
+    startGame.click();
 })
 
 highScoreCall.addEventListener("click", highScore); 

@@ -12,6 +12,39 @@
   </head>
   <body id="indexBody">    
 
+    <!-- Navigation bar -->
+
+    <nav class="navbar navbar-expand-lg">
+      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
+      </button>
+      <div class="collapse navbar-collapse " id="navbarToggler">
+        <div class="btn-group ">
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons ">Pravila</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons " href='singleplayer.html'>Igrač vs <img src="./icons/robo.png" class="icons"></a>   
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons " href='multiplayer.html'>Igrač vs igrač</a>   
+            </li>
+            <li class="nav-item ">
+              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
+            </li>
+            <li class="nav-item ">
+              <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <!-- Log in Modal -->
 
     <div class="modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="logInModalLabel" aria-hidden="true">
@@ -33,109 +66,75 @@
        
     <!-- High score Modal -->
 
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova:</h5>
-        </div>
-        <div class="modal-body hofModal">
-          <ol id="modalHs ">
-            <li id="one"></li>
-            <li id="two"></li>
-            <li id="three"></li>
-            <li id="four"></li>
-            <li id="five"></li>
-          </ol>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
-        </div>
-      </div>
-    </div>
-  </div> 
-
-  <!-- New document Modal -->
-
-  <div class="modal fade" id="newDocModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" ">Hvala vam, baza je bogatija za jedan pojam :)</h5>
-        </div>
-        <div class="modal-body newDoc"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova:</h5>
+          </div>
+          <div class="modal-body hofModal">
+            <ol id="modalHs ">
+              <li id="one"></li>
+              <li id="two"></li>
+              <li id="three"></li>
+              <li id="four"></li>
+              <li id="five"></li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div> 
+    </div> 
 
-  <!-- Document exists Modal -->
+    <!-- New document Modal -->
 
-  <div class="modal fade" id="docExistsModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >Pojam je već u bazi </h5>
-        </div>
-        <div class="modal-body documentExists"></div>
-        <div class="modal-footer">
-          <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
-        </div>
-      </div>
-    </div>
-  </div> 
-
-  <!-- Insufficient data Modal -->
-
-  <div class="modal fade" id="insufficientDataModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title"  >Unesite sve podatke :) </h5>
-        </div>
-        <div class="modal-body insufficientData"></div> 
-        <div class="modal-footer">
-          <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
+    <div class="modal fade" id="newDocModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" ">Hvala vam, baza je bogatija za jedan pojam :)</h5>
+          </div>
+          <div class="modal-body newDoc"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div> 
+    </div> 
 
-    <!-- Navigation bar -->
+    <!-- Document exists Modal -->
 
-    <nav class="navbar navbar-expand-lg">
-      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
-      </button>
-      
-      <div class="collapse navbar-collapse " id="navbarToggler">
-        <div class="btn-group ">
-          <ul class="navbar-nav ">
-            <li class="nav-item">
-              <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons ">Pravila</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons " href='singleplayer.html'>Igra protiv računara</a>   
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons " href='multiplayer.html'>Igra protiv drugog igrača</a>   
-            </li>
-            <li class="nav-item ">
-              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
-            </li>
-            <li class="nav-item ">
-              <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
-            </li>
-          </ul>
+    <div class="modal fade" id="docExistsModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" >Pojam je već u bazi </h5>
+          </div>
+          <div class="modal-body documentExists"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
+          </div>
         </div>
       </div>
-    </nav>
+    </div> 
+
+    <!-- Insufficient data Modal -->
+
+    <div class="modal fade" id="insufficientDataModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"  >Unesite sve podatke :) </h5>
+          </div>
+          <div class="modal-body insufficientData"></div> 
+          <div class="modal-footer">
+            <button type="button" class="btn allButtons" data-dismiss="modal">Zatvori</button>
+          </div>
+        </div>
+      </div>
+    </div> 
 
     <!-- Category menu -->
 

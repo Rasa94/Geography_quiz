@@ -12,15 +12,20 @@
 </head>
 <body id="multiplayerBody"> 
     
- <!-- Video background -->
+ <!-- Search modal-->
 
  <div class="modal fade" id="searchingModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="searchingModal" aria-hidden="true">
   <div class="modal-dialog"> 
     <div class="modal-content"> 
-      <div class="modal-body searchingModal">
-        <div class="d-flex align-content-center flex-wrap">   
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Tražimo drugog igrača</h5> 
+      </div>
+      <div class="modal-body searchingModal"></div> 
+      <div >
+        <div class="modal-footer">
+          <a class="btn nav-link allButtons " href='index.html'>Nazad</a>
         </div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>
@@ -32,10 +37,9 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
     </button>
-    
     <div class="collapse navbar-collapse " id="navbarToggler">
       <div class="btn-group ">
-        <ul class="navbar-nav ">
+        <ul class="navbar-nav">
           <li class="nav-item">
             <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
           </li>
@@ -43,24 +47,22 @@
             <a class="btn nav-link allButtons ">Pravila</a>
           </li>
           <li class="nav-item">
-            <a class="btn nav-link allButtons " href='singleplayer.html'>Igra protiv računara</a>   
+            <a class="btn nav-link allButtons " href='singleplayer.html'>Igrač vs <img src="./icons/robo.png" class="icons"></a>   
           </li>
           <li class="nav-item">
-            <a class="btn nav-link allButtons " href='multiplayer.html'>Igra protiv drugog igrača</a>   
-          </li>
-          <li class="nav-item ">
-            <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+            <a class="btn nav-link allButtons " href='multiplayer.html'>Igrač vs igrač</a>   
           </li>
           <li class="nav-item ">
             <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
           </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+          </li>
         </ul>
       </div>
     </div>
-    
   </nav>
 
-  
   <!-- Log in Modal -->
 
   <div class="modal fade" id="logInModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="logInModalLabel" aria-hidden="true">
@@ -104,13 +106,11 @@
     </div>
   </div> 
 
-  <!-- Game room button  -->
+  <!-- Game room Modal -->
+
   <button type="button" class="btn btn-primary invisible allButtons" data-toggle="modal" data-target="#gameRoomModalCenter" id="resultModal"> 
     Launch demo modal 
   </button>
-
-  <!-- Game room Modal -->
-
   <div class="modal fade bd-example-modal-md" id="gameRoomModalCenter" tabindex="-1" role="dialog" aria-labelledby="gameRoomModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
@@ -124,7 +124,6 @@
           <table class="table">
             <thead>
                 <tr class="table-info">
-                  <!-- <th scope="col">Kategorije</th> -->
                   <th scope="col" id="pl1"></th>
                   <th scope="col">Poeni igraca</th>
                   <th scope="col">Poeni kompjutera</th>
@@ -133,57 +132,50 @@
               </thead>
               <tbody>
                 <tr>
-                  <!-- <th scope="row">Drzava</th> -->
                   <td id="playerResultDr">odgP</td>
                   <td id="plResFieldDr"></td>
                   <td id="coResFieldDr"></td>
                   <td id="computerResultDr" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Grad</th> -->
                   <td id="playerResultGr" >odgP</td>
                   <td id="plResFieldGr"></td>
                   <td id="coResFieldGr"></td>
                   <td name="" id="computerResultGr" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Reka</th> -->
                   <td id="playerResultRe" >odgP</td>
                   <td id="plResFieldRe"></td>
                   <td id="coResFieldRe"></td>
                   <td id="computerResultRe" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Planina</th> -->
                   <td id="playerResultPl" >odgP</td>
                   <td id="plResFieldPl"></td>
                   <td id="coResFieldPl"></td>
                   <td id="computerResultPl" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Zivotinja</th> -->
                   <td id="playerResultZi">odgP</td>
                   <td id="plResFieldZi"></td>
                   <td id="coResFieldZi"></td>
                   <td id="computerResultZi" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Biljka</th> -->
                   <td id="playerResultBi" >odgP</td>
                   <td id="plResFieldBi"></td>
                   <td id="coResFieldBi"></td>
                   <td id="computerResultBi" >OdgovorKomp</td>
                 </tr>
                 <tr>
-                  <!-- <th scope="row">Predmet</th> -->
                   <td id="playerResultPr" >odgP</td>
                   <td id="plResFieldPr"></td>
                   <td id="coResFieldPr"></td>
                   <td id="computerResultPr" >OdgovorKomp</td> 
                 </tr>
                 <tr class="table-info">
-                  <th id="scoreRenderPl1" scope="row" colspan="2">Ukupno igrac</th>
-                  <th id="scoreRenderPl2" scope="row" colspan="2">Ukupno komp</th>
+                  <th id="scoreRenderPl1" scope="row" colspan="2"></th>
+                  <th id="scoreRenderPl2" scope="row" colspan="2"></th>
                 </tr>
             </tbody>
             <tfoot>
@@ -200,22 +192,14 @@
     </div>
   </div>
 
-
-
   <!-- Form fields -->
 
   <main id="swup" class="transition-fade main2">
     <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
       <div class="" > 
         <div class="row">
-          <!-- Letter card -->
-    
-          <div class="col card text-white bg-primary mb-3 border rounded" id="letterWrapper" style="margin:8px; max-width: 10rem;"> 
-            <p id="letterSize">  </p> 
-          </div> 
-           <!-- Letter card -->
-    
-           <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 18rem;" id="timerWrapper">  
+          <div class="col card text-white bg-primary mb-3 border rounded" id="letterWrapper" > 
+            <p id="letterSize"></p> 
             <p id="timer"> 90 </p> 
           </div> 
         </div> 
@@ -224,63 +208,54 @@
             <form class="container" autocomplete="off">  
               <div class="row">
                 <div class="col8 win"> 
-                  
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
-                      <input type="text" disabled="true" id="playerInputDr" class="custom2">  
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>--> 
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
-                      <input type="text" disabled="true" id="playerInputGr" class="custom2"> 
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
-                      <input type="text" disabled="true" id="playerInputRe" class="custom2"> 
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
-                      <input type="text" disabled="true" id="playerInputPl" class="custom2">
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
-                      <input type="text" disabled="true" id="playerInputZi" class="custom2">
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
-                    </div>
-                    <div class="row">
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
-                      <input type="text" disabled="true" id="playerInputBi" class="custom2">
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br>-->
-                    </div>
-                    <div class="row"> 
-                      <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
-                      <input type="text" disabled="true" id="playerInputPr" class="custom2">
-                      <!--<p class="no-gutters border rounded overflow-hidden custom" >10</p> <br> -->
-                    </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
+                    <input type="text" disabled="true" id="playerInputDr" class="custom2">  
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
+                    <input type="text" disabled="true" id="playerInputGr" class="custom2"> 
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
+                    <input type="text" disabled="true" id="playerInputRe" class="custom2"> 
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
+                    <input type="text" disabled="true" id="playerInputPl" class="custom2">
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
+                    <input type="text" disabled="true" id="playerInputZi" class="custom2">
+                  </div>
+                  <div class="row">
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
+                    <input type="text" disabled="true" id="playerInputBi" class="custom2">
+                  </div>
+                  <div class="row"> 
+                    <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
+                    <input type="text" disabled="true" id="playerInputPr" class="custom2">
+                  </div>
                   <button type="submit" class="btn btn-outline-light " id="answersSubmit" > Unesi odgovore </button>  
-                  <!--<input type="submit" class="btn btn-outline-light" id="answersSubmit"> --> 
                 </div>
               </div>    
             </form> 
+            <div id="chatDiv">
+              <button id="chatButton" class="btn allButtons "><img src="./icons/chat.png" class="icons"></button>
+            </div>
           </div> 
-          <div id="rps-wrapper" class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"> 
+          <div id="rps-wrapper" class="no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative window"> 
             <ul id="events"></ul>
-      
             <div class="button-wrapper">
-                <form id="chat-form">
-                    <input id="chat" class="no-gutters border rounded overflow-hidden custom"> 
-                    <button id="say" class="btn btn-outline-light ">Say</button>
-                </form>
+              <form id="chat-form">
+                  <input id="chat" class="no-gutters border rounded overflow-hidden custom"> 
+                  <button id="say" class="btn allButtons ">Say</button>
+              </form>
             </div>
           </div>
-
-
         </div>  
       </div>  
-  </main>
+    </main>
 
   <footer class="mastfoot mt-auto" id="footer">
     <div class="inner">
@@ -328,3 +303,20 @@
   </body>
 </html> 
 
+
+
+<!--
+
+
+          
+    
+          <div class="col card text-white bg-primary mb-3 border rounded" id="letterWrapper" style="margin:8px; max-width: 10rem;"> 
+            <p id="letterSize">  </p> 
+          </div> 
+           
+    
+           <div class="col card text-white bg-primary mb-3 border rounded" style="margin:8px; max-width: 18rem;" id="timerWrapper">  
+            <p id="timer"> 90 </p> 
+          </div> 
+
+-->

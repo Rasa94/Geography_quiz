@@ -6,11 +6,6 @@ let hs = [
     document.getElementById('five')
 ]
 
-
-// A work in progress
-
-let renderField = document.getElementById('modalHs'); 
-
 // This is the basic algorithm for sorting duplicates
 
 let sortingArr = arr => {  
@@ -18,23 +13,28 @@ let sortingArr = arr => {
     let current = null;
     let counter = 0;
     for (let i = 0; i < arr.length; i++) {  
-        if (arr[i] != current) {
-            if (counter > 0) {
+        if (arr[i] != current) 
+        {
+            if (counter > 0) 
+            {
                 sorted.push([[`${current}`], [Number(counter)]]);   /*[`${current}`]*/ 
             }
             current = arr[i];
             counter = 1;
-        } else {
+        } 
+        else 
+        {
             counter++;
         }
     }
-    if (counter > 0) {
+    if (counter > 0) 
+    {
         sorted.push([[`${current}`], [Number(counter)]]);       
     } 
     return sorted;
 }    
  
-
+// After the duplicates are counted the function sorts the users by how much terms they added
 
 export let highScore = async() => {
     let arr = [];
@@ -54,7 +54,6 @@ export let highScore = async() => {
         best.forEach((el, i) => {
             hs[i].innerText = `${el[0]} -- ${el[1]}`
         });
-    
 } 
 
 

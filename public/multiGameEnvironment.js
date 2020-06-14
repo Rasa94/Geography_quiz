@@ -61,6 +61,9 @@ let player2 = document.getElementById('pl2');
 let nick = localStorage.getItem('usernameLocal')
 let scorePl1 = document.getElementById('scoreRenderPl1');
 let scorePl2 = document.getElementById('scoreRenderPl2');
+let newGame = document.getElementById('newGame');
+let chatButton = document.getElementById('chatButton');
+
 
 // Random letter 
 
@@ -73,6 +76,7 @@ let randomLetter = (letter) => {
 let timer;
 let start = () => {
     $('#searchingModal').modal('hide');
+    sock.emit('username', nick);
     playerInputElements.forEach(el => {
         el.disabled = false;  
     });
@@ -124,7 +128,6 @@ answerBtn.addEventListener('click', (e) => {
         clearInterval(timer);
     }
 
-
     categories.forEach((category, index) => {
         answerCollection(category, index, playerAnswer[index]); 
     });
@@ -133,15 +136,20 @@ answerBtn.addEventListener('click', (e) => {
     let interval = setInterval(() => {
         if (checked != 0) {
             sock.emit('answers', checked); 
-            sock.emit('username', nick);
             clearInterval(interval) 
         }
     }, 500)  
-
-    resultModal.click(); 
-    renderName1(nick);
     playerAnswer = []; 
 });
+
+newGame.addEventListener('click', (e) => {
+    e.preventDefault();
+    location.reload();
+})
+
+let openResultModal = () => {
+    resultModal.click(); 
+}
 
 const renderResults1 = async (arrMe) => {
     let arr1 = await arrMe;
@@ -174,8 +182,16 @@ const renderName1 =  (name) => {
 }
 
 const renderName2 = async (name) => {
-    //let n = await name
-    player2.innerText = `${name}`;
+    let a = await name;
+    player2.innerText = `${a}`;
+}
+
+const renderFirstScore = (score) => {
+    scorePl1.innerText = `Ukupno: ${score}`
+}
+
+const renderSecondScore = (score) => {
+    scorePl2.innerText = `Ukupno: ${score}`
 }
 
 const renderWinner = async (winner) => {
@@ -209,11 +225,19 @@ const onFormSubmitted = (e) => {
     sock.emit('message', text);
 }
 
-
 let loading = () => {
     console.log('waiting')
     $('#searchingModal').modal('show');
 }
+
+    let chatBody = document.getElementById('rps-wrapper');
+
+chatButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    chatBody.classList.toggle('window');
+})
+
+
 
 
 writeEvent('Dobrodošli :D')  
@@ -228,8 +252,11 @@ sock.on('render2', renderResults2);
 sock.on('winner', renderWinner); 
 sock.on('answer1', renderAnswer1);
 sock.on('answer2', renderAnswer2);
-
+sock.on('score1', renderFirstScore);
+sock.on('score2', renderSecondScore);
+sock.on('me', renderName1)
 sock.on('against', renderName2)
+sock.on('open', openResultModal);
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmitted);
 highScoreCall.addEventListener("click", highScore); 
