@@ -1,4 +1,6 @@
-import {highScore} from "./highScore.js" 
+import {hallOfFame} from "./hallOfFame.js" 
+//import {Results} from "./highScore.js" 
+
 
 // DOM elements
 
@@ -52,7 +54,7 @@ let computerResultRender = [
     document.getElementById('coResFieldPr')
 ]
 
-let letterBox = document.getElementById('letterSize');
+let letterBox = document.getElementById('randomLetter');
 let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
 let resultModal = document.getElementById('resultModal'); 
@@ -60,8 +62,10 @@ let answerBtn = document.getElementById('answersSubmit');
 let scoreRenderPl = document.getElementById('scoreRenderPl');
 let scoreRenderComp = document.getElementById('scoreRenderComp'); 
 let declareWinner = document.getElementById('winner');
-let highScoreCall = document.getElementById('hs'); 
+let hallOfFameCall = document.getElementById('hf'); 
 let newGame = document.getElementById('newGame');
+let highScore = document.getElementById('hs');
+
 
     // Random letter generator
 
@@ -148,8 +152,11 @@ export let compareAnswers = (allAnswers, computer, player, computerRender, playe
         playerScore += 15;
         playerRender.innerText = '15'; 
     } 
-    console.log(playerScore);
-    console.log(computerScore);
+    //console.log(playerScore);
+    //console.log(computerScore);
+    if(!allAnswers.includes(player) && player != ''){
+        playerRender.innerText = 'Pojam nije u bazi'; 
+    }   
 } 
 
 
@@ -159,7 +166,8 @@ let maxIndex = 6;
 
 answerBtn.addEventListener('click', (e) => { 
     e.preventDefault(); 
-    clearInterval(timer);   
+    clearInterval(timer); 
+
     playerScore = 0;
     computerScore = 0;
 
@@ -182,19 +190,19 @@ answerBtn.addEventListener('click', (e) => {
         }
         else
         {
-            computerResultElements[index].innerText = 'Ne znam';
+            computerResultElements[index].innerText = 'Ne zna';
         }
 
         let playerAnswer = getPlayerAnswer(index); 
         compareAnswers(answers[index], computerAnswer, playerAnswer, computerResultRender[index], playerResultRender[index]);
-        console.log(playerAnswer);
-        console.log(computerAnswer);
+        //console.log(playerAnswer);
+        //console.log(computerAnswer);
 
         if (index == maxIndex) 
         {
             console.log(answers);
-            scoreRenderPl.innerHTML = `Player score: ${playerScore}`;
-            scoreRenderComp.innerHTML = `Computer score: ${computerScore}`;
+            scoreRenderPl.innerHTML = `Poeni igraca: ${playerScore}`;
+            scoreRenderComp.innerHTML = `Poeni kompjutera: ${computerScore}`;
             if (computerScore > playerScore) 
             {
                 declareWinner.innerText = `Kompjuter je pobednik!!!`
@@ -209,6 +217,7 @@ answerBtn.addEventListener('click', (e) => {
                 declareWinner.innerText = `Izjednaceno je!!!!`
             }
         } 
+
     }
 
     categories.forEach((category, index) => {
@@ -216,7 +225,8 @@ answerBtn.addEventListener('click', (e) => {
     });
 
     resultModal.click(); 
-    console.log(answers);
+    //console.log(playerScore);
+    
 })
 
 newGame.addEventListener('click', (e) => {
@@ -224,4 +234,4 @@ newGame.addEventListener('click', (e) => {
     startGame.click();
 })
 
-highScoreCall.addEventListener("click", highScore); 
+hallOfFameCall.addEventListener("click", hallOfFame); 

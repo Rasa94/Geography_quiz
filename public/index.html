@@ -12,38 +12,7 @@
   </head>
   <body id="indexBody">    
 
-    <!-- Navigation bar -->
-
-    <nav class="navbar navbar-expand-lg">
-      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-        <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
-      </button>
-      <div class="collapse navbar-collapse " id="navbarToggler">
-        <div class="btn-group ">
-          <ul class="navbar-nav ">
-            <li class="nav-item">
-              <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons ">Pravila</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons " href='singleplayer.html'>Igrač vs <img src="./icons/robo.png" class="icons"></a>   
-            </li>
-            <li class="nav-item">
-              <a class="btn nav-link allButtons " href='multiplayer.html'>Igrač vs igrač</a>   
-            </li>
-            <li class="nav-item ">
-              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
-            </li>
-            <li class="nav-item ">
-              <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+      <!-- Modals -->
 
     <!-- Log in Modal -->
 
@@ -57,16 +26,64 @@
             <div class="d-flex align-content-center flex-wrap">   
               <label for="">Unesite vaše korisničko ime</label>   
               <input type="text" id="loginInput">
-              <input type="button" value="Prijava" id="login" class="btn btn-secondary bg-warning" data-dismiss="modal"> 
+              <input type="button" value="Prijava" id="login" class="btn btn-secondary" data-dismiss="modal" style="background-color: #90caf9; margin-left: 5px; color: black;"> 
             </div>
           </div> 
         </div>
       </div>
     </div>
        
-    <!-- High score Modal -->
 
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+      <!-- Rules modal -->
+
+    <div class="modal fade" id="rules" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="rulesLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pravila</h5>
+          </div>
+          <div class="modal-body" id="rulesBody">
+            <p> Pozdrav!</p>
+            <p>Ovo je igra zanimljive geografije u kojoj se takmicite protiv racunara ili drugog igraca u svom znanju o svetu oko nas. Svaki pojam se se nagradjuje odrejenim brojem poena. Poeni se dodeljuju po ovoj semi:</p>
+            <table>
+              <tr>
+                <td>igrac</td>
+                <td>protivnik</td>
+              </tr>
+              <tr>
+                <td>Pojam iz baze 15</td>
+                <td>Nema pojam 0</td>
+              </tr>
+              <tr>
+                <td>Pojam 1 iz baze 10</td>
+                <td>Pojam 2 iz baze 10</td>
+              </tr>
+              <tr>
+                <td>Pojam 1 iz baze 5</td>
+                <td>Pojam 1 iz baze 5</td>
+              </tr>
+              <tr>
+                <td>Nema pojam 0</td>
+                <td>Pojam iz baze 15</td>
+              </tr>
+              <tr>
+                <td>Nema pojam 0</td>
+                <td>Nema pojam 0</td>
+              </tr>
+            </table>
+            <p>Imajte na umu da pojam dobija poene samo ako se nalazi u bazi! Nasa baza ima dosta pojmova ali posto jednostavno ne mozemo da pokrijemo sve ostavljamo taj zadatak vama, ukoliko naidjente na pojam koji fali, da uneste taj pojam na pocetnoj strani.</p>
+            <p>Hvala vam puno i srecno !!!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+      <!-- Hall of fame Modal -->
+
+    <div class="modal fade" id="hallOfFame" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="hallOfFameLabel" aria-hidden="true" >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -82,13 +99,13 @@
             </ol>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Zatvori</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
           </div>
         </div>
       </div>
     </div> 
 
-    <!-- New document Modal -->
+      <!-- New document Modal -->
 
     <div class="modal fade" id="newDocModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
       <div class="modal-dialog">
@@ -135,6 +152,42 @@
         </div>
       </div>
     </div> 
+
+    <!-- Navigation bar -->
+
+    <nav class="navbar navbar-expand-lg">
+      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
+      </button>
+      <div class="collapse navbar-collapse " id="navbarToggler">
+        <div class="btn-group ">
+          <ul class="navbar-nav ">
+            <li class="nav-item">
+              <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons" data-toggle="modal" data-target="#rules">Pravila</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons " href='singleplayer.html'>Igrač vs <img src="./icons/robo.png" class="icons"></a>   
+            </li>
+            <li class="nav-item">
+              <a class="btn nav-link allButtons " href='multiplayer.html'>Igrač vs igrač</a>   
+            </li>
+            <li class="nav-item ">
+              <a class="btn nav-link allButtons " id="hf" data-toggle="modal" data-target="#hallOfFame">Najviše unosa</a> 
+            </li>
+            <li class="nav-item ">
+              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najveci skor</a> 
+            </li>
+            <li class="nav-item ">
+              <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <!-- Category menu -->
 

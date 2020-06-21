@@ -35,6 +35,10 @@ class GeoGame {
         }); 
     }
 
+    _updateScores(score, playerIndex) {
+        this._players[playerIndex].emit('updateScore', score);
+    }
+
     _sendToPlayer(playerIndex, msg) { 
         this._players[playerIndex].emit('message', msg);
     }
@@ -101,8 +105,6 @@ class GeoGame {
     _getGameResult() {
         
         this._sendOpponent(this._usernames[0], this._usernames[1]);
-        
-
 
         const turns = this._turns;
         const players = this._usernames;
@@ -186,7 +188,8 @@ class GeoGame {
         this._sendResults1(winner, res1Arr, res2Arr);
         this._sendAnswers(player1Answer, player2Answer);
         this._scores(p1Score, p2Score);
-        
+        this._updateScores(p1Score, 0);
+        this._updateScores(p2Score, 1);
 
         
          console.log(p1Score);

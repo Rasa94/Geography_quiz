@@ -11,24 +11,6 @@
     <title>Igra</title>
 </head>
 <body id="multiplayerBody"> 
-    
- <!-- Search modal-->
-
- <div class="modal fade" id="searchingModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="searchingModal" aria-hidden="true">
-  <div class="modal-dialog"> 
-    <div class="modal-content"> 
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Tražimo drugog igrača</h5> 
-      </div>
-      <div class="modal-body searchingModal"></div> 
-      <div >
-        <div class="modal-footer">
-          <a class="btn nav-link allButtons " href='index.html'>Nazad</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
   <!-- Navigation bar -->
   
@@ -44,7 +26,7 @@
             <a class="btn  nav-link allButtons " href='index.html'>Početna strana</a>
           </li>
           <li class="nav-item">
-            <a class="btn nav-link allButtons ">Pravila</a>
+            <a class="btn nav-link allButtons" data-toggle="modal" data-target="#rules">Pravila</a>
           </li>
           <li class="nav-item">
             <a class="btn nav-link allButtons " href='singleplayer.html'>Igrač vs <img src="./icons/robo.png" class="icons"></a>   
@@ -53,7 +35,10 @@
             <a class="btn nav-link allButtons " href='multiplayer.html'>Igrač vs igrač</a>   
           </li>
           <li class="nav-item ">
-            <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najviše unosa</a> 
+            <a class="btn nav-link allButtons " id="hf" data-toggle="modal" data-target="#hallOfFame">Najviše unosa</a> 
+          </li>
+          <li class="nav-item ">
+            <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najveci skor</a> 
           </li>
           <li class="nav-item ">
             <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
@@ -62,6 +47,24 @@
       </div>
     </div>
   </nav>
+    
+ <!-- Search modal-->
+
+  <div class="modal fade" id="searchingModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"  aria-labelledby="searchingModal" aria-hidden="true">
+    <div class="modal-dialog"> 
+      <div class="modal-content"> 
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Tražimo drugog igrača</h5> 
+        </div>
+        <div class="modal-body searchingModal"></div> 
+        <div >
+          <div class="modal-footer">
+            <a class="btn nav-link allButtons " href='index.html'>Nazad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Log in Modal -->
 
@@ -69,26 +72,73 @@
     <div class="modal-dialog modal-sm"> 
       <div class="modal-content"> 
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Log in</h5> 
+          <h5 class="modal-title" id="staticBackdropLabel">Prijavite se</h5> 
         </div>
         <div class="modal-body">
           <div class="d-flex align-content-center flex-wrap">   
-            <label for="">Your username</label>   
+            <label for="">Unesite vaše korisničko ime</label>   
             <input type="text" name="" id="loginInput">
-            <input type="button" value="Log-in" id="login" class="btn btn-secondary bg-warning allButtons" data-dismiss="modal"> 
+            <input type="button" value="Prijava" id="login" class="btn btn-secondary" data-dismiss="modal" style="background-color: #90caf9; margin-left: 5px; color: black;"> 
           </div>
         </div> 
       </div>
     </div>
   </div>
 
-  <!-- High score Modal -->
+  <!-- Rules modal -->
 
-  <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+  <div class="modal fade" id="rules" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="rulesLabel" aria-hidden="true" >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">High scores:</h5>
+          <h5 class="modal-title">Pravila</h5>
+        </div>
+        <div class="modal-body" id="rulesBody">
+          <p> Pozdrav!</p>
+          <p>Ovo je igra zanimljive geografije u kojoj se takmicite protiv racunara ili drugog igraca u svom znanju o svetu oko nas. Svaki pojam se se nagradjuje odrejenim brojem poena. Poeni se dodeljuju po ovoj semi:</p>
+          <table>
+            <tr>
+              <td>igrac</td>
+              <td>protivnik</td>
+            </tr>
+            <tr>
+              <td>Pojam iz baze 15</td>
+              <td>Nema pojam 0</td>
+            </tr>
+            <tr>
+              <td>Pojam 1 iz baze 10</td>
+              <td>Pojam 2 iz baze 10</td>
+            </tr>
+            <tr>
+              <td>Pojam 1 iz baze 5</td>
+              <td>Pojam 1 iz baze 5</td>
+            </tr>
+            <tr>
+              <td>Nema pojam 0</td>
+              <td>Pojam iz baze 15</td>
+            </tr>
+            <tr>
+              <td>Nema pojam 0</td>
+              <td>Nema pojam 0</td>
+            </tr>
+          </table>
+          <p>Imajte na umu da pojam dobija poene samo ako se nalazi u bazi! Nasa baza ima dosta pojmova ali posto jednostavno ne mozemo da pokrijemo sve ostavljamo taj zadatak vama, ukoliko naidjente na pojam koji fali, da uneste taj pojam na pocetnoj strani.</p>
+          <p>Hvala vam puno i srecno !!!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Hall of fame Modal -->
+
+  <div class="modal fade" id="hallOfFame" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="hallOfFameLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova:</h5>
         </div>
         <div class="modal-body hofModal">
           <ol id="modalHs ">
@@ -100,7 +150,7 @@
           </ol>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
         </div>
       </div>
     </div>
@@ -192,14 +242,18 @@
     </div>
   </div>
 
+  
+
   <!-- Form fields -->
 
-  <main id="swup" class="transition-fade main2">
-    <div class="mb-4 d-flex   p-4 bd-highlight justify-content-center " >       
+  <main id="swup" class="transition-fade gameWindows">
+    <div class="mb-4 d-flex p-4 bd-highlight justify-content-center " >       
       <div class="" > 
         <div class="row">
-          <div class="col card text-white bg-primary mb-3 border rounded" id="letterWrapper" > 
-            <p id="letterSize"></p> 
+          <div class="col card text-white bg-primary mb-3 border rounded" id="letterWrapperMulty"> 
+            <p id="randomLetter">  </p> 
+          </div> 
+           <div class="col card text-white bg-primary mb-3 border rounded" id="timerWrapperMulty">  
             <p id="timer"> 90 </p> 
           </div> 
         </div> 
@@ -209,32 +263,32 @@
               <div class="row">
                 <div class="col8 win"> 
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Drzava</label>
-                    <input type="text" disabled="true" id="playerInputDr" class="custom2">  
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Drzava</label>
+                    <input type="text" disabled="true" id="playerInputDr" class="playerInputField">  
                   </div>
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Grad</label>
-                    <input type="text" disabled="true" id="playerInputGr" class="custom2"> 
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Grad</label>
+                    <input type="text" disabled="true" id="playerInputGr" class="playerInputField"> 
                   </div>
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Reka</label>
-                    <input type="text" disabled="true" id="playerInputRe" class="custom2"> 
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Reka</label>
+                    <input type="text" disabled="true" id="playerInputRe" class="playerInputField"> 
                   </div>
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Planina</label>
-                    <input type="text" disabled="true" id="playerInputPl" class="custom2">
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Planina</label>
+                    <input type="text" disabled="true" id="playerInputPl" class="playerInputField">
                   </div>
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Zivotinja</label>
-                    <input type="text" disabled="true" id="playerInputZi" class="custom2">
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Zivotinja</label>
+                    <input type="text" disabled="true" id="playerInputZi" class="playerInputField">
                   </div>
                   <div class="row">
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Biljka</label>
-                    <input type="text" disabled="true" id="playerInputBi" class="custom2">
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Biljka</label>
+                    <input type="text" disabled="true" id="playerInputBi" class="playerInputField">
                   </div>
                   <div class="row"> 
-                    <label for="" class="no-gutters border rounded overflow-hidden custom">Predmet</label> 
-                    <input type="text" disabled="true" id="playerInputPr" class="custom2">
+                    <label for="" class="no-gutters border rounded overflow-hidden categoryLabel">Predmet</label> 
+                    <input type="text" disabled="true" id="playerInputPr" class="playerInputField">
                   </div>
                   <button type="submit" class="btn btn-outline-light " id="answersSubmit" > Unesi odgovore </button>  
                 </div>
@@ -248,7 +302,7 @@
             <ul id="events"></ul>
             <div class="button-wrapper">
               <form id="chat-form">
-                  <input id="chat" class="no-gutters border rounded overflow-hidden custom"> 
+                  <input id="chat" class="no-gutters border rounded overflow-hidden categoryLabel"> 
                   <button id="say" class="btn allButtons ">Say</button>
               </form>
             </div>
