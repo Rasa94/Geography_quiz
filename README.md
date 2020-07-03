@@ -1,7 +1,7 @@
 # Geography quiz
 (JavaScript, Node.js, Express.js, Socket.io, Firebase, Bootstrap 4)
 
-This is the geography [quiz web app](https://zgeografija-953f7.web.app/). The goal of the quiz is to guess a term for each of the seven categories.
+This is the geography [quiz web app](https://zgeografija-953f7.web.app/). The goal of the game is to guess a term based on a randomly generated letter for each of the seven categories.
 The points are given to the player only if the used terms are in the database.
 
 
