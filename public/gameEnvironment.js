@@ -1,8 +1,10 @@
 import {hallOfFame} from "./hallOfFame.js" 
-//import {Results} from "./highScore.js" 
+import {highScore} from "./highScore.js"
 
 
 // DOM elements
+
+    //Input and renders
 
 let playerInputElements = [
     document.getElementById('playerInputDr'),
@@ -54,6 +56,7 @@ let computerResultRender = [
     document.getElementById('coResFieldPr')
 ]
 
+    // Game elements
 let letterBox = document.getElementById('randomLetter');
 let startGame = document.getElementById('startGame');
 let gameTimer = document.getElementById('timer');
@@ -62,9 +65,10 @@ let answerBtn = document.getElementById('answersSubmit');
 let scoreRenderPl = document.getElementById('scoreRenderPl');
 let scoreRenderComp = document.getElementById('scoreRenderComp'); 
 let declareWinner = document.getElementById('winner');
-let hallOfFameCall = document.getElementById('hf'); 
 let newGame = document.getElementById('newGame');
-let highScore = document.getElementById('hs');
+    // Modal calls 
+let hallOfFameCall = document.getElementById('hf'); 
+let highScoreCall = document.getElementById('hs');
 
 
     // Random letter generator
@@ -89,7 +93,7 @@ let countdownTimer = () => {
     timer = setInterval(() => {
         let counter = 90 - current;
         current += 1;
-        gameTimer.innerHTML = counter
+        gameTimer.innerHTML = counter;
 
         if (counter == 0) {
             clearInterval(timer);
@@ -107,16 +111,23 @@ startGame.addEventListener('click', e => {
         playerInputElements.forEach(el => {
             el.disabled = false;  
         });
-        random = rlg();
+        localStorage.setItem('randomLetterLocal', rlg());
+        random = localStorage.randomLetterLocal;
         letterBox.innerHTML = random;
         countdownTimer();  
-        console.log('started') 
+        console.log('started');
 })
 
 let getPlayerAnswer = (index) => {
-    playerResultElements[index].innerText = playerInputElements[index].value;
-    return playerInputElements[index].value;
+    let answer = playerInputElements[index].value;
+    let regEx = answer.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();
+    let validated = regEx.charAt(0).toUpperCase() + regEx.slice(1);
+    console.log(validated);
+    playerResultElements[index].innerText = validated;
+    return validated;
 }
+
+    // Generates a random number to determine the computer's answer
 
 let rng = () => {
     let random = Math.floor(Math.random() * 100) + 1; 
@@ -126,7 +137,7 @@ let rng = () => {
 let playerScore;
 let computerScore; 
 
-export let compareAnswers = (allAnswers, computer, player, computerRender, playerRender) => {
+let compareAnswers = (allAnswers, computer, player, computerRender, playerRender) => {
     if(allAnswers.includes(computer) && allAnswers.includes(player)) {
         if(computer === player ) {
             playerScore += 5;
@@ -152,13 +163,10 @@ export let compareAnswers = (allAnswers, computer, player, computerRender, playe
         playerScore += 15;
         playerRender.innerText = '15'; 
     } 
-    //console.log(playerScore);
-    //console.log(computerScore);
     if(!allAnswers.includes(player) && player != ''){
         playerRender.innerText = 'Pojam nije u bazi'; 
     }   
 } 
-
 
 let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet'];
 let answers = [[], [], [], [], [], [], []];
@@ -178,7 +186,7 @@ answerBtn.addEventListener('click', (e) => {
             .get();
 
         snapshot.docs.forEach(doc => {
-            answers[index].push(doc.data().pojam)
+            answers[index].push(doc.data().pojam);
         });
 
         let computerAnswer = '';
@@ -195,43 +203,40 @@ answerBtn.addEventListener('click', (e) => {
 
         let playerAnswer = getPlayerAnswer(index); 
         compareAnswers(answers[index], computerAnswer, playerAnswer, computerResultRender[index], playerResultRender[index]);
-        //console.log(playerAnswer);
-        //console.log(computerAnswer);
 
         if (index == maxIndex) 
         {
             console.log(answers);
-            scoreRenderPl.innerHTML = `Poeni igraca: ${playerScore}`;
+            scoreRenderPl.innerHTML = `Poeni igrača: ${playerScore}`;
             scoreRenderComp.innerHTML = `Poeni kompjutera: ${computerScore}`;
             if (computerScore > playerScore) 
             {
-                declareWinner.innerText = `Kompjuter je pobednik!!!`
+                declareWinner.innerText = `Kompjuter je pobednik!!!`;
             } 
             else if (computerScore < playerScore)
             {
-                let nick = localStorage.getItem('usernameLocal')
-                declareWinner.innerText = `Korisnik ${nick} je pobednik!!!!`
+                let nick = localStorage.getItem('usernameLocal');
+                declareWinner.innerText = `Korisnik ${nick} je pobednik!!!!`;
             }
             else 
             {
-                declareWinner.innerText = `Izjednaceno je!!!!`
+                declareWinner.innerText = `Izjednačeno je!!!!`;
             }
         } 
-
     }
 
     categories.forEach((category, index) => {
-        answerCollection(category, index, "B");
+        answerCollection(category, index, random);
     });
 
     resultModal.click(); 
-    //console.log(playerScore);
-    
 })
 
 newGame.addEventListener('click', (e) => {
     e.preventDefault();
     startGame.click();
-})
-
+});
 hallOfFameCall.addEventListener("click", hallOfFame); 
+highScoreCall.addEventListener('click', () => {
+    highScore()
+});

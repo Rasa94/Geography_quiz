@@ -44,15 +44,14 @@ main {
     overflow: hidden;
 }
 
-.hofModal {
+
+
+.HSModal {
     color: black;
     width: 30rem !important;
-    height: 25rem !important;
-    background-image: url('../backgrounds/Notebook.gif');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center center;
-    background-size: 30rem 30rem;
+    height: 34rem !important;
+    position: absolute;
+    overflow: hidden !important;
 }  
 
 .newDoc {
@@ -98,8 +97,30 @@ main {
 
         /* Modal components*/
 
-#rulesBody p{
+.background {
+    z-index: 0 !important;
+    position: relative;
+    opacity: 0.6;
+    left: 40px;
+}
+
+#HOFList {
+    z-index: 100 !important;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+}
+
+#HSList {
+    z-index: 100 !important;
+    position: absolute;
+    top: 30px;
+    left: 25px;
+}
+
+#rulesBody p, ul, td{
     color: black !important;
+    font-size: 20px;
 }
 
 .modal-header {
@@ -170,7 +191,8 @@ main {
 }
 
 #banner {
-    margin-left: 50px;
+    margin-left: 30px;
+    margin-top: 10px;
     color: #263138 !important;
 }
 
@@ -179,12 +201,20 @@ main {
     
 }
 
+.window {
+    display: none; 
+} 
+#chatDiv{
+    position: relative; 
+}
+
 #navbarToggler {
     padding: 0 !important;
     margin-left: 150px !important;
     margin-right: 20px;
     position: absolute;
-    right: 0px;
+    margin: auto !important;
+    right: 0;
 }
 
 .navbar-brand {
@@ -224,7 +254,8 @@ main {
 
 #letterWrapperMulty {
     text-align: center;
-    min-width: 80px !important;
+    width: 250px !important;
+    height: 170px !important;
     margin-left: 135px !important;
     margin-bottom: 5px !important;
     border-radius: 10% !important;
@@ -236,7 +267,7 @@ main {
 #timerWrapperMulty {
     text-align: center;
     width: 80px !important;
-    margin-left: 115px !important;
+    margin-left: 90px !important;
     margin-right: 135px !important;
     margin-bottom: 5px !important;
     border-radius: 10% !important;
@@ -282,17 +313,9 @@ label {
 #timer{
     font-size: 6rem !important;   
 }
-/*
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-*/
-#one, #two, #three, #four, #five {
+
+#one, #two, #three, #four, #five, 
+#oneHs, #twoHs, #threeHs, #fourHs, #fiveHs {
     font-size: 3rem;
 }
 
@@ -386,8 +409,8 @@ li {
 }
 
         /* Responsive settings*/
-
-@media (max-width: 1080px) {
+/*
+@media (max-width: 900px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
     }
@@ -422,16 +445,16 @@ li {
         margin-left: 40px;
     }
     
-}   
+}   */
 
-@media (max-width: 700px) {
+@media (max-width: 992px) {
     .modal {
         padding: 0 !important; 
     }
     .modal .modal-dialog {
-        width: 100% !important;
+        width: 60% !important;
         max-width: none !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
     }
     .modal .modal-content {
         height: 100% !important;
@@ -443,36 +466,36 @@ li {
     }
     #letterWrapperMulty {
         text-align: center;
-        min-width: 150px !important;
-        max-width: 150px !important;
-        height: 160px !important;
-        margin-bottom: 5px !important;
+        min-width: 50px !important;
+        margin-left: 14px !important;
+        margin-bottom: 10px !important;
         border-radius: 10% !important;
         background-color: #90caf9 !important;
         opacity: 0.8;
         padding: top;
     }
-
     #timerWrapperMulty {
         text-align: center;
-        min-width: 150px !important;
-        max-width: 150px !important;
-        height: 160px !important;
+        width: 50px !important;
+        margin-left: 40px !important;
+        margin-right: 0 !important;
         margin-bottom: 5px !important;
         border-radius: 10% !important;
         background-color: #90caf9 !important;
         opacity: 0.8;
     }
     #banner { 
+        position: absolute;
+        top: 5px;
+        left: 75px !important;
         width: 100px;
         margin: 0;
         font-size: 1.7rem !important;
     }
+    
     #navbarToggler {
         position: relative;
         margin: auto !important;
-        background-color: white;
-        z-index: 99999;
     }
     .window {
         display: none; 
@@ -480,6 +503,7 @@ li {
     #chatDiv{
         position: relative; 
     }
+    
     #chatButton {
         display: block;
     }
@@ -495,11 +519,18 @@ li {
 }
 
 @media (max-width: 414px) {
+    #navbarToggler {
+        background-color: white;
+    }
     .nav-item {
         margin-top: 4px;
         width: 383px !important;
-
     }  
+    .modal .modal-dialog {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
 }
 
 @media (max-width: 411px) {

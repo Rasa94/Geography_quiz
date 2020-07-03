@@ -15,10 +15,10 @@
   <!-- Navigation bar -->
   
   <nav class="navbar navbar-expand-lg">
-    <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
     </button>
+    <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
     <div class="collapse navbar-collapse " id="navbarToggler">
       <div class="btn-group ">
         <ul class="navbar-nav ">
@@ -38,7 +38,7 @@
             <a class="btn nav-link allButtons" id="hf" data-toggle="modal" data-target="#hallOfFame">Najviše unosa</a> 
           </li>
           <li class="nav-item ">
-            <a class="btn nav-link allButtons" id="hs" data-toggle="modal" data-target="#staticBackdrop">Najveci skor</a> 
+            <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#highScore">Najveci skor</a> 
           </li>
           <li class="nav-item ">
             <a class="btn nav-link allButtons" data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
@@ -110,7 +110,7 @@
           <p>Hvala vam puno i srecno !!!</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+          <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
         </div>
       </div>
     </div>
@@ -122,10 +122,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova::</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova:</h5>
         </div>
         <div class="modal-body hofModal">
-          <ol id="modalHs ">
+          <img class="background" src="../public/backgrounds/Notebook.gif">
+          <ol id="HOFList">
             <li id="one"></li>
             <li id="two"></li>
             <li id="three"></li>
@@ -134,7 +135,32 @@
           </ol>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+          <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- High score Modal -->
+
+  <div class="modal fade" id="highScore" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="highScoreLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji imaju najviše poena:</h5>
+        </div>
+        <div class="modal-body HSModal">
+          <img class="background" src="../public/backgrounds/highScore.gif">
+          <ol id="HSList">
+            <li id="oneHs"></li>
+            <li id="twoHs"></li>
+            <li id="threeHs"></li>
+            <li id="fourHs"></li>
+            <li id="fiveHs"></li>
+          </ol>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
         </div>
       </div>
     </div>

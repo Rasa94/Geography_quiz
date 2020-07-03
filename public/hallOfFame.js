@@ -17,7 +17,7 @@ let sortingArr = arr => {
         {
             if (counter > 0) 
             {
-                sorted.push([[`${current}`], [Number(counter)]]);   /*[`${current}`]*/ 
+                sorted.push([[`${current}`], [Number(counter)]]);   
             }
             current = arr[i];
             counter = 1;
@@ -49,7 +49,6 @@ export let hallOfFame = async() => {
         let sorting = sortingArr(arr);
         sorting.sort((a,b) => a[1] - b[1]).reverse();
         let sortedArr = sorting.slice(0, 5);
-        console.log(sortedArr);
         for(let i = 0; i < 6; i++)
         sortedArr.forEach((el, i) => {
             mostInputs[i].innerText = `${el[0]} -- ${el[1]}`

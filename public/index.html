@@ -33,22 +33,27 @@
       </div>
     </div>
        
-
       <!-- Rules modal -->
 
     <div class="modal fade" id="rules" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="rulesLabel" aria-hidden="true" >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Pravila</h5>
+            <h2 class="modal-title">Pravila</h2>
           </div>
           <div class="modal-body" id="rulesBody">
-            <p> Pozdrav!</p>
-            <p>Ovo je igra zanimljive geografije u kojoj se takmicite protiv racunara ili drugog igraca u svom znanju o svetu oko nas. Svaki pojam se se nagradjuje odrejenim brojem poena. Poeni se dodeljuju po ovoj semi:</p>
+            <h3>Zdravo!</h3>
+            <p>Dobrodošli u igru zanimljive geografije u kojoj ćete se takmičiti u poznavanju sveta oko nas. Vaš protivnik može biti računar ili drugi igrač.Pravila su sledeća:</p>
+            <ul>
+              <li>Svaki pojam koji unesete se nadrađuje određenim brojem poena.</li>
+              <li>Samo pojmovi koji se nalaze u našoj bazi podataka će se nagrađivati poenima.</li>
+            </ul>
+            <p>Ukoliko naiđete na pojam koji nije u bazi, imaćete mogućnost da ga unesete na početnoj strani.</p>
+            <p>Poeni se dodeljuju po sledećoj šemi:</p>
             <table>
               <tr>
-                <td>igrac</td>
-                <td>protivnik</td>
+                <td>Igrač</td>
+                <td>Protivnik</td>
               </tr>
               <tr>
                 <td>Pojam iz baze 15</td>
@@ -71,11 +76,11 @@
                 <td>Nema pojam 0</td>
               </tr>
             </table>
-            <p>Imajte na umu da pojam dobija poene samo ako se nalazi u bazi! Nasa baza ima dosta pojmova ali posto jednostavno ne mozemo da pokrijemo sve ostavljamo taj zadatak vama, ukoliko naidjente na pojam koji fali, da uneste taj pojam na pocetnoj strani.</p>
-            <p>Hvala vam puno i srecno !!!</p>
+            <br>
+            <p>Hvala Vam i srećno!</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+            <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
           </div>
         </div>
       </div>
@@ -90,7 +95,8 @@
             <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji su uneli najviše pojmova:</h5>
           </div>
           <div class="modal-body hofModal">
-            <ol id="modalHs ">
+            <img class="background" src="../public/backgrounds/Notebook.gif">
+            <ol id="HOFList">
               <li id="one"></li>
               <li id="two"></li>
               <li id="three"></li>
@@ -99,7 +105,32 @@
             </ol>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Nazad</button>
+            <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <!-- High score Modal -->
+
+    <div class="modal fade" id="highScore" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="highScoreLabel" aria-hidden="true" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Korisnici koji imaju najviše poena:</h5>
+          </div>
+          <div class="modal-body HSModal">
+            <img class="background" src="../public/backgrounds/highScore.gif">
+            <ol id="HSList">
+              <li id="oneHs"></li>
+              <li id="twoHs"></li>
+              <li id="threeHs"></li>
+              <li id="fourHs"></li>
+              <li id="fiveHs"></li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary allButtons" data-dismiss="modal">Nazad</button>
           </div>
         </div>
       </div>
@@ -156,10 +187,11 @@
     <!-- Navigation bar -->
 
     <nav class="navbar navbar-expand-lg">
-      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
+      
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <img src="./icons/menu-button.png" style="height: 30px; width: 30px;">
       </button>
+      <h1 class="navbar-brand bd-highlight" id="banner">Zanimljiva geografija!</h1> 
       <div class="collapse navbar-collapse " id="navbarToggler">
         <div class="btn-group ">
           <ul class="navbar-nav ">
@@ -179,7 +211,7 @@
               <a class="btn nav-link allButtons " id="hf" data-toggle="modal" data-target="#hallOfFame">Najviše unosa</a> 
             </li>
             <li class="nav-item ">
-              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#staticBackdrop">Najveci skor</a> 
+              <a class="btn nav-link allButtons " id="hs" data-toggle="modal" data-target="#highScore">Najveci skor</a> 
             </li>
             <li class="nav-item ">
               <a class="btn nav-link allButtons " data-toggle="modal" data-target="#logInModal" id="logInButton">Prijavite se</a> 
@@ -230,7 +262,7 @@
       </div>
     </main> 
 
-    <button id="magic">magic button</button>
+    <!-- <button id="magic">magic button</button> -->
     
     <footer class="mastfoot mt-auto" id="footer">
       <div class="inner">

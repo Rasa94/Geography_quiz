@@ -77,8 +77,6 @@ class GeoGame {
         this._checkGameOver()
     }
 
-
-
     _setNames(playerIndex, name) {
         this._usernames[playerIndex] = name;
         //console.log(name); 
@@ -86,12 +84,7 @@ class GeoGame {
 
     _checkGameOver() {
         const turns = this._turns;
-
-       
-        
         if(turns[0] && turns[1]) {
-            
-
             this._sendToPlayers('Game over!!!');
             this._getGameResult();
             this._turns = [null, null]; 

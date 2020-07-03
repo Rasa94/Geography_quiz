@@ -1,6 +1,10 @@
 import {hallOfFame} from "./hallOfFame.js" 
 import {Results} from "./results.js" 
+import {highScore} from "./highScore.js"
 
+// DOM elements
+
+    //Input and renders
 
 let playerInputElements = [
     document.getElementById('playerInputDr'),
@@ -52,30 +56,34 @@ let computerOutputRender = [
     document.getElementById('computerResultPr')
 ]
 
+let back = document.getElementById('swup');
+let nick = localStorage.getItem('usernameLocal');
+    // Game elements
 let letterBox = document.getElementById('randomLetter');
 let gameTimer = document.getElementById('timer');
-let answerBtn = document.getElementById('answersSubmit'); 
-let back = document.getElementById('swup');
-let hallOfFameCall = document.getElementById('hf'); 
-let declareWinner = document.getElementById('winner');
 let player1 = document.getElementById('pl1');
 let player2 = document.getElementById('pl2');
-let nick = localStorage.getItem('usernameLocal')
+let answerBtn = document.getElementById('answersSubmit'); 
 let scorePl1 = document.getElementById('scoreRenderPl1');
 let scorePl2 = document.getElementById('scoreRenderPl2');
+let declareWinner = document.getElementById('winner');
 let newGame = document.getElementById('newGame');
+    // Chat elements
 let chatButton = document.getElementById('chatButton');
 let chatForm = document.getElementById('chat-form');
 let chatBody = document.getElementById('rps-wrapper');
+    // Modal calls
+let hallOfFameCall = document.getElementById('hf'); 
+let highScoreCall = document.getElementById('hs');
 
 
-// Random letter 
+    // Random letter 
 
 let randomLetter = (letter) => {
     letterBox.innerText = letter;  
 }
 
-
+    // Timer
 
 let timer;
 let start = () => {
@@ -98,9 +106,9 @@ let start = () => {
     }, 1000);
 }
 
+    // Game start
 
 let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet'];
-let checked = []
 
 answerBtn.addEventListener('click', (e) => { 
     e.preventDefault(); 
@@ -108,8 +116,13 @@ answerBtn.addEventListener('click', (e) => {
     gameTimer.innerHTML = '0'; 
 
     let playerAnswer = [];
+    let checked = [];
+
     playerInputElements.forEach((element) => {
-        playerAnswer.push(element.value); 
+        let answer = element.value;
+        let regEx = answer.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();
+        let validated = regEx.charAt(0).toUpperCase() + regEx.slice(1);
+        playerAnswer.push(validated); 
     });
 
     let answerCollection = async (category, index, answer) => {
@@ -127,21 +140,26 @@ answerBtn.addEventListener('click', (e) => {
             {
                 checked.push('/')
             } 
+
+            if (checked.length === 7) {
+                sock.emit('answers', checked); 
+            }
+
         clearInterval(timer);
     }
-
     categories.forEach((category, index) => {
         answerCollection(category, index, playerAnswer[index]); 
     });
 
+    /*
     console.log(checked); 
-
     let interval = setInterval(() => {
         if (checked != 0) {
             sock.emit('answers', checked); 
             clearInterval(interval) 
         }
     }, 500)  
+    */
     playerAnswer = []; 
 });
 
@@ -156,17 +174,14 @@ const writeEvent = (text) => {
     const parent = document.querySelector('#events');
     const el = document.createElement('li');
     el.innerHTML = text;
-
     parent.appendChild(el);
 };
 
 const onFormSubmitted = (e) => {
     e.preventDefault();
-
     const input = document.querySelector('#chat');
     const text = input.value;
     input.value = '';
-
     sock.emit('message', text);
 }
 
@@ -176,14 +191,9 @@ chatButton.addEventListener('click', (e) => {
 })
 
 
-
-
-writeEvent('Dobrodošli :D')  
-
 const sock = io();
 
-
-
+writeEvent('Dobrodošli :D')  
 sock.on('message', writeEvent); 
 sock.on('start', start); 
 sock.on('letter', randomLetter); 
@@ -263,106 +273,6 @@ sock.on('open', () => {
 
 chatForm.addEventListener('submit', onFormSubmitted);
 hallOfFameCall.addEventListener("click", hallOfFame); 
-
-
-
-
-/*
-
-sock.on('message', writeEvent); 
-
-sock.on('start', start); 
-
-sock.on('letter', randomLetter); 
-
-sock.on('wait', loading);   
-
-sock.on('render1', renderResults1);
-
-sock.on('render2', renderResults2);
-
-sock.on('winner', renderWinner); 
-
-sock.on('answer1', renderAnswer1);
-
-sock.on('answer2', renderAnswer2);
-
-sock.on('score1', renderFirstScore);
-
-sock.on('score2', renderSecondScore);
-
-sock.on('me', renderName1)
-
-sock.on('against', renderName2)
-
-sock.on('open', openResultModal);
-
-
-let openResultModal = () => {
-    resultModal.click(); 
-}
-
-    // Render functions 
-
-const renderResults1 = async (arrMe) => {
-    let arr1 = await arrMe;
-    playerResultRender.forEach((el,index) => {
-        el.innerText = arr1[index]; 
-    })
-}
-
-const renderResults2 = async (arrMe) => {
-    let arr = await arrMe
-    computerResultRender.forEach((el,index) => {
-        el.innerText = arr[index]; 
-    })
-}
-
-const renderAnswer1 = (answer) => {
-    playerOuputElements.forEach((el,index) => {
-        el.innerText = answer[index];
-    });
-}
-
-const renderAnswer2 = (answer) => {
-    computerOutputRender.forEach((el,index) => {
-        el.innerText = answer[index];
-    });
-}
-
-const renderName1 =  (name) => {
-    player1.innerText = `${name}`; 
-}
-
-const renderName2 = async (name) => {
-    let a = await name;
-    player2.innerText = `${a}`;
-}
-
-const renderFirstScore = (score) => {
-    scorePl1.innerText = `Ukupno: ${score}`
-}
-
-const renderSecondScore = (score) => {
-    scorePl2.innerText = `Ukupno: ${score}`
-}
-
-const renderWinner = async (winner) => {
-    let win = await winner;
-    if (win == 'draw') 
-    {
-        declareWinner.innerText = `Izjednačeno je!`; 
-    }
-    else {
-        declareWinner.innerText = `Pobednik je ${win}`; 
-    }
-}
-
-let loading = () => {
-    console.log('waiting')
-    $('#searchingModal').modal('show');
-}
-
-   
-*/
-
+highScoreCall.addEventListener('click', () => {
+    highScore()
+})
