@@ -21,7 +21,7 @@ npm install
 npm install express@4.15.2
 npm install socket.io
 ```
-## Run Express from server folder
+## Run Express from server folder:
 ```
 npm run dev
 ```
