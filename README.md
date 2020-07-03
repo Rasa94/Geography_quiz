@@ -28,4 +28,4 @@ npm run dev
 
 ## App Info
 
-This app is part of the [IT Bootcamp](https://itbootcamp.rs/) project "Ojacavanje".
+This app is part of the [IT Bootcamp](https://itbootcamp.rs/) project "Ojačavanje".
