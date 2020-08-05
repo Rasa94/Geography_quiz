@@ -123,6 +123,14 @@ main {
     font-size: 20px;
 }
 
+#rulesBody table {
+    width: 100%;
+}
+
+#rulesBody table td{
+    border: black 1px solid;
+}
+
 .modal-header {
     background-color: #90caf9 !important;
 }
