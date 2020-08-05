@@ -56,7 +56,7 @@ let computerOutputRender = [
     document.getElementById('computerResultPr')
 ]
 
-let back = document.getElementById('swup');
+//let back = document.getElementById('swup');
 let nick = localStorage.getItem('usernameLocal');
     // Game elements
 let letterBox = document.getElementById('randomLetter');
