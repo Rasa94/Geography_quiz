@@ -43,7 +43,7 @@ login.addEventListener('click', e => {
     if(!localStorage.usernameLocal || loginInput.value == '') { 
         popUp = setTimeout(popup, 1000);
     } 
-    else if (localStorage.usernameLocal);
+    else if (localStorage.usernameLocal)
     { 
         clearTimeout(popUp);
     }
@@ -54,7 +54,7 @@ login.addEventListener('click', e => {
 term.addEventListener('click', () => {
     let input = termInput.value;
     // The term can't contain any whitespace or special characters
-    let validated = input.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();  /*(/[^a-zA-Z0-9]/g, '')     ^\S*$*/  
+    let validated = input.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();   
     localStorage.setItem('termLocal', validated);      
 })
 
