@@ -349,6 +349,7 @@ html.is-leaving .transition-fade {
         /* chat */
 
 #rps-wrapper {
+    display: block; 
     position: relative;
     margin-top: 68px;
     margin-right: 50px;
@@ -357,6 +358,7 @@ html.is-leaving .transition-fade {
 }
 
 #events {
+    
     position: absolute;
     top: 20px;
     left: 20px; 
@@ -373,6 +375,11 @@ html.is-leaving .transition-fade {
     bottom: 20px;
     left: 20px; 
 }  
+
+
+
+
+
 
 #chat {
     width: 150px !important; 
@@ -417,7 +424,7 @@ li {
 }
 
         /* Responsive settings*/
-/*
+/* 
 @media (max-width: 900px) {
     .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -453,7 +460,7 @@ li {
         margin-left: 40px;
     }
     
-}   */
+}    */
 
 @media (max-width: 992px) {
     .modal {
