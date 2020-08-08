@@ -209,9 +209,6 @@ main {
     
 }
 
-.window {
-    display: none; 
-} 
 #chatDiv{
     position: relative; 
 }
@@ -233,7 +230,6 @@ main {
 
 .nav-item {
     margin-right: 5px;
-
 } 
 
         /* Game room components */
@@ -349,7 +345,6 @@ html.is-leaving .transition-fade {
         /* chat */
 
 #rps-wrapper {
-    display: block; 
     position: relative;
     margin-top: 68px;
     margin-right: 50px;
@@ -358,7 +353,6 @@ html.is-leaving .transition-fade {
 }
 
 #events {
-    
     position: absolute;
     top: 20px;
     left: 20px; 
@@ -471,7 +465,7 @@ li {
         margin: auto !important;
     }
     .window {
-        display: none; 
+        display: none !important; 
     } 
     #chatDiv{
         position: relative; 
