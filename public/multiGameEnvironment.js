@@ -72,6 +72,7 @@ let newGame = document.getElementById('newGame');
 let chatButton = document.getElementById('chatButton');
 let chatForm = document.getElementById('chat-form');
 let chatBody = document.getElementById('rps-wrapper');
+let chatMsgList = document.getElementById('events');
     // Modal calls
 let hallOfFameCall = document.getElementById('hf'); 
 let highScoreCall = document.getElementById('hs');
@@ -170,11 +171,16 @@ newGame.addEventListener('click', (e) => {
 
     // Chat
 
+const scrollToBottom = () => {
+    chatMsgList.scrollTop = chatMsgList.scrollHeight;
+}
+
 const writeEvent = (text) => {
     const parent = document.querySelector('#events');
     const el = document.createElement('li');
     el.innerHTML = text;
     parent.appendChild(el);
+    scrollToBottom();
 };
 
 const onFormSubmitted = (e) => {
@@ -189,6 +195,9 @@ chatButton.addEventListener('click', (e) => {
     e.preventDefault();
     chatBody.classList.toggle('window');
 })
+
+
+
 
 
 const sock = io();

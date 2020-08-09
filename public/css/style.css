@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin:0;
     font-family: Times;
-
 }
 
         /* Main elements and modals */
@@ -63,7 +62,6 @@ main {
     background-position: center center;
     background-size: 30rem 30rem;
 }
-
 
 .searchingModal {
     width: 30rem !important;
@@ -225,7 +223,6 @@ main {
 .navbar-brand {
     color: white !important;    
     font-size: 2rem !important;  
- 
 }
 
 .nav-item {
@@ -349,7 +346,7 @@ html.is-leaving .transition-fade {
     margin-top: 68px;
     margin-right: 50px;
     height: 350px;
-    width: 250px; 
+    width: 280px; 
 }
 
 #events {
@@ -359,9 +356,9 @@ html.is-leaving .transition-fade {
     background-color: white; 
     opacity: 0.9; 
     height: 250px;
-    width: 220px;
+    width: 250px;
     border-radius: 5%;
-    overflow-y: scroll; 
+    overflow-y: auto; 
 }
 
 .button-wrapper {
@@ -386,6 +383,7 @@ li {
 #say {
     margin-top: 0px;
     margin-bottom: 4px;
+    width: 80px;
 }
 
         /* Footer */
@@ -478,8 +476,8 @@ li {
         width: 100%;
         margin: 0;
     }
-    ul#events {
-        width: 80% !important; 
+    #events {
+        width: 90% !important; 
         overflow-y: scroll;
         font-size: 20px !important;
     }
