@@ -66,6 +66,7 @@ let scoreRenderPl = document.getElementById('scoreRenderPl');
 let scoreRenderComp = document.getElementById('scoreRenderComp'); 
 let declareWinner = document.getElementById('winner');
 let newGame = document.getElementById('newGame');
+let answerForm = document.getElementById('answerForm');
     // Modal calls 
 let hallOfFameCall = document.getElementById('hf'); 
 let highScoreCall = document.getElementById('hs');
@@ -108,6 +109,7 @@ let countdownTimer = () => {
 let random;     
 startGame.addEventListener('click', e => {
         e.preventDefault();
+        startGame.disabled = true;
         playerInputElements.forEach(el => {
             el.disabled = false;  
         });
@@ -230,13 +232,20 @@ answerBtn.addEventListener('click', (e) => {
     });
 
     resultModal.click(); 
+    startGame.disabled = false;
+
+    setTimeout(() => {
+        answerForm.reset();
+    }, 500);
 })
 
 newGame.addEventListener('click', (e) => {
     e.preventDefault();
     startGame.click();
 });
+
 hallOfFameCall.addEventListener("click", hallOfFame); 
 highScoreCall.addEventListener('click', () => {
     highScore()
 });
+
