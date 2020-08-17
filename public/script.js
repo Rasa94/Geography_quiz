@@ -120,10 +120,10 @@ formBtn.addEventListener('click', e => {
 })
 
 
-hallOfFameCall.addEventListener("click", hallOfFame); 
-highScoreCall.addEventListener('click', () => {
-    highScore()
-})
+// hallOfFameCall.addEventListener("click", hallOfFame); 
+// highScoreCall.addEventListener('click', () => {
+//     highScore()
+// })
 
 
 /* This piece of code is for adding huge arrays of terms for each category */

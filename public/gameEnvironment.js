@@ -244,8 +244,8 @@ newGame.addEventListener('click', (e) => {
     startGame.click();
 });
 
-hallOfFameCall.addEventListener("click", hallOfFame); 
-highScoreCall.addEventListener('click', () => {
-    highScore()
-});
+// hallOfFameCall.addEventListener("click", hallOfFame); 
+// highScoreCall.addEventListener('click', () => {
+//     highScore()
+// });
 
