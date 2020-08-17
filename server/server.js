@@ -29,28 +29,47 @@ const rlg = () => {
     return random
 }
 
+let user1;
+
 io.on('connection', (sock) => {
-    if (waitingPlayer) 
-    {
-        let random = rlg()
-        new GeoGame(waitingPlayer, sock);  
-        [sock, waitingPlayer].forEach(s => {
-            s.emit('message', 'Igra je počela!')
-            s.emit('start', 'Odbrojavanje')
-            s.emit('letter', random) ;
-        });
-        waitingPlayer = null;
-    } 
-    else 
-    {
-        waitingPlayer = sock;
-        sock.emit('wait', 'load')  
-        waitingPlayer.emit('message', 'Traži se protivnik');
-    }
 
     sock.on('message', (text) => {
         io.emit('message', text); 
     });
+
+    if(waitingPlayer)
+    {
+        sock.on('nick', user2 => {
+            console.log(user1, user2);
+            if(user1 == user2 || user1 == undefined) {
+                user1 = user2;
+                waitingPlayer = sock;
+                waitingPlayer.emit('message', 'Traži se protivnik');
+                sock.emit('wait', 'load');
+            } 
+            else
+            {
+                new GeoGame(waitingPlayer, sock);  
+                let random = rlg();
+                [sock, waitingPlayer].forEach(s => {
+                    s.emit('message', 'Igra je počela!')
+                    s.emit('start', 'Odbrojavanje')
+                    s.emit('letter', random) ;
+                });
+                waitingPlayer = null; 
+                user1 = undefined;
+            }
+        });
+    } 
+    else 
+    {
+        waitingPlayer = sock;
+        waitingPlayer.on('nick', user2 => {
+            user1 = user2;
+        })
+        sock.emit('wait', 'load');
+        waitingPlayer.emit('message', 'Traži se protivnik');
+    }
 });
 
 server.on('error', (err) => {

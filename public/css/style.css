@@ -283,8 +283,8 @@ main {
         /* Inputs */
  
 .categoryLabel {
-    width: 60px !important;  
-    margin: 2px 5px !important; 
+    width: 62px !important;  
+    margin: 2px 4px !important; 
     background-color: lightgray;
     color: black;
     opacity: 0.8; 

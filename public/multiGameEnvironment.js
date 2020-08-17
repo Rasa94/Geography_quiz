@@ -57,7 +57,7 @@ let computerOutputRender = [
 ]
 
 //let back = document.getElementById('swup');
-let nick = localStorage.getItem('usernameLocal');
+let nick = localStorage.getItem('usernameLocal'); 
     // Game elements
 let letterBox = document.getElementById('randomLetter');
 let gameTimer = document.getElementById('timer');
@@ -77,6 +77,8 @@ let chatMsgList = document.getElementById('events');
 let hallOfFameCall = document.getElementById('hf'); 
 let highScoreCall = document.getElementById('hs');
 
+
+//sock.emit('user', nick);
 
     // Random letter 
 
@@ -202,7 +204,8 @@ chatButton.addEventListener('click', (e) => {
 
 const sock = io();
 
-writeEvent('Dobrodošli :D')  
+writeEvent('Dobrodošli :D') 
+sock.emit('nick', nick);
 sock.on('message', writeEvent); 
 sock.on('start', start); 
 sock.on('letter', randomLetter); 
@@ -281,7 +284,7 @@ sock.on('open', () => {
 
 
 chatForm.addEventListener('submit', onFormSubmitted);
-hallOfFameCall.addEventListener("click", hallOfFame); 
-highScoreCall.addEventListener('click', () => {
-    highScore()
-})
+// hallOfFameCall.addEventListener("click", hallOfFame); 
+// highScoreCall.addEventListener('click', () => {
+//     highScore()
+// })
