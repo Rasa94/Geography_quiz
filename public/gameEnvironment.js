@@ -82,7 +82,6 @@ let rlg = () => {
                    'S', 'T', 'Ć', 'U', 'F', 
                    'H', 'C', 'Č', 'DŽ', 'Š'];
     let random = letters[Math.floor(Math.random()*letters.length)];
-    console.log(random);
     return random;
 }
  
@@ -117,14 +116,12 @@ startGame.addEventListener('click', e => {
         random = localStorage.randomLetterLocal;
         letterBox.innerHTML = random;
         countdownTimer();  
-        console.log('started');
 })
 
 let getPlayerAnswer = (index) => {
     let answer = playerInputElements[index].value;
     let regEx = answer.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();
     let validated = regEx.charAt(0).toUpperCase() + regEx.slice(1);
-    console.log(validated);
     playerResultElements[index].innerText = validated;
     return validated;
 }
@@ -208,7 +205,6 @@ answerBtn.addEventListener('click', (e) => {
 
         if (index == maxIndex) 
         {
-            console.log(answers);
             scoreRenderPl.innerHTML = `Poeni igrača: ${playerScore}`;
             scoreRenderComp.innerHTML = `Poeni kompjutera: ${computerScore}`;
             if (computerScore > playerScore) 

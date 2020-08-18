@@ -1,5 +1,5 @@
-import {hallOfFame} from "./hallOfFame.js" 
-import {highScore} from "./highScore.js"
+// import {hallOfFame} from "./hallOfFame.js" 
+// import {highScore} from "./highScore.js"
 import {AddTerm} from "./add.js" 
 
 // Dom elements  
@@ -15,8 +15,8 @@ let term = document.getElementById('term');
 let termInput = document.getElementById('termInput'); 
 let inputForm = document.getElementById('formNewDocument');    
     // High score
-let hallOfFameCall = document.getElementById('hf'); 
-let highScoreCall = document.getElementById('hs');
+// let hallOfFameCall = document.getElementById('hf'); 
+// let highScoreCall = document.getElementById('hs');
 
 
     // Log in popup
@@ -28,7 +28,6 @@ let popup = () => {
 }
 
 if(!localStorage.usernameLocal && loginInput.value == ''){
-    console.log("empty")
     $('#logInModal').modal('show');
 }
 
@@ -39,7 +38,7 @@ login.addEventListener('click', e => {
     e.preventDefault() 
     let username = loginInput.value;
     localStorage.setItem('usernameLocal', username);
-    console.log(localStorage.usernameLocal);
+    // console.log(localStorage.usernameLocal);
     if(!localStorage.usernameLocal || loginInput.value == '') { 
         popUp = setTimeout(popup, 1000);
     } 
@@ -55,7 +54,8 @@ term.addEventListener('click', () => {
     let input = termInput.value;
     // The term can't contain any whitespace or special characters
     let validated = input.replace(/[^a-zA-Z0-9\S*$]/g, '').toLowerCase();   
-    localStorage.setItem('termLocal', validated);      
+    localStorage.setItem('termLocal', validated);  
+    termInput.value = '';
 })
 
     // First letter uppercase conversion

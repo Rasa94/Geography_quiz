@@ -44,7 +44,6 @@ io.on('connection', (sock) => {
             if(user1 == user2 || user1 == undefined) {
                 user1 = user2;
                 waitingPlayer = sock;
-                waitingPlayer.emit('message', 'Traži se protivnik');
                 sock.emit('wait', 'load');
             } 
             else
@@ -68,7 +67,6 @@ io.on('connection', (sock) => {
             user1 = user2;
         })
         sock.emit('wait', 'load');
-        waitingPlayer.emit('message', 'Traži se protivnik');
     }
 });
 

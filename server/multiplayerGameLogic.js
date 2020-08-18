@@ -185,8 +185,8 @@ class GeoGame {
         this._updateScores(p2Score, 1);
 
         
-         console.log(p1Score);
-         console.log(p2Score);
+        // console.log(p1Score);
+        // console.log(p2Score);
     }
 }
 

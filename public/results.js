@@ -15,13 +15,11 @@ export class Results {
            
     if (snapshot.size == 1) 
       {
-        console.log('true')
         this.updateResult(points);
         this.updateCounter();
       } 
       else 
       {
-        console.log('false')
         this.setResult(points);
       } 
   }

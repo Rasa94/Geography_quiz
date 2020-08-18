@@ -84,14 +84,11 @@ export class AddTerm {
                 .then(snapshot => {
                     if (snapshot.docs.length == 0) {
                         this.termAdder();
-                        console.log('donedone')
-                        $('#newDocModal').modal('show')
-
+                        $('#newDocModal').modal('show');
                     } 
                     else 
                     {
-                        console.log('Term exists')
-                        $('#docExistsModal').modal('show')
+                        $('#docExistsModal').modal('show');
                     }
                 })
                 .catch(error => {

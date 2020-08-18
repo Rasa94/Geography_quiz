@@ -1,6 +1,6 @@
-import {hallOfFame} from "./hallOfFame.js" 
 import {Results} from "./results.js" 
-import {highScore} from "./highScore.js"
+// import {hallOfFame} from "./hallOfFame.js" 
+// import {highScore} from "./highScore.js"
 
 // DOM elements
 
@@ -74,11 +74,9 @@ let chatForm = document.getElementById('chat-form');
 let chatBody = document.getElementById('rps-wrapper');
 let chatMsgList = document.getElementById('events');
     // Modal calls
-let hallOfFameCall = document.getElementById('hf'); 
-let highScoreCall = document.getElementById('hs');
+// let hallOfFameCall = document.getElementById('hf'); 
+// let highScoreCall = document.getElementById('hs');
 
-
-//sock.emit('user', nick);
 
     // Random letter 
 
@@ -137,7 +135,6 @@ answerBtn.addEventListener('click', (e) => {
             if (snapshot.size == 1) 
             {
                 checked.push(answer)
-                console.log(answer);
             } 
             else 
             {
@@ -154,15 +151,6 @@ answerBtn.addEventListener('click', (e) => {
         answerCollection(category, index, playerAnswer[index]); 
     });
 
-    /*
-    console.log(checked); 
-    let interval = setInterval(() => {
-        if (checked != 0) {
-            sock.emit('answers', checked); 
-            clearInterval(interval) 
-        }
-    }, 500)  
-    */
     playerAnswer = []; 
 });
 
@@ -198,10 +186,6 @@ chatButton.addEventListener('click', (e) => {
     chatBody.classList.toggle('window');
 })
 
-
-
-
-
 const sock = io();
 
 writeEvent('Dobrodošli :D') 
@@ -213,7 +197,6 @@ sock.on('letter', randomLetter);
     // Renders 
 
 sock.on('wait', () => {
-    console.log('waiting')
     $('#searchingModal').modal('show');
 });   
 
@@ -260,13 +243,11 @@ sock.on('score1', (score) => {
 
 sock.on('score2', (score) => {
     scorePl2.innerText = `Ukupno: ${score}`
-    console.log(score)
 });
 
 sock.on('updateScore', (score) => {
     let sendResult = new Results();
     sendResult.checker(score); 
-    console.log(score)
 });
 
 sock.on('me', (name) => {
@@ -284,6 +265,7 @@ sock.on('open', () => {
 
 
 chatForm.addEventListener('submit', onFormSubmitted);
+
 // hallOfFameCall.addEventListener("click", hallOfFame); 
 // highScoreCall.addEventListener('click', () => {
 //     highScore()
