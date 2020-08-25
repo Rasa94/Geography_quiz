@@ -73,6 +73,16 @@ main {
     background-size: 30rem 30rem;
 }
 
+.disconnectModal {
+    width: 30rem !important;
+    height: 25rem !important;
+    background-image: url('../backgrounds/left.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    background-size: 30rem 30rem;
+}
+
 .documentExists {
     width: 30rem !important;
     height: 25rem !important;
@@ -132,6 +142,10 @@ main {
 .modal-header {
     background-color: #90caf9 !important;
 }
+
+/* .modal .modal-dialog {
+    width: 100% !important;
+} */
 
 .gameWindows { 
     margin-top: 10px !important;       

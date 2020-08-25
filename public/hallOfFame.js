@@ -13,22 +13,17 @@ let sortingArr = arr => {
     let current = null;
     let counter = 0;
     for (let i = 0; i < arr.length; i++) {  
-        if (arr[i] != current) 
-        {
-            if (counter > 0) 
-            {
+        if (arr[i] != current) {
+            if (counter > 0) {
                 sorted.push([[`${current}`], [Number(counter)]]);   
             }
             current = arr[i];
             counter = 1;
-        } 
-        else 
-        {
+        } else {
             counter++;
         }
     }
-    if (counter > 0) 
-    {
+    if (counter > 0) {
         sorted.push([[`${current}`], [Number(counter)]]);       
     } 
     return sorted;

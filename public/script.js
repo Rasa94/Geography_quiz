@@ -27,7 +27,7 @@ let popup = () => {
     $('#logInModal').modal('show');
 }
 
-if(!localStorage.usernameLocal && loginInput.value == ''){
+if(!localStorage.usernameLocal && loginInput.value == '') {
     $('#logInModal').modal('show');
 }
 
@@ -42,8 +42,7 @@ login.addEventListener('click', e => {
     if(!localStorage.usernameLocal || loginInput.value == '') { 
         popUp = setTimeout(popup, 1000);
     } 
-    else if (localStorage.usernameLocal)
-    { 
+    else if (localStorage.usernameLocal) { 
         clearTimeout(popUp);
     }
 }); 
@@ -73,12 +72,9 @@ inputForm.addEventListener('submit', e => {
     let termLocal = capitalFirst(localStorage.termLocal);
     let obj = new AddTerm(username, categoryLocal, termLocal);   
 
-    if (localStorage.categoryLocal == null || localStorage.termLocal == '') 
-    {
+    if (localStorage.categoryLocal == null || localStorage.termLocal == '') {
         $('#insufficientDataModal').modal('show');
-    } 
-    else 
-    { 
+    } else { 
         obj.termCheck();   
         localStorage.setItem('termLocal', '');     
     } 
@@ -89,32 +85,19 @@ inputForm.addEventListener('submit', e => {
 formBtn.addEventListener('click', e => { 
     e.preventDefault(); 
     let category = select.value;  
-    if(category === 'Država') 
-    {  
+    if(category === 'Država') {  
         localStorage.setItem('categoryLocal', 'Država');  
-    } 
-    else if(category === 'Grad') 
-    {
+    } else if(category === 'Grad') {
         localStorage.setItem('categoryLocal', 'Grad'); 
-    } 
-    else if(category === 'Reka') 
-    {
+    } else if(category === 'Reka') {
         localStorage.setItem('categoryLocal', 'Reka'); 
-    } 
-    else if(category === 'Planina') 
-    {
+    } else if(category === 'Planina') {
         localStorage.setItem('categoryLocal', 'Planina'); 
-    } 
-    else if(category === 'Životinja') 
-    { 
+    } else if(category === 'Životinja') { 
         localStorage.setItem('categoryLocal', 'Životinja'); 
-    } 
-     else if(category === 'Biljka') 
-    { 
+    } else if(category === 'Biljka') { 
         localStorage.setItem('categoryLocal', 'Biljka'); 
-    } 
-    else if(category === 'Predmet') 
-    {
+    } else if(category === 'Predmet') {
         localStorage.setItem('categoryLocal', 'Predmet');  
     } 
 })

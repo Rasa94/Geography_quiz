@@ -13,13 +13,10 @@ export class Results {
             .where('username', '==', name)
             .get();
            
-    if (snapshot.size == 1) 
-      {
+    if (snapshot.size == 1) {
         this.updateResult(points);
         this.updateCounter();
-      } 
-      else 
-      {
+      } else {
         this.setResult(points);
       } 
   }

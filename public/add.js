@@ -5,7 +5,8 @@ export class AddTerm {
         this.kategorija = c;
         this.pojam = t;
         this.pocetnoSlovo; 
-        this.database = db.collection('pojmovi');  
+        this.database = db.collection('pojmovi'); 
+        this.suggestion = db.collection('predlozi'); 
     } 
     
     // Setters and getters
@@ -42,14 +43,11 @@ export class AddTerm {
             term.slice(0, 2) === "Nj" ||
             term.slice(0, 2) === "Lj" ||
             term.slice(0, 2) === "Dž"
-        ) 
-        {
+        ) {
             let firstLetter = term.slice(0, 2);
             firstLetter.toUpperCase();
             return firstLetter;
-        } 
-        else 
-        {
+        } else {
             let firstLetter = term.slice(0, 1);
             firstLetter.toUpperCase();
             return firstLetter;
@@ -70,7 +68,7 @@ export class AddTerm {
             vreme: firebase.firestore.Timestamp.fromDate(today)  
         }
 
-        let deliver = await this.database.add(termDocument); 
+        let deliver = await this.suggestion.add(termDocument); 
         return deliver; 
     }
 
@@ -85,9 +83,7 @@ export class AddTerm {
                     if (snapshot.docs.length == 0) {
                         this.termAdder();
                         $('#newDocModal').modal('show');
-                    } 
-                    else 
-                    {
+                    } else {
                         $('#docExistsModal').modal('show');
                     }
                 })

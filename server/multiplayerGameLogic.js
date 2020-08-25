@@ -18,6 +18,11 @@ class GeoGame {
             })
 
         })
+        this._players.forEach((player) => {
+            player.on('kick', () => {
+                player.disconnect()
+            });
+        });
     }
 
 
@@ -85,15 +90,12 @@ class GeoGame {
     _checkGameOver() {
         const turns = this._turns;
         if(turns[0] && turns[1]) {
-            this._sendToPlayers('Game over!!!');
+            // this._sendToPlayers('Game over!!!');
             this._getGameResult();
             this._turns = [null, null]; 
-            this._sendToPlayers('Sledeća runda!!!');
             this._openModal(); 
         }
     }
-
-    
 
     _getGameResult() {
         
@@ -128,41 +130,41 @@ class GeoGame {
         let arr = [0,1,2,3,4,5,6]
   
         arr.forEach((el) => {
-            if(player1Answer[el] === player2Answer[el] && player1Answer[el] !== '/' && player2Answer[el] !== '/') 
+            if(player1Answer[el] && player2Answer[el] && player1Answer[el] === player2Answer[el]) 
             {
                 p1Score += 5;
                 res1Arr.push(5)
                 p2Score += 5;
                 res2Arr.push(5)
             }
-            if(player1Answer[el] !== player2Answer[el] && player1Answer[el] !== '/' && player2Answer[el] !== '/')
+            if(player1Answer[el] && player2Answer[el] && player1Answer[el] !== player2Answer[el])
             {
                 p1Score += 10;
                 res1Arr.push(10)
                 p2Score += 10;
                 res2Arr.push(10)
             }
-            if (player1Answer[el] === '/' && player2Answer[el] !== '/') 
+            if (!player1Answer[el] && player2Answer[el]) 
             {
                 p2Score += 15;
                 res2Arr.push(15)
                 p1Score += 0;
                 res1Arr.push(0)
             }
-            if(player2Answer[el] === '/' && player1Answer[el] !== '/') 
+            if(player1Answer[el]  && !player2Answer[el]) 
             {
                 p1Score += 15;
                 res1Arr.push(15)
                 p2Score += 0;
                 res2Arr.push(0)
             } 
-            if(player2Answer[el] === '/' && player1Answer[el] === '/') 
+            if(!player2Answer[el] && !player1Answer[el]) 
             {
                 p1Score += 0;
                 res1Arr.push(0)
                 p2Score += 0;
                 res2Arr.push(0)
-            } 
+            }
         });
 
         if (p1Score > p2Score) 
@@ -173,10 +175,15 @@ class GeoGame {
         {
             winner = secondPlayer;
         }
+        else if (p1Score == 0 && p2Score == 0)
+        {
+            winner = 'zero';
+        }
         else if (p1Score === p2Score)
         {
             winner = 'draw';
         }
+        
 
         this._sendResults1(winner, res1Arr, res2Arr);
         this._sendAnswers(player1Answer, player2Answer);
@@ -185,8 +192,7 @@ class GeoGame {
         this._updateScores(p2Score, 1);
 
         
-        // console.log(p1Score);
-        // console.log(p2Score);
+        // console.log(res1Arr, res2Arr);
     }
 }
 

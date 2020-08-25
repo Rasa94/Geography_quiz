@@ -84,29 +84,6 @@ let randomLetter = (letter) => {
     letterBox.innerText = letter;  
 }
 
-    // Timer
-
-let timer;
-let start = () => {
-    $('#searchingModal').modal('hide');
-    sock.emit('username', nick);
-    playerInputElements.forEach(el => {
-        el.disabled = false;  
-    });
-    let current = 1;
-    timer = setInterval(() => {
-        let counter = 90 - current;
-        current += 1;
-        gameTimer.innerHTML = counter
-
-        if (counter == 0) {
-            clearInterval(timer);
-            gameTimer.innerHTML = '0';
-            resultModal.click(); 
-        }
-    }, 1000);
-}
-
     // Game start
 
 let categories = ['Država', 'Grad', 'Reka', 'Planina', 'Životinja', 'Biljka', 'Predmet'];
@@ -132,13 +109,10 @@ answerBtn.addEventListener('click', (e) => {
             .where('pojam', '==', answer)
             .get();
         
-            if (snapshot.size == 1) 
-            {
+            if (snapshot.size == 1) {
                 checked.push(answer)
-            } 
-            else 
-            {
-                checked.push('/')
+            } else {
+                checked.push('')
             } 
 
             if (checked.length === 7) {
@@ -186,6 +160,28 @@ chatButton.addEventListener('click', (e) => {
     chatBody.classList.toggle('window');
 })
 
+    // Timer
+
+let timer;
+let start = () => {
+    $('#searchingModal').modal('hide');
+    sock.emit('username', nick);
+    playerInputElements.forEach(el => {
+        el.disabled = false;  
+    });
+    let current = 1;
+    timer = setInterval(() => {
+        let counter = 90 - current;
+        current += 1;
+        gameTimer.innerHTML = counter
+
+        if (counter == 0) {
+            answerBtn.click(); 
+            gameTimer.innerHTML = '0';
+        }
+    }, 1000);
+}
+
 const sock = io();
 
 writeEvent('Dobrodošli :D') 
@@ -220,8 +216,13 @@ sock.on('winner', async (winner) => {
     {
         declareWinner.innerText = `Izjednačeno je!`; 
     }
-    else {
-        declareWinner.innerText = `Pobednik je ${win}`; 
+    else if(win == 'zero')
+    {
+        declareWinner.innerText = `Nema pobednika!`; 
+    }
+    else 
+    {
+        declareWinner.innerText = `Pobednik je ${win}!`; 
     }
 }); 
 
@@ -263,6 +264,10 @@ sock.on('open', () => {
     resultModal.click(); 
 });
 
+sock.on('left', () => {
+    sock.emit('kick', 'yes');
+    $('#disconnectModal').modal('show'); 
+});
 
 chatForm.addEventListener('submit', onFormSubmitted);
 
