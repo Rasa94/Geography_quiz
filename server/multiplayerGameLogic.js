@@ -18,9 +18,13 @@ class GeoGame {
             })
 
         })
-        this._players.forEach((player) => {
-            player.on('kick', () => {
-                player.disconnect()
+        this._players.forEach(player => {
+            player.on('disconnect', () => {
+                this._players.forEach(sock => {
+                    if (player !== sock) {
+                        sock.emit('left', 'disc');
+                    }
+                })
             });
         });
     }

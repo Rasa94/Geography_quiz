@@ -68,6 +68,7 @@ let scorePl1 = document.getElementById('scoreRenderPl1');
 let scorePl2 = document.getElementById('scoreRenderPl2');
 let declareWinner = document.getElementById('winner');
 let newGame = document.getElementById('newGame');
+let backToHome = document.getElementById('back');
     // Chat elements
 let chatButton = document.getElementById('chatButton');
 let chatForm = document.getElementById('chat-form');
@@ -182,6 +183,10 @@ let start = () => {
     }, 1000);
 }
 
+backToHome.addEventListener('click', () => {
+    document.getElementById('home').click();
+})
+
 const sock = io();
 
 writeEvent('Dobrodošli :D') 
@@ -265,7 +270,7 @@ sock.on('open', () => {
 });
 
 sock.on('left', () => {
-    sock.emit('kick', 'yes');
+    // sock.emit('kick', 'yes');
     $('#disconnectModal').modal('show'); 
 });
 

@@ -34,7 +34,7 @@ if(!localStorage.usernameLocal && loginInput.value == '') {
     // log in listener
 
 let popUp;
-login.addEventListener('click', e => { 
+login.addEventListener('click', e => {
     e.preventDefault() 
     let username = loginInput.value;
     localStorage.setItem('usernameLocal', username);

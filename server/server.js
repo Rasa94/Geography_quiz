@@ -68,13 +68,6 @@ io.on('connection', (sock) => {
         })
         sock.emit('wait', 'load');
     }
-
-    sock.on('disconnect', () => {
-        console.log('disconnected');
-        // io.emit('message', 'Protivnik je napustio igru');
-        io.emit('left', 'disc');
-        waitingPlayer = null;
-    });
 });
 
 server.on('error', (err) => {
