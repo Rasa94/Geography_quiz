@@ -179,8 +179,6 @@ answerBtn.addEventListener('click', (e) => {
             answers[index].push(doc.data().pojam);
         });
 
-        console.log(answers);
-        console.log(randomLetter);
 
         let computerAnswer = '';
 
